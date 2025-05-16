@@ -1,0 +1,178 @@
+    {% extends './base.html' %}
+    {% block title %}
+        <title>隐私信息</title>
+    {% endblock %}
+
+    {% block body %}
+    <style>
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .pri-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.6em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .section ul li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .section ul li::before {
+            content: "→";
+            color: #3498db;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .important-note {
+            background-color: #f8f9fc;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+            font-size: 0.95em;
+            color: #6c757d;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .pri-container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .section h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+
+    <div class="pri-container">
+        <div class="header">
+            <h1>[电商平台名称]隐私政策</h1>
+            <p>更新日期：2025年05月15日</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>一、我们如何收集您的个人信息</h2>
+                <p>我们会在以下场景收集您的个人信息：</p>
+                <ul>
+                    <li>注册账号时：姓名、手机号码、电子邮箱</li>
+                    <li>购物下单时：收货地址、收货人信息、支付方式</li>
+                    <li>浏览商品时：浏览记录、搜索关键词（用于个性化推荐）</li>
+                    <li>客服沟通时：聊天记录、问题反馈内容</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>二、我们如何使用您的个人信息</h2>
+                <p>我们仅在合法、必要、透明的原则下使用您的信息：</p>
+                <ul>
+                    <li>完成交易订单、提供商品或服务</li>
+                    <li>发送订单状态通知、促销活动信息（可随时退订）</li>
+                    <li>优化用户体验、改进产品功能</li>
+                    <li>保障平台安全、预防欺诈行为</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>三、我们如何共享、转让、公开您的个人信息</h2>
+                <p>我们不会向第三方泄露您的个人信息，除非：</p>
+                <ul>
+                    <li>获得您的明确授权同意</li>
+                    <li>根据法律法规要求或行政、司法机关要求</li>
+                    <li>为提供您需要的服务而委托第三方处理（如物流、支付机构）</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>四、您的权利</h2>
+                <p>您可以通过以下方式管理您的个人信息：</p>
+                <ul>
+                    <li>登录账号后修改个人资料</li>
+                    <li>联系客服申请删除、更正个人信息</li>
+                    <li>关闭个性化推荐功能（路径：设置→隐私→推荐管理）</li>
+                    <li>注销账号（需通过客服验证身份）</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>五、我们如何保护您的个人信息</h2>
+                <p>我们采取以下安全措施保护您的信息：</p>
+                <ul>
+                    <li>数据加密存储和传输（SSL/TLS协议）</li>
+                    <li>定期进行安全漏洞检测和风险评估</li>
+                    <li>限制内部员工访问权限</li>
+                </ul>
+            </div>
+
+            <div class="important-note">
+                <p>如您对本隐私政策有任何疑问，可通过以下方式联系我们：</p>
+                <p>客服电话：400-XXX-XXXX</p>
+                <p>电子邮箱：service@xxx.com</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© [电商平台名称] 2025 保留所有权利</p>
+        </div>
+    </div>
+
+    {% endblock %}

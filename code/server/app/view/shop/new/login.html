@@ -1,0 +1,153 @@
+{% extends './base.html' %}
+{% block title %}
+<title>{{page_title}}-登录</title>
+
+<!-- CSS Page Style -->
+<link rel="stylesheet" href="/public/assets/new/css/pages/log-reg-v3.css">
+
+
+{% endblock %}
+{% block body %}
+
+    <!--=== Breadcrumbs v4 ===-->
+    <div class="breadcrumbs-v4">
+        <div class="container">
+            <span class="page-name">登录</span>
+            <h1>欢迎您， <span class="shop-green">请登录您的账号</span></h1>
+            <ul class="breadcrumb-v4-in">
+                <li><a href="/">首页</a></li>
+                <!-- <li><a href="/shop/goods"></a></li> -->
+                <li class="active">登录</li>
+            </ul>
+        </div><!--/end container-->
+    </div> 
+    <!--=== End Breadcrumbs v4 ===-->
+
+    <!--=== Login ===-->
+    <div class="log-reg-v3 content-md">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 md-margin-bottom-50">
+                    <h2 class="welcome-title">欢迎来到WBIOKR商城</h2>
+                    <p>WBIOKR商城是女装在线购买平台，WBIOKR商城是女装在线购买平台WBIOKR商城是女装在线购买平台</p><br>
+                    <div class="info-block-v2">
+                        <i class="icon icon-layers"></i>
+                        <div class="info-block-in">
+                            <h3>多渠道</h3>
+                            <p>WBIOKR商城衣服来自于广州、杭州、厦门等地方厂商，WBIOKR商城衣服来自于广州、杭州、厦门等地方厂商WBIOKR商城衣服来自于广州、杭州、厦门等地方厂商WBIOKR商城衣服来自于广州、杭州、厦门等地方厂商</p>
+                        </div>    
+                    </div>    
+                    <div class="info-block-v2">
+                        <i class="icon icon-settings"></i>
+                        <div class="info-block-in">
+                            <h3>质量好</h3>
+                            <p>WBIOKR商城衣服来自于广州、杭州、厦门等地方厂商</p>
+                        </div>    
+                    </div>
+                    <div class="info-block-v2">
+                        <i class="icon icon-paper-plane"></i>
+                        <div class="info-block-in">
+                            <h3>售后保障</h3>
+                            <p>WBIOKR商城衣服来自于广州、杭州、厦门等地方厂商WBIOKR商城衣服来自于广州、杭州、厦门等地方厂商WBIOKR商城衣服来自于广州、杭州、厦门等地方厂商</p>
+                        </div>    
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <form id="sky-form1" class="log-reg-block sky-form">
+                        <h2>登录账号</h2>
+
+                        <section>
+                            <label class="input login-input">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="email" placeholder="请输入邮箱" name="username" class="form-control k-username">
+                                </div>
+                            </label>
+                        </section>        
+                        <section>
+                            <label class="input login-input no-border-top">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                    <input type="password" placeholder="请输入密码" name="password" class="form-control k-password">
+                                </div>    
+                            </label>
+                        </section>
+                        <div class="row margin-bottom-5">
+                            <div class="col-xs-6">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="checkbox" class="k-remeber" />
+                                    <i></i>
+                                    记住我
+                                </label>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <a href="/shop/reset">修改密码</a>
+                            </div>
+                        </div>
+                        <div id="label_error" class="c-red">
+                        </div>
+                        <button class="btn-u btn-u-sea-shop btn-block margin-bottom-20" type="submit">登 录</button>
+
+                        <!-- <div class="border-wings">
+                            <span>or</span>
+                        </div>
+                            
+                        <div class="row columns-space-removes">
+                            <div class="col-lg-6 margin-bottom-10">
+                                <button type="button" class="btn-u btn-u-md btn-u-fb btn-block"><i class="fa fa-facebook"></i> Facebook Log In</button>
+                            </div>
+                            <div class="col-lg-6">
+                                <button type="button" class="btn-u btn-u-md btn-u-tw btn-block"><i class="fa fa-twitter"></i> Twitter Log In</button>
+                            </div>
+                        </div> -->
+                    </form>
+                    
+                    <div class="margin-bottom-20"></div>
+                    <p class="text-center">没有账号? 请跳转至 <a href="shop-ui-register.html">注册</a>页面</p>
+                </div>
+            </div><!--/end row-->
+        </div><!--/end container-->
+    </div>
+    <!--=== End Login ===-->     
+
+    <!--=== Shop Suvbscribe ===-->
+    <!-- <div class="shop-subscribe">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 md-margin-bottom-20">
+                    <h2>subscribe to our weekly <strong>newsletter</strong></h2>
+                </div>  
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Email your email...">
+                        <span class="input-group-btn">
+                            <button class="btn" type="button"><i class="fa fa-envelope-o"></i></button>
+                        </span>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!--=== End Shop Suvbscribe ===-->
+
+
+<!-- Login Form -->
+<script src="/public/assets/new/plugins/sky-forms/version-2.0.1/js/jquery.form.min.js"></script>
+<!-- Validation Form -->
+<script src="/public/assets/new/plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js"></script>
+<script src="/public/assets/new/js/forms/page_login.js"></script>
+<script src="/public/assets/new/js/forms/page_contact_form.js"></script>
+<!-- <script src="/public/assets/common/jquery/jquery.validate.min.js"></script> -->
+<script src="/public/assets/common/jquery/messages_zh.min.js"></script>
+<script src="/public/assets/common/jsencrypt.min.js"></script>
+
+<script>
+    jQuery(document).ready(function() {
+        // App.init();
+        Login.initLogin();
+        PageContactForm.initPageContactForm();
+        StyleSwitcher.initStyleSwitcher();      
+    });
+</script>
+{% endblock %}
