@@ -2,20 +2,13 @@
 {% block title %}
 <title>{{page_title}}-注册</title>
 
-<script src="/public/assets/common/moment.min.js"></script>
-<script src="/public/assets/common/vue.v2.5.1.min.js"></script>
-<script>
-    Vue.options.delimiters = ['${', '}'];
-</script>
+<!-- CSS Page Style -->
+<link rel="stylesheet" href="/public/assets/new/css/pages/log-reg-v3.css">
 <style>
-  .error{ color:red !important;  }
-  input.error { border: 1px dotted  red !important; }
+  .log-reg-v3 .login-input .p-l-20 i {
+    min-width: auto;
+  }
 </style>
-<script src="/public/assets/common/jquery/jquery.validate.min.js"></script>
-<script src="/public/assets/common/jquery/messages_zh.min.js"></script>
-<script src="/public/assets/common/jsencrypt.min.js"></script>
-{% endblock %}
-{% block nav %}
 {% endblock %}
 {% block body %}
   
@@ -61,7 +54,7 @@
                     </div>
                     <div class="members-number">
                         <h3>全球客户量超过 <span class="shop-green">13,000</span> 位</h3>
-                        <img class="img-responsive" src="assets/img/map.png" alt="">
+                        <img class="img-responsive" src="/public/assets/new/img/map.png" alt="">
                     </div>    
                 </div>
 
@@ -70,148 +63,106 @@
                         <h2>注册新账户</h2>
 
                         <div class="login-input reg-input">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <section>
-                                        <label class="input">
-                                            <input type="text" name="firstname" placeholder="First name" class="form-control">
-                                        </label>
-                                    </section>
-                                </div>
-                                <div class="col-sm-6">
-                                    <section>
-                                        <label class="input">
-                                            <input type="text" name="lastname" placeholder="Last name" class="form-control">
-                                        </label>
-                                    </section>        
-                                </div>
-                            </div>
-                            <label class="select margin-bottom-15">
-                                <select name="gender" class="form-control">
-                                    <option value="0" selected disabled>Gender</option>
-                                    <option value="1">Male</option>
-                                    <option value="2">Female</option>
-                                    <option value="3">Other</option>
-                                </select>
-                            </label>
-                            <div class="row margin-bottom-10">
-                                <div class="col-xs-6">
-                                    <label class="select">
-                                        <select name="month" class="form-control">
-                                            <option disabled="" selected="" value="0">Month</option>
-                                            <option>January</option>
-                                            <option>February</option>
-                                            <option>March</option>
-                                            <option>April</option>
-                                            <option>May</option>
-                                            <option>June</option>
-                                            <option>July</option>
-                                            <option>August</option>
-                                            <option>September</option>
-                                            <option>October</option>
-                                            <option>November</option>
-                                            <option>December</option>
-                                        </select>
-                                    </label>    
-                                </div>
-                                <div class="col-xs-3">
-                                    <input type="text" name="day" placeholder="Day" class="form-control">
-                                </div>
-                                <div class="col-xs-3">
-                                    <input type="text" name="year" placeholder="Year" class="form-control">
-                                </div>
-                            </div>
                             <section>
-                                <label class="input">
-                                    <input type="text" name="username" placeholder="Username" class="form-control">
+                                <label class="input w-per-100">
+                                    <input type="email" name="username" placeholder="邮箱(用户名)" class="form-control k-username">
                                 </label>
-                            </section>                            
+                            </section>
                             <section>
-                                <label class="input">
-                                    <input type="email" name="email" placeholder="Email address" class="form-control">
+                                <label class="input w-per-100">
+                                    <input type="text" name="nickname" maxlength="20" placeholder="昵称" class="form-control k-nickname">
                                 </label>
                             </section>                                
                             <section>
-                                <label class="input">
-                                    <input type="password" name="password" placeholder="Password" id="password" class="form-control">
+                                <label class="input w-per-100">
+                                    <input type="password" name="password" placeholder="密码" id="password" class="form-control k-password">
                                 </label>
                             </section>                                
                             <section>
-                                <label class="input">
-                                    <input type="password" name="passwordConfirm" placeholder="Confirm password" class="form-control">
+                                <label class="input w-per-100">
+                                    <input type="password" name="passwordConfirm" placeholder="确认密码" class="form-control">
                                 </label>
-                            </section>                                
+                            </section>        
+                            <section class="p-r">
+                                <label class="input w-per-50">
+                                    <input type="text" name="code" placeholder="验证码" class="form-control k-code">
+                                </label>
+                                <img _ngcontent-c3="" src="/captcha" id="img_captcha" class="p-a-xr-yt" onclick="refresh()">
+                            </section>     
+                            <section class="p-l-20">
+                              <label class="checkbox margin-bottom-20">
+                                  <input type="checkbox" name="checkbox"/>
+                                  <i></i>
+                                  我已阅读并同意WBIOKR商城 <a href="/static/privacy">使用协议</a>
+                              </label>
+                            </section>                           
                         </div>
 
-                        <label class="checkbox margin-bottom-10">
-                            <input type="checkbox" name="checkbox"/>
-                            <i></i>
-                            Subscribe to our newsletter to get the latest offers
-                        </label>
-                        <label class="checkbox margin-bottom-20">
-                            <input type="checkbox" name="checkbox"/>
-                            <i></i>
-                            I have read agreed with the <a href="#">terms &amp; conditions</a>
-                        </label>
-                        <button class="btn-u btn-u-sea-shop btn-block margin-bottom-20" type="submit">Create Account</button>
+                        
+                        <button class="btn-u btn-u-sea-shop btn-block margin-bottom-20" type="submit">注 册</button>
                     </form>
 
                     <div class="margin-bottom-20"></div>
-                    <p class="text-center">Already you have an account? <a href="shop-ui-login.html">Sign In</a></p>
+                    <p class="text-center">已经有账号? <a href="/shop/login">登录</a></p>
                 </div>
             </div><!--/end row-->
         </div><!--/end container-->
     </div>
     <!--=== End Registre ===-->  
-
+    
+<!-- Login Form -->
+<script src="/public/assets/new/plugins/sky-forms/version-2.0.1/js/jquery.form.min.js"></script>
+<!-- Validation Form -->
+<script src="/public/assets/new/plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js"></script>
+<script src="/public/assets/common/jsencrypt.min.js"></script>
+<script src="/public/assets/common/jquery/messages_zh.min.js"></script>
+<script src="/public/assets/new/js/forms/page_registration.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        App.init();
+        Registration.initRegistration();
+        StyleSwitcher.initStyleSwitcher();      
+    });
+</script>
 <script>
     function refresh() {
         $("#img_captcha").attr("src", "/captcha?" + Math.random());
     }
-    let app = new Vue({
-        el: '#form_sign',
-        data: {
-            username: '',
-            password:'',
-            code: '',
-            remember:false,
-            nickname:''
-        }
-    });
-    $(function() {
-        $("#form_sign").validate({
-            debug:true,
-            messages:{
-                comfirmPassword:{
-                    equalTo:'两次输入密码不一致'
-                }
-            },
-            submitHandler: function(form)
-            {
-                if(!app.remember){
-                    Ap.msg.error("请勾选使用协议");
-                    return;
-                }
-                Ap.loading.start();
-                let encrypt = new JSEncrypt();
-                encrypt.setPublicKey(public_key);
-                let json={username:app.username,password:app.password};
-                let data=JSON.stringify(json);
-                let encrpted = encrypt.encrypt(data);
-                console.log(encrpted, public_key, encrypt.decrypt(encrpted));
+
+    // $(function() {
+    //     $("#form_sign").validate({
+    //         debug:true,
+    //         messages:{
+    //             comfirmPassword:{
+    //                 equalTo:'两次输入密码不一致'
+    //             }
+    //         },
+    //         submitHandler: function(form)
+    //         {
+    //             if(!app.remember){
+    //                 Ap.msg.error("请勾选使用协议");
+    //                 return;
+    //             }
+    //             Ap.loading.start();
+    //             let encrypt = new JSEncrypt();
+    //             encrypt.setPublicKey(public_key);
+    //             let json={username:app.username,password:app.password};
+    //             let data=JSON.stringify(json);
+    //             let encrpted = encrypt.encrypt(data);
+    //             console.log(encrpted, public_key, encrypt.decrypt(encrpted));
                 
-                Ap.request.post('/shop/signIn',{content:encrpted,nickname:app.nickname,code:app.code},function (res) {
-                    Ap.loading.end();
-                    if(res.success){
-                        Ap.msg.alert("注册成功,赶快去登录吧!",function () {
-                            window.location='/shop/login';
-                        })
-                    }else{
-                        Ap.msg.error(res.msg);
-                    }
-                });
-            }
-        });
-    });
+    //             Ap.request.post('/shop/signIn',{content:encrpted,nickname:app.nickname,code:app.code},function (res) {
+    //                 Ap.loading.end();
+    //                 if(res.success){
+    //                     Ap.msg.alert("注册成功,赶快去登录吧!",function () {
+    //                         window.location='/shop/login';
+    //                     })
+    //                 }else{
+    //                     Ap.msg.error(res.msg);
+    //                 }
+    //             });
+    //         }
+    //     });
+    // });
 </script>
 {% endblock %}

@@ -11,35 +11,27 @@ var Registration = function () {
 	            {
 	                username:
 	                {
-	                    required: true
+	                    required: true,
+											email: true
 	                },
-	                email:
+									nickname:
 	                {
 	                    required: true,
-	                    email: true
 	                },
 	                password:
 	                {
 	                    required: true,
-	                    minlength: 3,
-	                    maxlength: 20
 	                },
 	                passwordConfirm:
 	                {
 	                    required: true,
-	                    minlength: 3,
-	                    maxlength: 20,
 	                    equalTo: '#password'
 	                },
-	                firstname:
+	                code:
 	                {
 	                    required: true
 	                },
-	                lastname:
-	                {
-	                    required: true
-	                },
-	                terms:
+									checkbox:
 	                {
 	                    required: true
 	                }
@@ -48,35 +40,31 @@ var Registration = function () {
 	            // Messages for form validation
 	            messages:
 	            {
-	                login:
+	                username:
 	                {
-	                    required: 'Please enter your login'
+	                    required: '请输入邮箱',
+	                    email: '请输入正确的邮箱地址'
 	                },
-	                email:
+									nickname:
 	                {
-	                    required: 'Please enter your email address',
-	                    email: 'Please enter a VALID email address'
+	                    required: '请输入昵称'
 	                },
 	                password:
 	                {
-	                    required: 'Please enter your password'
+	                    required: '请输入密码'
 	                },
 	                passwordConfirm:
 	                {
-	                    required: 'Please enter your password one more time',
-	                    equalTo: 'Please enter the same password as above'
+	                    required: '请再次输入密码',
+	                    equalTo: '请输入相同的密码'
 	                },
-	                firstname:
+									code:
 	                {
-	                    required: 'Please select your first name'
+	                    required: '请输入验证码'
 	                },
-	                lastname:
+	                checkbox:
 	                {
-	                    required: 'Please select your last name'
-	                },
-	                terms:
-	                {
-	                    required: 'You must agree with Terms and Conditions'
+	                    required: '请勾选使用协议'
 	                }
 	            },                  
 	            
@@ -84,7 +72,28 @@ var Registration = function () {
 	            errorPlacement: function(error, element)
 	            {
 	                error.insertAfter(element.parent());
-	            }
+	            },
+							submitHandler: function(form)
+							{
+									Ap.loading.start();
+									let encrypt = new JSEncrypt();
+									encrypt.setPublicKey(public_key);
+									let json={username: $('#sky-form4 .k-username').val(),password:$('#sky-form4 .k-password').val()};
+									let data=JSON.stringify(json);
+									let encrpted = encrypt.encrypt(data);
+									console.log(json, data, encrpted, public_key, encrypt.decrypt(encrpted));
+									
+									Ap.request.post('/shop/signIn',{content:encrpted,nickname:$('#sky-form4 .k-nickname').val(),code:$('#sky-form4 .k-code').val()},function (res) {
+											Ap.loading.end();
+											if(res.success){
+													Ap.msg.alert("注册成功,赶快去登录吧!",function () {
+															window.location='/shop/login';
+													})
+											}else{
+													Ap.msg.error(res.msg);
+											}
+									});
+							}
 	        });
         }
 
