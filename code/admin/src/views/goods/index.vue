@@ -48,9 +48,24 @@
           <span class="link-type" @click='handleFetchPv(scope.row.numSale)'>{{scope.row.numSale}}</span>
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="是否推荐" width="100">
+      <el-table-column class-name="status-col" label="是否推荐" width="y0">
         <template slot-scope="scope">
           <el-tag :type="scope.row.recommendFlag | recommendFilter">{{ scope.row.recommendFlag | goodsRecommendFilter }}</el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column class-name="status-col" label="是否banner" width="100">
+        <template slot-scope="scope">
+          <el-tag :type="scope.row.bannerFlag | recommendFilter">{{ scope.row.bannerFlag | goodsRecommendFilter }}</el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column class-name="status-col" label="是否新品" width="100">
+        <template slot-scope="scope">
+          <el-tag :type="scope.row.newFlag | recommendFilter">{{ scope.row.newFlag | goodsRecommendFilter }}</el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column class-name="status-col" label="是否热销" width="100">
+        <template slot-scope="scope">
+          <el-tag :type="scope.row.hotFlag | recommendFilter">{{ scope.row.hotFlag | goodsRecommendFilter }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column class-name="status-col" label="状态" width="100">
@@ -59,19 +74,35 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="操作" width="250">
+      <el-table-column align="left" label="操作" width="250">
         <template slot-scope="scope">
-          <el-button v-if="scope.row.goodsStatus!='U'" size="small" type="success" @click="handleModifyStatus(scope.row,'U')">上架
+          <el-button v-if="scope.row.goodsStatus!='U'" size="mini" type="success" @click="handleModifyStatus(scope.row,'U')">上架
           </el-button>
-          <el-button v-if="scope.row.goodsStatus=='U'" size="small" @click="handleModifyStatus(scope.row,'D')">下架
+          <el-button v-if="scope.row.goodsStatus=='U'" size="mini" @click="handleModifyStatus(scope.row,'D')">下架
           </el-button>
-          <el-button v-if="scope.row.recommendFlag=='0'" size="small" type="primary" @click="handleRecommendFlag(scope.row,'1')">推荐
+          <el-button v-if="scope.row.recommendFlag=='1'" size="mini" type="info" @click="handleRecommendFlag(scope.row, 'recommendFlag', '0')">不推荐
           </el-button>
-          <el-button v-if="scope.row.recommendFlag=='1'" size="small" type="info" @click="handleRecommendFlag(scope.row,'0')">不推荐
+          <el-button v-else size="mini" type="primary" @click="handleRecommendFlag(scope.row, 'recommendFlag', '1')">推荐
           </el-button>
-          <el-button v-if="scope.row.goodsStatus!='C'" size="small" type="danger" @click="handleModifyStatus(scope.row,'C')">删除
+          <el-button v-if="scope.row.bannerFlag=='1'" size="mini" type="info" @click="handleRecommendFlag(scope.row, 'bannerFlag', '0')">下banner
           </el-button>
-          <el-button v-if="scope.row.goodsStatus=='C'" size="small" type="primary" @click="handleModifyStatus(scope.row,'0')">恢复
+          <el-button v-else size="mini" type="primary" @click="handleRecommendFlag(scope.row, 'bannerFlag', '1')">上banner
+          </el-button>
+           <el-button v-if="scope.row.newFlag=='1'" size="mini" type="info" @click="handleRecommendFlag(scope.row, 'newFlag', '0')">非新品
+          </el-button>
+          <el-button v-else size="mini" type="primary" @click="handleRecommendFlag(scope.row, 'newFlag', '1')">是新品
+          </el-button>
+           <el-button v-if="scope.row.hotFlag=='1'" size="mini" type="info" @click="handleRecommendFlag(scope.row, 'hotFlag', '0')">非热销
+          </el-button>
+          <el-button v-else size="mini" type="primary" @click="handleRecommendFlag(scope.row, 'hotFlag', '1')">是热销
+          </el-button>
+
+          <el-button size="mini" type="danger" @click="copyGoods(scope.row)">复制
+          </el-button>
+          
+          <el-button v-if="scope.row.goodsStatus!='C'" size="mini" type="danger" @click="handleModifyStatus(scope.row,'C')">删除
+          </el-button>
+          <el-button v-if="scope.row.goodsStatus=='C'" size="mini" type="primary" @click="handleModifyStatus(scope.row,'0')">恢复
           </el-button>
         </template>
       </el-table-column>
@@ -101,6 +132,8 @@
 import { fetchList, fetchPv ,updateGoodsStatus,updateRecommendFlag} from '@/api/goods'
 import waves from '@/directive/waves/index.js' // 水波纹指令
 import { parseTime } from '@/utils'
+import { postGoods } from '@/api/goods'
+
 
 const calendarTypeOptions = [
   { key: 'E', display_name: '实物' },
@@ -166,11 +199,12 @@ export default {
       return statusMap[status]
     },
     goodsRecommendFilter(status) {
-      const statusMap = {
-        0: '不推荐',
-        1: '推荐',
-      }
-      return statusMap[status]
+      // const statusMap = {
+      //   0: '不推荐',
+      //   1: '推荐',
+      // }
+      // return statusMap[status] ｜｜ 
+      return status == 1 ? '是' : '否'
     },
     typeFilter(type) {
       return calendarTypeKeyValue[type]
@@ -180,6 +214,22 @@ export default {
     this.getList()
   },
   methods: {
+    copyGoods(row) {
+      const newGoods = {...row, goodsStatus: 'D'}
+      delete newGoods.goodsID
+      postGoods(newGoods).then(res => {
+        this.$notify({
+          title: '成功',
+          message: '商品复制成功',
+          type: 'success',
+          duration: 2000
+        });
+        this.getList()
+      }).catch(err => {
+        console.log(err)
+      }).finally(()=>{
+      })
+    },
     getList() {
       this.listLoading = true
       fetchList(this.listQuery).then(data => {
@@ -209,13 +259,13 @@ export default {
         row.goodsStatus = goodsStatus;
       })
     },
-    handleRecommendFlag(row, recommendFlag) {
-      updateRecommendFlag({goodsID:row.goodsID,recommendFlag}).then(data => {
+    handleRecommendFlag(row, k, recommendFlag) {
+      updateRecommendFlag({goodsID:row.goodsID, k, flag: recommendFlag}).then(data => {
         this.$message({
           message: data.msg,
           type: 'success'
         })
-        row.recommendFlag = recommendFlag;
+        row[k] = recommendFlag;
       })
     },
     handleCreate() {

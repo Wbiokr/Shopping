@@ -27,7 +27,7 @@ module.exports = app => {
                 order.goods=goods;
             }
             data.orders=orders;*/
-            await ctx.render('shop/red/order', data);
+            await ctx.render('shop/new/order', data);
         }
         async detail(ctx){
             let data= await ctx.getUserInfo();

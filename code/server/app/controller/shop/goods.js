@@ -78,7 +78,7 @@ module.exports = app => {
             let data=await ctx.getUserInfo();
             const goods = await ctx.model.ShopUserGoods.findAll({where:{uid:ctx.session.uid}});
             data.goods=goods;
-            await this.ctx.render('shop/red/my-product', data);
+            await this.ctx.render('shop/new/my-product', data);
         }
     };
 };

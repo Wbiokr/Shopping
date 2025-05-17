@@ -12,7 +12,7 @@ module.exports = app => {
                 where:{uid:data.uid}
             });
             data.wishlist=res.rows;
-            await this.ctx.render('shop/red/wishlist', data);
+            await this.ctx.render('shop/new/wishlist', data);
         }
         async del(ctx){
             const wishlist = await ctx.model.ShopUserWishlist.findById(ctx.params.id);

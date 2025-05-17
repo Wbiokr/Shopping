@@ -8,7 +8,7 @@ module.exports = app => {
         async index(ctx){
             let data=await ctx.getUserInfo();
 
-            await ctx.render('shop/red/account',data);
+            await ctx.render('shop/new/account',data);
         }
     };
 };

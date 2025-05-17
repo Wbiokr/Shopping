@@ -117,7 +117,13 @@
                 </el-col>
                 <el-col :span="6">
                     <el-form-item  label="推荐:" class="postInfo-container-item">
-                      <el-checkbox v-model="postForm.recommendFlag" style='min-width:200px;' label="首页" border></el-checkbox>
+                      <br />
+                      <div class="f-s-c">
+                        <el-checkbox v-model="postForm.recommendFlag" style='min-width:90px;' label="推荐区" border></el-checkbox>
+                        <el-checkbox v-model="postForm.bannerFlag" style='min-width:90px;' label="banner区" border></el-checkbox>
+                        <el-checkbox v-model="postForm.hotFlag" style='min-width:90px;' label="热销区" border></el-checkbox>
+                        <el-checkbox v-model="postForm.newFlag" style='min-width:90px;' label="新品区" border></el-checkbox>
+                      </div>
                     </el-form-item>
                 </el-col>
               </el-row>
@@ -166,6 +172,9 @@ const defaultForm = {
   goodsImages:[],
   goodsClassID:'1',
   recommendFlag:false,
+  newFlag: false,
+  hotFlag:false,
+  bannerFlag:false,
   comment_disabled: false
 }
 

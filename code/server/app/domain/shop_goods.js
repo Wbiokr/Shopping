@@ -119,6 +119,21 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: '0'
     },
+    bannerFlag: {
+      type: DataTypes.CHAR(1),
+      allowNull: false,
+      defaultValue: '0'
+    },
+    hotFlag: {
+      type: DataTypes.CHAR(1),
+      allowNull: false,
+      defaultValue: '0'
+    },
+    newFlag: {
+      type: DataTypes.CHAR(1),
+      allowNull: false,
+      defaultValue: '0'
+    },
     goodsStatus: {
       type: DataTypes.CHAR(1),
       allowNull: false,

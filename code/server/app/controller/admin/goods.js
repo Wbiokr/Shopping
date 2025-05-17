@@ -95,14 +95,15 @@ module.exports = app => {
             ctx.success("状态更新成功!");
         }
         async recommend(ctx) {
-            let {recommendFlag, goodsID} = ctx.request.body;
+            let {flag, k, goodsID} = ctx.request.body;
+            console.log(goodsID, k, flag)
             let goods = await ctx.model.ShopGoods.findById(goodsID);
             if (!goods) {
                 ctx.failure("操作失败，未查询到商品相关信息！");
                 return;
             }
             goods.update({
-                recommendFlag
+                [k]:  flag
             });
             ctx.success("状态更新成功!");
         }

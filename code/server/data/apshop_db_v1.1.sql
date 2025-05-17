@@ -317,6 +317,9 @@ CREATE TABLE `shop_goods` (
   `opBy`                varchar(32)                          COMMENT '操作人',
   `opAt`                DATETIME                             COMMENT '操作时间',
   `recommendFlag`       char(1) DEFAULT '0' NOT NULL      COMMENT '推荐标记(*,0:不推荐,1:推荐)',
+  `bannerFlag`       char(1) DEFAULT '0' NOT NULL      COMMENT 'banner标记(*,0:不推荐,1:推荐)',
+  `newFlag`       char(1) DEFAULT '0' NOT NULL      COMMENT '新品标记(*,0:不推荐,1:推荐)',
+  `hotFlag`       char(1) DEFAULT '0' NOT NULL      COMMENT 'hot标记(*,0:不推荐,1:推荐)',
   `goodsStatus`         char(1) DEFAULT '0' NOT NULL      COMMENT '商品状态(*,0:新建,D:下架,U:上架,C:删除)',
   CONSTRAINT PK_shop_goods PRIMARY KEY (`goodsID`)
 );

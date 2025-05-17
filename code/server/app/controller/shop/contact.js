@@ -10,7 +10,7 @@ module.exports = app => {
         async index(ctx){
             let data= await ctx.getUserInfo();
             data.active_page=4;
-            await this.ctx.render('shop/red/contact', data);
+            await this.ctx.render('shop/new/contact', data);
         }
         async create(ctx){
             const {name,tell,title,content,code} = ctx.request.body;

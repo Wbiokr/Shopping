@@ -182,7 +182,7 @@
                     <div class="col-sm-6">
                         <ul class="list-inline right-topbar pull-right">
                             {% if uid %}
-                            <li class="c-p o-hover-70 ease-300">欢迎您，{{nickname}}</li>
+                            <li class="c-p o-hover-70 ease-300">欢迎您，<a href="/shop/uc">{{nickname}}</a></li>
                             <li class="c-p o-hover-70 ease-300 m-l-10" onclick="logout()">退出</li>
                              {% else %}
                             <li><a href="/shop/login">登录</a> | <a href="/shop/signIn">注册</a></li>
