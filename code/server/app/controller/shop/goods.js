@@ -53,7 +53,7 @@ module.exports = app => {
                 limit:3
             });
             data.shopRecommendGoods=shopRecommendGoods;
-            await this.ctx.render('shop/red/product-detail', data);
+            await this.ctx.render('shop/new/product-detail', data);
         }
         async get(ctx){
             let data=await ctx.getUserInfo();

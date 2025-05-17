@@ -261,7 +261,7 @@
                                         </div> -->
                                         <div class="col-xs-6">
                                             <!-- <a href="shop-ui-add-to-cart.html" class="btn-u btn-u-sea-shop btn-block">Checkout</a> -->
-                                            <span class="c-fff ease-300 btn-u btn-u-sea-shop btn-block c-p" onclick="checkout()">去结算</span>
+                                            <span class="c-fff ease-300 btn-u btn-u-sea-shop btn-block c-p" style="color: #fff" onclick="checkout()">去结算</span>
                                         </div>
                                     </div>        
                                 </li>    
@@ -495,7 +495,8 @@
 });
 </script>
 <script>
-    let cartCount="{{cartCount}}";
+    var cartCount="{{cartCount}}";
+    
     function checkout() {
         if(cartCount<=0)
             Ap.msg.warning("购物车还是空的")
@@ -549,25 +550,25 @@
         Ap.request.post("/shop/cart",{goodsID,num,price},function (res) {
             if(res.success){
                 Ap.msg.success("已加入购物车");
-                let goods=res.result[0];
-                let isNew=res.result[1];
-                if(isNew) {
-                    let dom = '<div class="mini-product div_cart_' + goods.id + '">\n' +
-                        '<div class="product-meta">\n' +
-                        '<a href="/shop/goods/' + goods.goodsID + '">\n' +
-                        '<img width="55" height="50" src="' + goods.imgurl + '" alt="placeholder" />\n' +
-                        '' + goods.name + '\n' +
-                        '<span>' + goods.num + ' x ￥' + goods.price + '</span>\n' +
-                        '</a>\n' +
-                        '<span class="price" data-price="' + goods.num * goods.price + '">￥' + goods.num * goods.price + '</span>\n' +
-                        '</div>\n' +
-                        '<div class="action">\n' +
-                        '<a href="javascript:void(0);" onclick="delCart(\'' + goods.id + '\')" class="top-cart icomoon" aria-hidden="true" data-icon="&#xe004;"></a>\n' +
-                        '</div>\n' +
-                        '</div>';
-                    $('#cart-list').prepend(dom);
-                    setAccount();
-                }
+                // let goods=res.result[0];
+                // let isNew=res.result[1];
+                // if(isNew) {
+                //     let dom = '<div class="mini-product div_cart_' + goods.id + '">\n' +
+                //         '<div class="product-meta">\n' +
+                //         '<a href="/shop/goods/' + goods.goodsID + '">\n' +
+                //         '<img width="55" height="50" src="' + goods.imgurl + '" alt="placeholder" />\n' +
+                //         '' + goods.name + '\n' +
+                //         '<span>' + goods.num + ' x ￥' + goods.price + '</span>\n' +
+                //         '</a>\n' +
+                //         '<span class="price" data-price="' + goods.num * goods.price + '">￥' + goods.num * goods.price + '</span>\n' +
+                //         '</div>\n' +
+                //         '<div class="action">\n' +
+                //         '<a href="javascript:void(0);" onclick="delCart(\'' + goods.id + '\')" class="top-cart icomoon" aria-hidden="true" data-icon="&#xe004;"></a>\n' +
+                //         '</div>\n' +
+                //         '</div>';
+                //     $('#cart-list').prepend(dom);
+                //     setAccount();
+                // }
             }else{
                 Ap.msg.error("加入购物车失败");
             }
