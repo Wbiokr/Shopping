@@ -221,10 +221,11 @@
                             <a href="#"><i class="fa fa-shopping-cart"></i></a>
                             <span class="badge badge-sea rounded-x cart-count-span">{{cartCount}}</span>
                             <ul id="scrollbar" class="list-unstyled badge-open contentHolder cart-list-container">
+                                <div>
                                 {% for goods in cart %}
                                 <li>
                                     <a href="/shop/goods/{{goods.goodsID}}" target="_blank">
-                                        <img :src="{{goods.imgurl}}" alt="{{goods.name}}" class="" />
+                                        <img src="{{goods.imgurl}}" alt="{{goods.name}}" class="" />
                                     </a>
                                     <button type="button" class="close" onclick="delCart('{{goods.id}}')">×</button>
                                     <div class="overflow-h">
@@ -233,6 +234,7 @@
                                     </div>    
                                 </li>
                                 {% endfor %}
+                                </div>
                                 <!-- <li>
                                     <img src="/public/assets/new/img/thumb/02.jpg" alt="">
                                     <button type="button" class="close">×</button>
@@ -261,7 +263,7 @@
                                         </div> -->
                                         <div class="col-xs-6">
                                             <!-- <a href="shop-ui-add-to-cart.html" class="btn-u btn-u-sea-shop btn-block">Checkout</a> -->
-                                            <span class="c-fff ease-300 btn-u btn-u-sea-shop btn-block c-p" style="color: #fff" onclick="checkout()">去结算</span>
+                                            <span class="c-fff ease-300 btn-u btn-u-sea-shop btn-block c-p" style="color: #fff!important" onclick="checkout()">去结算</span>
                                         </div>
                                     </div>        
                                 </li>    
@@ -502,7 +504,7 @@
         // if(cartCount<=0)
         //     Ap.msg.warning("购物车还是空的")
         // else{
-        window.location="/shop/checkout";
+        window.location="/shop/cart";
         // }
     }
     function logout() {
