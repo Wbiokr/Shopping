@@ -99,7 +99,7 @@
 <body class="header-fixed">
 
 <!--=== Style Switcher ===-->    
-<i class="style-switcher-btn fa fa-cogs hidden-xs"></i>
+<!-- <i class="style-switcher-btn fa fa-cogs hidden-xs"></i> -->
 <div class="style-switcher animated fadeInRight">
     <div class="style-swticher-header">
         <div class="style-switcher-heading">Style Switcher</div>            
@@ -219,8 +219,8 @@
                     <ul class="list-inline shop-badge badge-lists badge-icons pull-right">
                         <li>
                             <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                            <span class="badge badge-sea rounded-x">{{cartCount}}</span>
-                            <ul id="scrollbar" class="list-unstyled badge-open contentHolder">
+                            <span class="badge badge-sea rounded-x cart-count-span">{{cartCount}}</span>
+                            <ul id="scrollbar" class="list-unstyled badge-open contentHolder cart-list-container">
                                 {% for goods in cart %}
                                 <li>
                                     <a href="/shop/goods/{{goods.goodsID}}" target="_blank">
@@ -274,7 +274,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/">首页</a></li>
                         <li><a href="/shop/goods">产品列表</a></li>
-                        <li><a href="/shop/blog">博客新闻</a></li>
+                        <!-- <li><a href="/shop/blog">博客新闻</a></li> -->
                         <li><a href="/shop/contact">联系我们</a></li>
 
                         <!-- Pages -->
@@ -496,13 +496,14 @@
 </script>
 <script>
     var cartCount="{{cartCount}}";
+    var collectGoods = [];
     
     function checkout() {
-        if(cartCount<=0)
-            Ap.msg.warning("购物车还是空的")
-        else{
-            window.location="/shop/checkout";
-        }
+        // if(cartCount<=0)
+        //     Ap.msg.warning("购物车还是空的")
+        // else{
+        window.location="/shop/checkout";
+        // }
     }
     function logout() {
         Ap.request.post("/shop/logout",{},function (res) {
@@ -527,21 +528,29 @@
     function delWishList(id) {
         Ap.request.del("/shop/wishlist/"+id,{},function (res) {
             if (res.success) {
-                $(".div_wishlist_"+id).remove();
                 Ap.msg.success("已删除收藏");
+                getWishList()
+                $(".div_wishlist_"+id).remove();
             }else{
-                Ap.msg.error("删除失败");
+                Ap.msg.error("取消收藏失败");
             }
         });
     }
     function addWishList(goodsID) {
         Ap.request.post("/shop/wishlist",{goodsID},function (res) {
-            if (res.success) {
+            if (res.success && res.result && res.result[1]) {
                 Ap.msg.success("已收藏");
+                getWishList()
             }else{
                 Ap.msg.error("收藏失败");
             }
         });
+    }
+    function getWishList() {
+        Ap.request.get("/shop/wishQuery",{},function (res) {
+            collectGoods=res.result.rows
+            window.wishQueryCb && window.wishQueryCb(res.result)
+        })
     }
     function addCompare(goodsID) {
         Ap.msg.success("功能还在开发中，尽请期待！");

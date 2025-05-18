@@ -12,10 +12,20 @@ module.exports = app => {
                 where:{uid:data.uid}
             });
             data.wishlist=res.rows;
+            // data.collectGoods = res.rows.map(o =>)
             await this.ctx.render('shop/new/wishlist', data);
         }
+
+        async list(ctx) {
+            let data= await ctx.getUserInfo();
+            const res = await this.ctx.model.ShopUserWishlist.findAndCountAll({
+                where:{uid:data.uid}
+            });
+            return ctx.success('查询成功', res)
+        }
         async del(ctx){
-            const wishlist = await ctx.model.ShopUserWishlist.findById(ctx.params.id);
+            const wishlist = await ctx.model.ShopUserWishlist.findById(parseInt(ctx.params.id));
+            console.log('deelll', ctx.params, wishlist, 'eeeee');
             wishlist.destroy();
             ctx.success("删除成功!");
         }

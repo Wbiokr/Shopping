@@ -7,7 +7,7 @@ module.exports = app => {
     return class CartController extends app.Controller {
         async show(ctx){
             let data= await ctx.getUserInfo();
-            await ctx.render('shop/red/cart',data);
+            await ctx.render('shop/new/cart',data);
         }
         async del(ctx){
             const cart = await ctx.model.ShopCart.findById(ctx.params.id);

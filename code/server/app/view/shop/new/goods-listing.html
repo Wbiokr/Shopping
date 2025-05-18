@@ -1,0 +1,332 @@
+{% extends './base.html' %}
+{% block title %}
+<title>{{page_title}}-商品列表</title>
+<link rel="stylesheet" href="/public/assets/new/plugins/zxf_page.css">
+<style>
+  .product-ratings li.like-icon a.active {
+    color: #0a6c5a
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+
+
+
+    <!--=== Breadcrumbs v4 ===-->
+    <div class="breadcrumbs-v4">
+        <div class="container">
+            <span class="page-name">商品列表页面</span>
+            <!-- <h1>Maecenas <span ÷class="shop-green">enim</span> sapien</h1> -->
+            <ul class="breadcrumb-v4-in p-tb-20">
+                <li><a href="/">首页</a></li>
+                <!-- <li><a href="">Product</a></li> -->
+                <li class="active">商品列表</li>
+            </ul>
+        </div>
+    </div> 
+    <!--=== End Breadcrumbs v4 ===-->
+
+    <!--=== Content Part ===-->
+    <div class="content container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="row margin-bottom-5">
+                    <div class="col-sm-4 result-category">
+                        <h2>所有商品</h2>
+                        <small class="shop-bg-red badge-results">总共<span id="page-total">--</span>条数据</small>
+                    </div>
+                    <div class="col-sm-8">
+                        <ul class="list-inline clear-both">
+                            <li class="grid-list-icons">
+                                <a href="shop-ui-filter-list.html"><i class="fa fa-th-list"></i></a>
+                                <a href="shop-ui-filter-grid.html"><i class="fa fa-th"></i></a>
+                            </li>
+                            <li class="sort-list-btn sort-key-container">
+                                <h3>排序 :</h3>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span class="select-val">综合</span> <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">综合</a></li>
+                                        <li><a href="#">新品</a></li>
+                                        <li><a href="#">价格</a></li>
+                                        <li><a href="#">销量</a></li>
+                                        <!-- <li><a href="#">收藏量</a></li> -->
+                                        <!-- <li><a href="#">New Arrived</a></li> -->
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sort-list-btn size-key-container">
+                                <h3>单页条数 :</h3>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span class="select-val">9</span> <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <!-- <li><a href="#">All</a></li> -->
+                                        <!-- <li><a href="#">3</a></li> -->
+                                        <li><a href="#">9</a></li>
+                                        <li><a href="#">15</a></li>
+                                        <li><a href="#">30</a></li>
+                                        <li><a href="#">60</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>    
+                </div>
+
+                <div class="filter-results">
+                    <div class="row illustration-v2 margin-bottom-30">
+                        <div class="col-md-4">
+                            <div class="product-img product-img-brd">
+                                <a href="#"><img class="full-width img-responsive" src="/public/assets/new/img/blog/16.jpg" alt=""></a>
+                                <a class="product-review" href="shop-ui-inner.html">Quick review</a>
+                                <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                <div class="shop-rgba-dark-green rgba-banner">New</div>
+                            </div> 
+                            <div class="product-description product-description-brd margin-bottom-30">
+                                <div class="overflow-h margin-bottom-5">
+                                    <div class="pull-left">
+                                        <h4 class="title-price"><a href="shop-ui-inner.html">Double-breasted</a></h4>
+                                        <span class="gender text-uppercase">Men</span>
+                                        <span class="gender">Suits - Blazers</span>
+                                    </div>    
+                                    <div class="product-price">
+                                        <span class="title-price">$60.00</span>
+                                        <span class="title-price line-through">$95.00</span>
+                                    </div>
+                                </div>    
+                                <ul class="list-inline product-ratings">
+                                    <li><i class="rating-selected fa fa-star"></i></li>
+                                    <li><i class="rating-selected fa fa-star"></i></li>
+                                    <li><i class="rating-selected fa fa-star"></i></li>
+                                    <li><i class="rating fa fa-star"></i></li>
+                                    <li><i class="rating fa fa-star"></i></li>
+                                    <li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
+                                </ul>    
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="product-img product-img-brd">
+                                <a href="#"><img class="full-width img-responsive" src="/public/assets/new/img/blog/17.jpg" alt=""></a>
+                                <a class="product-review" href="shop-ui-inner.html">Quick review</a>
+                                <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div> 
+                            <div class="product-description product-description-brd margin-bottom-30">
+                                <div class="overflow-h margin-bottom-5">
+                                    <div class="pull-left">
+                                        <h4 class="title-price"><a href="shop-ui-inner.html">Double-breasted</a></h4>
+                                        <span class="gender text-uppercase">Men</span>
+                                        <span class="gender">Suits - Blazers</span>
+                                    </div>    
+                                    <div class="product-price">
+                                        <span class="title-price">$60.00</span>
+                                        <span class="title-price line-through">$95.00</span>
+                                    </div>
+                                </div>    
+                                <ul class="list-inline product-ratings">
+                                    <li><i class="rating-selected fa fa-star"></i></li>
+                                    <li><i class="rating-selected fa fa-star"></i></li>
+                                    <li><i class="rating-selected fa fa-star"></i></li>
+                                    <li><i class="rating fa fa-star"></i></li>
+                                    <li><i class="rating fa fa-star"></i></li>
+                                    <li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
+                                </ul>    
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="product-img product-img-brd">
+                                <a href="#"><img class="full-width img-responsive" src="/public/assets/new/img/blog/18.jpg" alt=""></a>
+                                <a class="product-review" href="shop-ui-inner.html">Quick review</a>
+                                <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div> 
+                            <div class="product-description product-description-brd margin-bottom-30">
+                                <div class="overflow-h margin-bottom-5">
+                                    <div class="pull-left">
+                                        <h4 class="title-price"><a href="shop-ui-inner.html">Double-breasted</a></h4>
+                                        <span class="gender text-uppercase">Men</span>
+                                        <span class="gender">Suits - Blazers</span>
+                                    </div>    
+                                    <div class="product-price">
+                                        <span class="title-price">$95.00</span>
+                                    </div>
+                                </div>    
+                                <ul class="list-inline product-ratings">
+                                    <li><i class="rating-selected fa fa-star"></i></li>
+                                    <li><i class="rating-selected fa fa-star"></i></li>
+                                    <li><i class="rating-selected fa fa-star"></i></li>
+                                    <li><i class="rating fa fa-star"></i></li>
+                                    <li><i class="rating fa fa-star"></i></li>
+                                    <li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
+                                </ul>    
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/end filter resilts-->
+
+                <div class="text-center">
+                    <!-- <ul class="pagination pagination-v2">
+                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                    </ul>                                                             -->
+                    <div class="zxf_pagediv"></div>
+                </div><!--/end pagination-->
+            </div>
+        </div><!--/end row-->
+    </div><!--/end container-->    
+    <!--=== End Content Part ===-->
+
+<script src="/public/assets/new/plugins/noUiSlider/jquery.nouislider.full.min.js"></script>
+<script src="/public/assets/new/plugins/zxf_page.js"></script>
+
+<script>
+    jQuery(document).ready(function() {
+        App.init();
+        // App.initMouseWheel();
+        StyleSwitcher.initStyleSwitcher();   
+        
+        $('.sort-key-container .dropdown-menu').on('click', function(e) {
+          const text = e.target.innerText
+          $('.sort-key-container .select-val').text(text)
+          onList(1)
+        })
+
+        $('.size-key-container .dropdown-menu').on('click', function(e) {
+          const text = e.target.innerText
+          $('.size-key-container .select-val').text(text)
+          onList(1)
+        })
+
+        $('.filter-results').on('click', '.add-to-cart-btn', function() {
+          var id = $(this).attr('data-id')
+          var price = $(this).attr('data-price')
+          // console.log(1212, id, this)
+          addCart(id, 1, price)
+        })
+
+        $('.filter-results').on('click', '.collect-btn', function() {
+          var id = $(this).attr('data-id')
+          var price = $(this).attr('data-price')
+          // console.log(1212, id, this)
+          if ($(this).hasClass('active')) {
+            const collectInfo = collectGoods.find(o => o.goodsID == id)
+            console.log(id, collectInfo, collectGoods)
+            if (!collectInfo) {
+              Ap.msg.error('操作失败')
+              return
+            }
+            delWishList(collectInfo.id)
+          } else {
+            addWishList(id)
+          }
+        })
+    });
+
+    window.wishQueryCb = function(res) { 
+      const wishList = res.rows.map(o => String(o.goodsID))
+      $('.collect-btn').each(function() {
+        var id = $(this).attr('data-id')
+        if (wishList.indexOf(id) > -1) {
+          $(this).addClass('active')
+        } else {
+          $(this).removeClass('active')
+        }
+        $(this).find('span').text(wishList.includes(id) ? '已收藏' : '收藏')
+      })
+    }
+
+    function onList(page) {
+      var keysMap = {
+        '综合': 'opAt',
+        '新品': 'upAt',
+        '价格': 'price',
+        '销量': 'numSale',
+        // '销量': 'stock',
+      }
+      Ap.request.get('/shop/goodsQuery', {
+        page: page,
+        pageSize: parseInt($('.size-key-container .select-val').text()) || 9,
+        sortField: keysMap[$('.sort-key-container .select-val').text()] || '',
+        keyword: '',
+      }, function(res) { 
+        // console.log(res);
+        if (res.success) {
+            $('#page-total').text(res.result.pagination.total)
+            // $('#page-total').text(res.result.pagination.count)
+            $(".zxf_pagediv").html('')
+            $(".zxf_pagediv").createPage({
+              pageNum: Math.ceil(res.result.pagination.total / res.result.pagination.pageSize),
+              current: page,
+              backfun: function(e) {
+                // console.log(e);//回调
+                onList(e.current)
+              }
+            });
+            var html = ''
+            res.result.list.forEach(function(item, index) { 
+              if ((index + 1) % res.result.pagination.pageSize == 1) {
+                html += '<div class="row illustration-v2 margin-bottom-30">'
+              }
+
+              html += '<div class="col-md-4">'
+              html += '<div class="product-img product-img-brd">'
+              html += '<a href="/shop/goods/' + item.goodsID +'"><img class="full-width img-responsive" src="'+ item.imgurl +'" alt=""></a>'
+              // html += '<a class="product-review" href="shop-ui-inner.html">Quick review</a>''
+              html += '<a class="add-to-cart add-to-cart-btn" data-id="'+ item.goodsID +'" data-price="'+ item.price +'" href="#"><i class="fa fa-shopping-cart"></i>加入购物车</a>'
+              if (item.newFlag == 1) {
+                html += '<div class="shop-rgba-dark-green rgba-banner">NEW</div>'
+              }
+              html += '</div>'
+              html += '<div class="product-description product-description-brd margin-bottom-30">'
+              html += '<div class="overflow-h margin-bottom-5">'
+              html += '<div class="pull-left">'
+              html += '<h4 class="title-price"><a href="/shop/goods/'+ item.goodsID +'">'+item.title+'</a></h4>'
+                // <span class="gender text-uppercase">Men</span>
+                                        // <span class="gender">Suits - Blazers</span>
+              html += '</div>'
+              html += '<div class="product-price">'
+              html += '<span class="title-price">' + item.price + '元</span>'
+              html += '<span class="title-price line-through">'+ item.priceMarket +'元</span>'
+              html += '</div></div>'
+                                    
+              html += '<ul class="list-inline product-ratings">'
+                                    // <li><i class="rating-selected fa fa-star"></i></li>
+                                    // <li><i class="rating-selected fa fa-star"></i></li>
+                                    // <li><i class="rating-selected fa fa-star"></i></li>
+                                    // <li><i class="rating fa fa-star"></i></li>
+                                    // <li><i class="rating fa fa-star"></i></li>
+              html += '<li class="like-icon"><a data-toggle="tooltip" data-placement="left" class="tooltips c-p collect-btn" data-id="'+ item.goodsID +'" data-price="'+ item.price + 'href="#"><i class="fa fa-heart"></i><span>收藏</span></a></li>'
+              html += '</ul></div></div>'
+              
+              if ((index + 1) % res.result.pagination.pageSize == 0) {
+                html += '</div>'
+              }
+
+              $('.filter-results').html('')
+
+              // setTimeout(()=>{
+
+                $('.filter-results').html(html)
+                getWishList()
+              // },400)
+            });
+          }else{
+              Ap.msg.error(res.msg || '请求异常');
+          }
+      })
+    }
+
+    onList(1)
+
+    
+</script>
+
+
+{% endblock %}

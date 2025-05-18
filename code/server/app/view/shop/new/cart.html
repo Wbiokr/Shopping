@@ -1,0 +1,322 @@
+{% extends './base.html' %}
+{% block title %}
+<title>{{page_title}}-购物车</title>
+<link rel="stylesheet" href="/public/assets/new/plugins/jquery-steps/css/custom-jquery.steps.css">
+
+
+{% endblock %}
+{% block body %}
+
+<link rel="stylesheet" href="/public/assets/new/plugins/jquery-steps/css/custom-jquery.steps.css">
+  
+
+
+    <!--=== Breadcrumbs v4 ===-->
+    <div class="breadcrumbs-v4">
+        <div class="container">
+            <span class="page-name">购物车</span>
+            <!-- <h1>购物车 <span class="shop-green"></span></h1> -->
+            <ul class="breadcrumb-v4-in">
+                <li><a href="/">首页</a></li>
+                <li><a href=/shop/goods"">产品列表</a></li>
+                <li class="active">购物车</li>
+            </ul>
+        </div><!--/end container-->
+    </div> 
+    <!--=== End Breadcrumbs v4 ===-->
+
+    <!--=== Content Medium Part ===-->
+    <div class="content-md margin-bottom-30">
+        <div class="container">
+            <form class="shopping-cart" action="#">
+                <div>
+                    <div class="header-tags">            
+                        <div class="overflow-h">
+                            <h2>购物车</h2>
+                            <p>检查 &amp; 编辑购物车</p>
+                            <i class="rounded-x fa fa-check"></i>
+                        </div>    
+                    </div>
+                    <section>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>产品</th>
+                                        <th>单价</th>
+                                        <th>数量</th>
+                                        <th>总价</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  {% for goods in cart %}
+                                    <tr class="cart-item" id="cart_{{goods.id}}">
+                                        <td class="product-in-table">
+                                          
+                                            <img class="img-responsive" src="{{goods.imgurl}}" alt="">
+                                            <div class="product-it-in">
+                                                <h3>{{goods.name}}</h3>
+                                                <span>{{goods.title}}</span>
+                                            </div>    
+                                        </td>
+                                        <td class="g-price">{{goods.price}}元</td>
+                                        <td>
+                                            <button type='button' class="quantity-button" name='subtract' onclick='subtractQty()' value='-'>-</button>
+                                            <input type='text' class="quantity-field" name='qty1' value="{{goods.num}}" />
+                                            <button type='button' class="quantity-button" name='add' onclick='plusQty()' value='+'>+</button>
+                                        </td>
+                                        <td class="shop-red">{{goods.price*goods.num}}元</td>
+                                        <td>
+                                            <button type="button" class="close"><span>&times;</span><span class="sr-only">Close</span></button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                    
+                    <div class="header-tags">
+                        <div class="overflow-h">
+                            <h2>订单信息</h2>
+                            <p>请填写地址信息</p>
+                            <i class="rounded-x fa fa-home"></i>
+                        </div>    
+                    </div>
+                    <section class="billing-info">
+                        <div class="row">
+                            <div class="col-md-12 md-margin-bottom-40">
+                                <h2 class="title-type">订单地址</h2>
+                                <div class="billing-info-inputs checkbox-list">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input id="addr-name" type="text" placeholder="姓名" name="firstname" class="form-control required">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input id="addr-phone" type="tel" placeholder="电话" name="phone" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <input id="addr-address" type="text" placeholder="详细地址" name="address2" class="form-control required">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input id="addr-city" type="text" placeholder="城市" name="city" class="form-control required">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input id="addr-zip" type="text" placeholder="邮编" name="zip" class="form-control required">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>       
+                    </section>
+                        
+                    <div class="header-tags">
+                        <div class="overflow-h">
+                            <h2>支付</h2>
+                            <p>请支付您的订单</p>
+                            <i class="rounded-x fa fa-credit-card"></i>
+                        </div>    
+                    </div>
+                    <section>
+                        <div class="row">
+                            <div class="col-md-12 md-margin-bottom-50">
+                                <h2 class="title-type">请扫码支付(<span class="order-num c-red">--</span>)</h2>
+                                <!-- Accordion -->
+                                <div class="accordion-v2 t-c">
+                                    <!-- <div class="panel-group" id="accordion">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                        <i class="fa fa-credit-card"></i>
+                                                        Credit or Debit Card
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne" class="panel-collapse collapse in">
+                                                <div class="panel-body cus-form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 no-col-space control-label">Cardholder Name</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control required" name="cardholder" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 no-col-space control-label">Card Number</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control required" name="cardnumber" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 no-col-space control-label">Payment Types</label>
+                                                        <div class="col-sm-8">
+                                                            <ul class="list-inline payment-type">
+                                                                <li><i class="fa fa-cc-paypal"></i></li>
+                                                                <li><i class="fa fa-cc-visa"></i></li>
+                                                                <li><i class="fa fa-cc-mastercard"></i></li>
+                                                                <li><i class="fa fa-cc-discover"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4">Expiration Date</label>
+                                                        <div class="col-sm-8 input-small-field">
+                                                            <input type="text" name="mm" placeholder="MM" class="form-control required sm-margin-bottom-20">
+                                                            <span class="slash">/</span>
+                                                            <input type="text" name="yy" placeholder="YY" class="form-control required">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 no-col-space control-label">CSC</label>
+                                                        <div class="col-sm-8 input-small-field">
+                                                            <input type="text" name="number" placeholder="" class="form-control required">
+                                                            <a href="#">What's this?</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                        <i class="fa fa-paypal"></i>
+                                                        Pay with PayPal
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseTwo" class="panel-collapse collapse">
+                                                <div class="content margin-left-10">
+                                                    <a href="#"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_150x38.png" alt="PayPal"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <img src="/public/assets/new/img/test.png" class="w-300" />
+                                  </div>
+                                <!-- End Accordion -->    
+                            </div>
+
+                            <!-- <div class="col-md-6">
+                                <h2 class="title-type">Frequently asked questions</h2>
+                                <div class="accordion-v2 plus-toggle">
+                                    <div class="panel-group" id="accordion-v2">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion-v2" href="#collapseOne-v2">
+                                                        What payments methods can I use?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne-v2" class="panel-collapse collapse in">
+                                                <div class="panel-body">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit, felis vel tincidunt sodales, urna metus rutrum leo, sit amet finibus velit ante nec lacus. Cras erat nunc, pulvinar nec leo at, rhoncus elementum orci. Nullam ut sapien ultricies, gravida ante ut, ultrices nunc.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion-v2" href="#collapseTwo-v2">
+                                                        Can I use gift card to pay for my purchase?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseTwo-v2" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit, felis vel tincidunt sodales, urna metus rutrum leo, sit amet finibus velit ante nec lacus. Cras erat nunc, pulvinar nec leo at, rhoncus elementum orci. Nullam ut sapien ultricies, gravida ante ut, ultrices nunc.    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion-v2" href="#collapseThree-v2">
+                                                        Will I be charged when I place my order?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseThree-v2" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit, felis vel tincidunt sodales, urna metus rutrum leo, sit amet finibus velit ante nec lacus. Cras erat nunc, pulvinar nec leo at, rhoncus elementum orci. Nullam ut sapien ultricies, gravida ante ut, ultrices nunc.    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion-v2" href="#collapseFour-v2">
+                                                        How long will it take to get my order?
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseFour-v2" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit, felis vel tincidunt sodales, urna metus rutrum leo, sit amet finibus velit ante nec lacus. Cras erat nunc, pulvinar nec leo at, rhoncus elementum orci. Nullam ut sapien ultricies, gravida ante ut, ultrices nunc.    
+                                                </div>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </section>
+
+                    <div class="coupon-code">
+                        <div class="row">
+                            <div class="col-sm-4 sm-margin-bottom-30">
+                                <!-- <h3>Discount Code</h3>
+                                <p>Enter your coupon code</p>
+                                <input class="form-control margin-bottom-10" name="code" type="text">
+                                <button type="button" class="btn-u btn-u-sea-shop">Apply Coupon</button> -->
+                            </div>
+                            <div class="col-sm-3 col-sm-offset-5">
+                                <ul class="list-inline total-result">
+                                    <!-- <li>
+                                        <h4>Subtotal:</h4>
+                                        <div class="total-result-in">
+                                            <span>$ 1280.00</span>
+                                        </div>    
+                                    </li>     -->
+                                    <!-- <li>
+                                        <h4>Shipping:</h4>
+                                        <div class="total-result-in">
+                                            <span class="text-right">- - - -</span>
+                                        </div>
+                                    </li> -->
+                                    <li class="divider"></li>
+                                    <li class="total-price">
+                                        <h4>Total:</h4>
+                                        <div class="total-result-in">
+                                            <span id="cart-total-price">-- 元</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </form>
+        </div><!--/end container-->
+    </div>
+    <!--=== End Content Medium Part ===-->     
+
+
+    <script src="/public/assets/new/plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js"></script>
+    <script src="/public/assets/new/plugins/jquery-steps/build/jquery.steps.js"></script>
+    <script src="/public/assets/new/js/forms/page_login.js"></script>
+    <script src="/public/assets/new/js/plugins/stepWizard.js"></script>
+    <script src="/public/assets/new/js/forms/product-quantity.js"></script>
+    <script type="text/javascript" src="/public/assets/new/js/plugins/style-switcher.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        // App.init();
+        Login.initLogin();
+        StepWizard.initStepWizard();
+        // StyleSwitcher.initStyleSwitcher();      
+        calcTotal()
+});
+</script>
+
+{% endblock %}

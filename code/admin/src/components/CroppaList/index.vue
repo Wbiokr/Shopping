@@ -1,12 +1,13 @@
 <template>
   <ul class="upload-list">
-    <li v-for="(item, index) in list">
+    <li v-for="(item, index) in list" :key="index">
     <Croppa
       :index="index"
             v-model="item.url"
             :width="width"
             :height="height"
             :isShowUpload="true"
+            :autoUpload="autoUpload"
             @onSelect="onSelect"
             @onRemove="onRemove"
             @onUpload="onUpload"
@@ -42,6 +43,11 @@
         required: false,
         default: 1
       },
+      autoUpload: {
+        type: Boolean,
+        required: false,
+        default: false
+      }
     },
     data(){
       return {
@@ -86,6 +92,7 @@
       onUpload(file){
         this.hasChange=true;
         this.uploadList.push(file);
+        console.log(file, this.uploadList)
         this.$emit('input', this.uploadList);
       }
     }

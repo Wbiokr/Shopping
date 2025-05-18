@@ -48,7 +48,7 @@ module.exports = app => {
             ctx.success("已取消订单!");
         }
         async create(ctx) {
-            const {billAmount}=ctx.request.body;
+            const {billAmount, addrName, addrPhone, addrAddress, addrZip, addrCity}=ctx.request.body;
             let uid=ctx.session.uid;
             let username=ctx.session.username;
             const cart=await ctx.model.ShopCart.findAll({
@@ -80,7 +80,9 @@ module.exports = app => {
             });
             for(let goods of cart){
                 await ctx.model.ShopOrderGoods.create({
-                    billNo,goodsID:goods.goodsID,name:goods.name,num:goods.num,price:goods.price,imgurl:goods.imgurl,goodsType:goods.goodsType
+                    billNo,goodsID:goods.goodsID,name:goods.name,num:goods.num,price:goods.price,imgurl:goods.imgurl,goodsType:goods.goodsType,
+                    addrName, addrPhone, addrAddress, addrZip, addrCity
+
                 });
                 goods.destroy();
             }

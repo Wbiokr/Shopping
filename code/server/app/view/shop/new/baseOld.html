@@ -106,7 +106,7 @@
 <body class="header-fixed">
 
 <!--=== Style Switcher ===-->    
-<i class="style-switcher-btn fa fa-cogs hidden-xs"></i>
+<!-- <i class="style-switcher-btn fa fa-cogs hidden-xs"></i> -->
 <div class="style-switcher animated fadeInRight">
     <div class="style-swticher-header">
         <div class="style-switcher-heading">Style Switcher</div>            
@@ -281,7 +281,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/">首页</a></li>
                         <li><a href="/shop/goods">产品列表</a></li>
-                        <li><a href="/shop/blog">博客新闻</a></li>
+                        <!-- <li><a href="/shop/blog">博客新闻</a></li> -->
                         <li><a href="/shop/contact">联系我们</a></li>
 
                         <!-- Pages -->
@@ -504,11 +504,11 @@
 <script>
     let cartCount="{{cartCount}}";
     function checkout() {
-        if(cartCount<=0)
-            Ap.msg.warning("购物车还是空的")
-        else{
+        // if(cartCount<=0)
+        //     Ap.msg.warning("购物车还是空的")
+        // else{
             window.location="/shop/checkout";
-        }
+        // }
     }
     function logout() {
         Ap.request.post("/shop/logout",{},function (res) {

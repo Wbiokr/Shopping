@@ -36,6 +36,7 @@ module.exports = app => {
     app.post('/shop/reset', app.controller.shop.reset.password);
     //商品
     app.get('/shop/goods', app.controller.shop.goods.index);
+    app.get('/shop/goodsQuery', app.controller.shop.goods.query);
     app.get('/shop/goods/:id', app.controller.shop.goods.show);
     app.get('/shop/cart', isLoginUser,app.controller.shop.cart.show);
     app.del('/shop/cart/:id',isLoginUser, app.controller.shop.cart.del);
@@ -58,6 +59,7 @@ module.exports = app => {
     app.get('/shop/orderByStatus',isLoginUser, app.controller.shop.order.get);
     app.get('/shop/myProduct',isLoginUser, app.controller.shop.goods.myProduct);
     app.get('/shop/wishlist',isLoginUser, app.controller.shop.wishlist.index);
+    app.get('/shop/wishQuery',isLoginUser, app.controller.shop.wishlist.list);
     app.post('/shop/wishlist',isLoginUser, app.controller.shop.wishlist.create);
     app.del('/shop/wishlist/:id',isLoginUser, app.controller.shop.wishlist.del);
 

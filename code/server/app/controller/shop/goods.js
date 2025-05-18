@@ -8,7 +8,7 @@ module.exports = app => {
         async index(ctx){
             let data= await ctx.getUserInfo();
             let goodsClassID=ctx.query.goodsClassID;
-            data.active_page=2;
+            data.active_page=1;
             const shopRecommendGoods = await ctx.model.ShopGoods.findAll({
                 where:{recommendFlag:'1',goodsStatus:'U'},
                 order:[['sortNo', 'ASC']],
@@ -24,7 +24,8 @@ module.exports = app => {
                 });
             }else{
                 data.shopGoods = await ctx.model.ShopGoods.findAll({
-                    where:{recommendFlag:'0',goodsStatus:'U'},
+                    // where:{recommendFlag:'0',goodsStatus:'U'},
+                    where:{goodsStatus:'U'},
                     order:[['sortNo', 'ASC']],
                     limit:9
                 });
@@ -32,7 +33,51 @@ module.exports = app => {
             data.goodsClass=await ctx.model.ShopGoodsClass.findAll({
                 where:{status:'0',parentID:0}
             });
-            await ctx.render('shop/red/goods-listing', data);
+            await ctx.render('shop/new/goods-listing', data);
+        }
+        async query(ctx) {
+            // const { ctx, service } = this;
+            // 校验参数
+            // ctx.validate({
+            //     page: { type: 'int', required: false, default: 1 },
+            //     pageSize: { type: 'int', required: false, default: 10 },
+            //     sortField: { type: 'string', required: false, default: 'opAt' },
+            //     sortOrder: { type: 'string', required: false, default: 'desc', values: ['asc', 'desc'] },
+            //     keyword: { type: 'string', required: false },
+            //     categoryId: { type: 'int', required: false }
+            // }, ctx.query);
+
+            const {
+                page,
+                pageSize = 9,
+                sortField = 'opAt',
+                sortOrder = 'desc',
+                keyword,
+                // categoryId
+            } = ctx.query || {};
+
+            // 构建查询条件
+            const where = {goodsStatus:'U'};
+            if (keyword) where.name = { [ctx.app.Sequelize.Op.like]: `%${keyword}%` };
+            // if (categoryId) where.categoryId = categoryId;
+// console.log(12121, sortField, sortOrder, where)
+            // 执行查询
+            const result = await ctx.model.ShopGoods.findAndCountAll({
+                where,
+                offset: (page - 1) * pageSize,
+                limit: parseInt(pageSize) || 9,
+                order: [[sortField, sortOrder]]
+            });
+
+            ctx.success('查询成功', {
+
+                    list: result.rows,
+                    pagination: {
+                        total: result.count,
+                        page,
+                        pageSize
+                    }
+            });
         }
         async show(ctx){
             let data=await ctx.getUserInfo();

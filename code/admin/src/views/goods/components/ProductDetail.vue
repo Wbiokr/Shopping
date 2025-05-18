@@ -135,7 +135,7 @@
           <Ueditor :height=400 ref="editor" v-model="postForm.note"></Ueditor>
         </div>
         <el-form-item label="轮播图(872x720):">
-          <CroppaList ref="uploadImages" v-model="postForm.goodsImages" :width="218" :height="180" :quality="4"></CroppaList>
+          <CroppaList ref="uploadImages" v-model="postForm.goodsImages" :autoUpload="false" :width="218" :height="180" :quality="4"></CroppaList>
         </el-form-item>
         <el-dialog :visible.sync="dialogVisible" size="tiny">
           <img width="100%" :src="dialogImageUrl" alt="">
@@ -171,10 +171,10 @@ const defaultForm = {
   sortNo:0,
   goodsImages:[],
   goodsClassID:'1',
-  recommendFlag:false,
-  newFlag: false,
-  hotFlag:false,
-  bannerFlag:false,
+  recommendFlag:'0',
+  newFlag: '0',
+  hotFlag:'0',
+  bannerFlag:'0',
   comment_disabled: false
 }
 
@@ -261,6 +261,8 @@ export default {
       if(res) {
         this.$refs.postForm.validate(valid => {
           if (valid) {
+            // console.log(this.postForm)
+            // return
             this.loading = true;
             postGoods(this.postForm).then(res => {
               this.fetchSuccess = true;
@@ -272,6 +274,7 @@ export default {
               });
               if (!this.isEdit) this.resetForm('postForm');
               this.loading = false;
+              this.$router.push({ path: '/goods/index' });
             }).catch(err => {
               console.log(err)
             }).finally(()=>{

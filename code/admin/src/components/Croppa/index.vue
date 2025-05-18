@@ -19,7 +19,7 @@
            slot="initial">
       <img slot="placeholder" :src="scan">
     </croppa>
-    <img v-if="isShowUpload" class="upload-icon" :src="accept" @click="upload">
+    <img v-if="!autoUpload && isShowUpload" class="upload-icon" :src="accept" @click="upload">
   </div>
 </template>
 
@@ -71,6 +71,11 @@ import { getServerToken } from '@/utils/auth'
         required: false,
         default: false
       },
+      autoUpload: {
+        type: Boolean,
+        required: false,
+        default: false
+      }
     },
     data(){
       return {
@@ -101,6 +106,9 @@ import { getServerToken } from '@/utils/auth'
         if(this.isShowUpload)
           this.isUpload= true;
         this.$emit('onSelect', file);
+        if (this.autoUpload) {
+          this.upload();
+        }
       },
       onImageRemove () {
         this.emitInput('')

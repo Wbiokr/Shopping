@@ -45,6 +45,25 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: 'P'
     },
+    addrName: {
+      type: DataTypes.STRING(12),
+      allowNull: true,
+    }, addrPhone: {
+      type: DataTypes.STRING(18),
+      allowNull: true,
+    }, 
+    addrAddress: {
+      type: DataTypes.STRING(512),
+      allowNull: true,
+    },
+    addrZip: {
+      type: DataTypes.STRING(8),
+      allowNull: false,
+    }, 
+    addrCity: {
+      type: DataTypes.STRING(15),
+      allowNull: false,
+    },
     note: {
       type: DataTypes.TEXT,
       allowNull: true

@@ -400,6 +400,18 @@ CREATE TABLE `shop_order` (
 ALTER TABLE shop_order COMMENT= '订单表';
 CREATE UNIQUE INDEX IDX_shop_order_billNo ON shop_order(billNo);
 CREATE UNIQUE INDEX IDX_shop_order_payCode ON shop_order(payCode);
+ALTER TABLE
+  `shop_order`
+ADD
+  COLUMN `addrName` varchar (15) NULL DEFAULT '' COMMENT '姓名',
+ADD
+  COLUMN `addrPhone` varchar (18) NULL DEFAULT '' COMMENT '电话',
+ADD
+  COLUMN `addrCity` varchar (12) NULL DEFAULT '' COMMENT '城市',
+ADD
+  COLUMN `addrZip` varchar (10) NULL DEFAULT '' COMMENT '邮编',
+ADD
+  COLUMN `addrAddress` varchar (512) NULL DEFAULT '' COMMENT '详细地址'
 -- ----------------------------------------------------------------
 -- 订单商品: shop_order_goods
 -- 建立: inmyjs 20190101
