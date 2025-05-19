@@ -8,13 +8,13 @@ exports.sequelize  = {
 
     dialect: 'mysql',
     // host
-    host: '127.0.0.1',
+    host: 'gz-cynosdbmysql-grp-2ewhj4wl.sql.tencentcdb.com',
     // 端口号
-    port: '3306',
+    port: '23861',
     // 用户名
-    username: 'admin',
+    username: 'root',
     // 密码
-    password: '123456',
+    password: '771881Chen',
     // 数据库名
     database: 'apshop',
     pool: {
