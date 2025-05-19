@@ -2,7 +2,13 @@
 module.exports = app => {
     return class StaticController extends app.Controller {
         async privacy(ctx){
-            await ctx.render('shop/new/privacy');
+            let data= await ctx.getUserInfo();
+            await ctx.render('shop/new/privacy', data);
+        }
+
+        async aboutUs(ctx) {
+            let data= await ctx.getUserInfo();
+            await ctx.render('shop/new/about-us', data);
         }
     };
 };

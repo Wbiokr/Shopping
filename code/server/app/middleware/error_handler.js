@@ -1,5 +1,5 @@
 /**
- * 统一错误处理
+ * 統一錯誤處理
  * @returns {Function}
  */
 module.exports = () => {
@@ -7,13 +7,13 @@ module.exports = () => {
         try {
             await next();
         } catch (err) {
-            // 所有的异常都在 app 上触发一个 error 事件，框架会记录一条错误日志
+            // 所有的異常都在 app 上觸發一個 error 事件，框架會記錄一條錯誤日誌
             ctx.app.emit('error', err, ctx);
 
             const status = err.status || 500;
-            // 生产环境时 500 错误的详细错误内容不返回给客户端，因为可能包含敏感信息
+            // 生產環境時 500 錯誤的詳細錯誤內容不返回給客戶端，因為可能包含敏感信息
             const error = status === 500 && ctx.app.config.env === 'prod'
-                ? '服务器异常，请联系客服。'
+                ? '服務器異常，請聯繫客服。'
                 : err.message;
             if (ctx.acceptJSON) {
                 ctx.body = {

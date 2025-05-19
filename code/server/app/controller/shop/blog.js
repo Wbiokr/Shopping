@@ -41,7 +41,7 @@ module.exports = app => {
             const result=await ctx.model.Blog.findAndCountAll({
                 where:{blogClassID},offset,limit,raw:true
             });
-            ctx.success("查询成功",result.rows,result.count);
+            ctx.success("查詢成功",result.rows,result.count);
         }
         async detail(ctx){
             let data= await ctx.getUserInfo();
@@ -65,9 +65,9 @@ module.exports = app => {
                 where:{blogClassID,status:'0'},raw:true
             });
             if(blogs.length>0){
-                ctx.success("查询成功",blogs[0]);
+                ctx.success("查詢成功",blogs[0]);
             }else{
-                ctx.failure("未查询到相关信息");
+                ctx.failure("未查詢到相關信息");
             }
         }
     };

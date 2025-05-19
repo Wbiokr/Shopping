@@ -27,7 +27,7 @@ module.exports = app => {
             const result=await ctx.model.Blog.findAndCountAll({
                 where:{blogClassID},offset,limit,raw:true
             });
-            ctx.success("查询成功",result.rows,result.count);
+            ctx.success("查詢成功",result.rows,result.count);
         }
     };
 };

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-    <title>商品详情页</title>
+    <title>商品詳情頁</title>
     <link href="/public/css/goods-detail.css" rel="stylesheet"/>
 <link rel="stylesheet" href="/public/js/slick/slick.css"/>
 <script src="/public/js/slick/slick.min.js"></script>
@@ -13,7 +13,7 @@
             <div class="shop-schbox">
                 <div class="layout">
                     <form action="" method="">
-                        <input class="search-txt" placeholder="搜宝贝">
+                        <input class="search-txt" placeholder="搜寶貝">
                         <button class="search-btn site">搜全站</button>
                     </form>
                 </div>
@@ -22,17 +22,17 @@
         <div class="shop-nav-box">
             <div class="shop-nav wrapper">
                 <div class="shop-nav-all">
-                    <a href="">所有宝贝</a>
+                    <a href="">所有寶貝</a>
                     <!--<div class="sublist">
                         <a href=""></a>
                     </div>-->
                 </div>
                 <ul class="shop-nav-rec">
-                    <li><a href="">首页</a></li>
+                    <li><a href="">首頁</a></li>
                 </ul>
             </div>
         </div>
-    <!--头部-->
+    <!--頭部-->
 
     <div class="wrapper">
         <div class="detail-top clearfix">
@@ -57,27 +57,27 @@
                         <span class="now" id="goods_price">￥{{goods.price}}</span><span class="dft">￥{{goods.priceMarket}}</span>
                     </div>
                     <ul class="item-data clearfix">
-                        <li class="col-6">销量<span class="txt-theme ml10">{{goods.numSale}}件</span></li>
-                        <li class="col-6">好评率<span class="txt-theme ml10">100%</span></li>
+                        <li class="col-6">銷量<span class="txt-theme ml10">{{goods.numSale}}件</span></li>
+                        <li class="col-6">好評率<span class="txt-theme ml10">100%</span></li>
                         <!--<li class="col-4">收藏<span class="txt-theme ml10">100人</span></li>-->
                     </ul>
                     <div class="sku-info">
                         <div class="prop">
-                            <div class="dt">数量：</div>
+                            <div class="dt">數量：</div>
                             <div class="dd">
                                 <div class="mod-numbox chose-num" data-max="1">
                                     <span class="count-minus"></span>
                                     <input class="count-input" id="goods_num" value="1"  type="text" name="num" />
                                     <span class="count-plus"></span>
                                 </div>
-                                <span>（限购1件）</span>
-                                <div class="stock">(库存{{goods.stock}}件)</div>
+                                <span>（限購1件）</span>
+                                <div class="stock">(庫存{{goods.stock}}件)</div>
                             </div>
                         </div>
                     </div>
                     <div class="item-action">
-                        <a name="add_cart_order" href="javascript:void(0);"  data-goodsID="{{goods.goodsID}}" data-price="{{goods.price}}" class="buy-now">立即购买</a>
-                        <a name="add_cart" href="javascript:void(0);"  data-goodsID="{{goods.goodsID}}" data-price="{{goods.price}}" class="add-cart">加入购物车</a>
+                        <a name="add_cart_order" href="javascript:void(0);"  data-goodsID="{{goods.goodsID}}" data-price="{{goods.price}}" class="buy-now">立即購買</a>
+                        <a name="add_cart" href="javascript:void(0);"  data-goodsID="{{goods.goodsID}}" data-price="{{goods.price}}" class="add-cart">加入購物車</a>
                     </div>
                     <!--<div class="item-extend">
                          <a href="" class="fav"><i class="iconfont icon-star"></i>收藏</a>
@@ -92,10 +92,10 @@
                         <img src="/public/uploads/1.png" alt="" />
                     </a>
                     <div class="shop-intro">
-                        <div class="shop-name">天启工作室</div>
-                        <!-- <a class="shop-follow-btn" href="javascript:;"><i class="iconfont icon-jiaguanzhu"></i>关注</a> -->
-                        <!--<a class="shop-follow-btn active" href="javascript:;"><span class="showtxt"><i class="iconfont icon-check01"></i>已关注</span><span class="hidetxt">取消关注</span></a>
-                        <div class="shop-follow-count"><strong>268</strong>粉丝</div>-->
+                        <div class="shop-name">天啟工作室</div>
+                        <!-- <a class="shop-follow-btn" href="javascript:;"><i class="iconfont icon-jiaguanzhu"></i>關注</a> -->
+                        <!--<a class="shop-follow-btn active" href="javascript:;"><span class="showtxt"><i class="iconfont icon-check01"></i>已關注</span><span class="hidetxt">取消關注</span></a>
+                        <div class="shop-follow-count"><strong>268</strong>粉絲</div>-->
                     </div>
                 </div>
                 <div class="shop-assess clearfix">
@@ -106,33 +106,33 @@
                         </div>
                     </div>
                     <div class="col col-4">
-                        <div class="tit">质&ensp;量</div>
+                        <div class="tit">質&ensp;量</div>
                         <div class="point up">
                             <span class="num">5.0</span><i class="iconfont">--</i>
                         </div>
                     </div>
                     <div class="col col-4">
-                        <div class="tit">服&ensp;务</div>
+                        <div class="tit">服&ensp;務</div>
                         <div class="point up">
                             <span class="num">5.0</span><i class="iconfont">--</i>
                         </div>
                     </div>
                 </div>
                 <ul class="shop-info">
-                    <li>所在地区：云南昆明</li>
-                    <!--<li>商品数量：10</li>
-                    <li>销售数量：1002</li>-->
-                    <li>专业制作winform主题</li>
+                    <li>所在地區：雲南昆明</li>
+                    <!--<li>商品數量：10</li>
+                    <li>銷售數量：1002</li>-->
+                    <li>專業製作winform主題</li>
                 </ul>
                 <!--<a class="detail-shop-enter">
-                    <i class="iconfont icon-dianpu"></i>了解详情
+                    <i class="iconfont icon-dianpu"></i>瞭解詳情
                 </a>-->
         </div>
         </div>
         <div class="detail-bottom clearfix">
              <div class="detail-main">
                 <div class="detail-tabs">
-                    <a class="item" href="javascript:;">详情描述</a>
+                    <a class="item" href="javascript:;">詳情描述</a>
                 </div>
                 <div class="tab-con">
                     <div class="mod-type-cont">
@@ -143,11 +143,11 @@
         </div>
     </div>
 
-    <!--脚部-->
+    <!--腳部-->
     <div class="fatfooter">
 
     </div>
-    <!--脚部-->
+    <!--腳部-->
 <script>
     $('a[name=add_cart]').on('click',function () {
         let dom=$(this);
@@ -160,7 +160,7 @@
                 $.msgbox({
                     type: 'confirm',
                     title:' 提示',
-                    content: '已加入购物车，赶快去结算吧!',
+                    content: '已加入購物車，趕快去結算吧!',
                     onClose: function(){
                         if(this.val()){
                             window.location.href="/shop/cart";
@@ -182,7 +182,7 @@
             }
         });
     });
-    /*商品数量操作*/
+    /*商品數量操作*/
     function goodsCount(o){
             if(!(o instanceof Object)) let o={};
             let inputCell = o.inputCell || ".count-input",
@@ -279,7 +279,7 @@
             zoomup=box.find('.zoomup'),
             zoomshow=box.find('.zoom-show');
 
-            /*图片切换*/
+            /*圖片切換*/
             tumbItem.on('mouseenter',function () {
                 index=$(this).index();
                 clearTimeout(timer);
@@ -304,7 +304,7 @@
                 });
             }
 
-            /*放大镜*/
+            /*放大鏡*/
             origin.on('mouseover mouseout',function (e) {
                 if (e.type=="mouseover") {
                     let oX=$(this).offset().left,
@@ -316,7 +316,7 @@
                     zW=zoomup.outerWidth(),
                     zH=zoomup.outerHeight(),
                     scale=pW/zW,
-                    zsW=zoomshow.width()*scale,//放大后的宽度
+                    zsW=zoomshow.width()*scale,//放大後的寬度
                     factor=zsW/pW
 
                     zoomshow.find('img').attr('src',bigimg.attr('src')).width(zsW);
@@ -344,7 +344,7 @@
             });
         }();
 
-        $('.mod-numbox').goodsCount(); //数量加减
+        $('.mod-numbox').goodsCount(); //數量加減
 
         $('.detail-main').zTab({
             tabnav:'.detail-tabs',

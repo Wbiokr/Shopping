@@ -1,5 +1,5 @@
 /**
- *  主页Controller
+ *  主頁Controller
  * @param app
  * @returns {OrderController}
  */
@@ -28,23 +28,23 @@ module.exports = app => {
             let billNo=ctx.params.billNo;
             const order=await ctx.model.ShopOrder.findById(billNo);
             if(!order){
-                ctx.failure("订单编号错误!");
+                ctx.failure("訂單編號錯誤!");
                 return;
             }
             switch (order.billStatus){
                 case "S":
-                    ctx.success("订单已支付成功，赶快去下载吧!");
+                    ctx.success("訂單已支付成功，趕快去下載吧!");
                     return;
                 case "L":
                     let acc=order.payableAmount-order.paidAmount;
                     if(acc>0){
-                        ctx.failure("您还需要再支付:" + acc + "元，如果已经付清，请稍候再查询(大约1分钟)。");
+                        ctx.failure("您還需要再支付:" + acc + "元，如果已經付清，請稍候再查詢(大約1分鐘)。");
                     }
                     return;
                 case "P":
                     let time=moment().format('X');
                     let payCode=order.payCode;
-                    // 签名
+                    // 簽名
                     let md5 = crypto.createHash("md5");
                     let token = [
                         payCode,
@@ -56,7 +56,7 @@ module.exports = app => {
                         params: {payCode, time, token}
                     }).catch(function (error) {
                         console.log(error);
-                        me.failure("订单还未支付，如果已经转账，请稍候再查询(大约1分钟)。");
+                        me.failure("訂單還未支付，如果已經轉賬，請稍候再查詢(大約1分鐘)。");
                         return;
                     });
                     if(response) {
@@ -67,22 +67,22 @@ module.exports = app => {
                             while (i < 2) {
                                 let order2 = await ctx.model.ShopOrder.findById(billNo);
                                 if (order2.billStatus == "S") {
-                                    me.success("订单已支付成功，赶快去下载吧!");
+                                    me.success("訂單已支付成功，趕快去下載吧!");
                                     return;
                                 } else if (order2.billStatus == "L") {
                                     let acc = order.payableAmount - order.paidAmount;
-                                    me.failure("您还需要再支付:" + acc + "元，如果已经付清，请稍候再查询(大约1分钟)。");
+                                    me.failure("您還需要再支付:" + acc + "元，如果已經付清，請稍候再查詢(大約1分鐘)。");
                                     return;
                                 } else {
                                     sleep(2000);
                                     i++;
-                                    me.failure("订单还未支付，如果已经转账，请稍候再查询(大约1分钟)。");
+                                    me.failure("訂單還未支付，如果已經轉賬，請稍候再查詢(大約1分鐘)。");
                                     continue;
                                 }
                             }
                         } else {
                             console.log(JSON.stringify(res));
-                            me.failure("订单还未支付，如果已经转账，请稍候再查询(大约1分钟)。");
+                            me.failure("訂單還未支付，如果已經轉賬，請稍候再查詢(大約1分鐘)。");
                         }
                     }
                     return;

@@ -1,5 +1,5 @@
 /**
- *  主页Controller
+ *  主頁Controller
  * @param app
  * @returns {GoodsController}
  */
@@ -37,7 +37,7 @@ module.exports = app => {
         }
         async query(ctx) {
             // const { ctx, service } = this;
-            // 校验参数
+            // 校驗參數
             // ctx.validate({
             //     page: { type: 'int', required: false, default: 1 },
             //     pageSize: { type: 'int', required: false, default: 10 },
@@ -56,12 +56,12 @@ module.exports = app => {
                 // categoryId
             } = ctx.query || {};
 
-            // 构建查询条件
+            // 構建查詢條件
             const where = {goodsStatus:'U'};
             if (keyword) where.name = { [ctx.app.Sequelize.Op.like]: `%${keyword}%` };
             // if (categoryId) where.categoryId = categoryId;
 // console.log(12121, sortField, sortOrder, where)
-            // 执行查询
+            // 執行查詢
             const result = await ctx.model.ShopGoods.findAndCountAll({
                 where,
                 offset: (page - 1) * pageSize,
@@ -69,7 +69,7 @@ module.exports = app => {
                 order: [[sortField, sortOrder]]
             });
 
-            ctx.success('查询成功', {
+            ctx.success('查詢成功', {
 
                     list: result.rows,
                     pagination: {

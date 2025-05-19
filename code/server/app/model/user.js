@@ -3,7 +3,7 @@
  * @param app
  * @returns {*}
  */
-//导入加密模块
+//導入加密模塊
 var bcrypt = require('bcryptjs');
 module.exports = app => {
     let user = app.model.import('../domain/user');
@@ -15,7 +15,7 @@ module.exports = app => {
             username,nickname,
             'userType':'C'
         });
-        //写入登录表
+        //寫入登錄表
         const userLogin = await app.model.UserLogin.create({
             'loginString': username,
             password,

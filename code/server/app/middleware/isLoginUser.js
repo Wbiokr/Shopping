@@ -1,7 +1,7 @@
 
 module.exports = () => {
     return async function (ctx,next) {
-        // 如果 Session 是空的，则不保存
+        // 如果 Session 是空的，則不保存
         if (ctx.session.uid) {
             await next();
         } else {

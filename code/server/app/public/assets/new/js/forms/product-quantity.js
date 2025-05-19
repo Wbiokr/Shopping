@@ -1,16 +1,10 @@
-// function subtractQty(){
-//     if(document.getElementById("qty").value - 1 < 0)
-//         return;
-//     else
-//         document.getElementById("qty").value--;
-// }
-
-function subtractQty() {
-    // console.log("subtractQty1", arguments, window.event);
+function subtractQty(goodsID) {
+    // console.log("subtractQty1", goodsID, arguments, window.event);
     var trParent = $(event.target).closest('tr')
     var qty = parseInt(trParent.find('.quantity-field').val())
 
     // console.log(trParent)
+    // console.log(12, qty)
     if(qty - 1 < 1)
         return;
     else
@@ -20,10 +14,12 @@ function subtractQty() {
     var qty = parseFloat(trParent.find('.quantity-field').val())
     trParent.find('.shop-red').text(price * qty + '元')
 
-    calcTotal()
+    calcTotal();
+    !!goodsID && addCart(goodsID, qty, price, false)
 }
 
-function plusQty() {
+function plusQty(goodsID) {
+    // console.log('plusQty', goodsID)
     var trParent = $(event.target).closest('tr')
     var qty = parseInt(trParent.find('.quantity-field').val())
 
@@ -35,6 +31,7 @@ function plusQty() {
     trParent.find('.shop-red').text(price * qty + '元')
 
     calcTotal()
+    addCart(goodsID,qty,price,true)
 }
 
 function calcTotal() { 

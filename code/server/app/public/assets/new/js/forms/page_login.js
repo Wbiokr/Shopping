@@ -27,12 +27,12 @@ var Login = function () {
 	            {
 	                email:
 	                {
-	                    required: '请输入邮箱',
-	                    email: '请输入邮箱'
+	                    required: '請輸入郵箱',
+	                    email: '請輸入郵箱'
 	                },
 	                password:
 	                {
-	                    required: '请输入密码'
+	                    required: '請輸入密碼'
 	                }
 	            },                  
 	            

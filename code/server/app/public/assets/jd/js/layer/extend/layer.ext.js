@@ -1,7 +1,7 @@
 /*!
  
  @Name: layer v1.9.x-ext
- @Author: 贤心
+ @Author: 賢心
  @Api：http://sentsin.com/jquery/layer
 
  */
@@ -16,7 +16,7 @@ var cache = layer.cache||{}, skin = function(type){
     return (cache.skin ? (' ' + cache.skin + ' ' + cache.skin + '-'+type) : '');
 }
 
-//仿系统prompt
+//仿系統prompt
 layer.prompt = function(options, yes){
     options = options || {};
     if(typeof options === 'function') yes = options;
@@ -43,7 +43,7 @@ layer.prompt = function(options, yes){
     }, options));
 };
 
-//tab层
+//tab層
 layer.tab = function(options){
     options = options || {};
     var tab = options.tab || {};
@@ -83,7 +83,7 @@ layer.tab = function(options){
     }, options));
 };
 
-//相册层
+//相冊層
 layer.photos = function(options, loop, key){
     var dict = {};
     options = options || {};
@@ -93,7 +93,7 @@ layer.photos = function(options, loop, key){
     var start = photos.start || 0;
     dict.imgIndex = start + 1;
 
-    if(!type){ //页面直接获取
+    if(!type){ //頁面直接獲取
         var parent = $(options.photos), img = parent.find(options.img||'img');
         if (img.length === 0) return;
         loop || img.each(function(index){
@@ -116,7 +116,7 @@ layer.photos = function(options, loop, key){
             });
         });
         
-        //不直接弹出
+        //不直接彈出
         if(!loop) return;
         
     } else if (data.length === 0){
@@ -124,7 +124,7 @@ layer.photos = function(options, loop, key){
         return;
     }
     
-    //上一张
+    //上一張
     dict.imgprev = function(key){
         dict.imgIndex--;
         if(dict.imgIndex < 1){
@@ -133,7 +133,7 @@ layer.photos = function(options, loop, key){
         dict.tabimg(key);
     };
     
-    //下一张
+    //下一張
     dict.imgnext = function(key,errorMsg){
         dict.imgIndex++;
         if(dict.imgIndex > data.length){
@@ -143,7 +143,7 @@ layer.photos = function(options, loop, key){
         dict.tabimg(key)
     };
     
-    //方向键
+    //方向鍵
     dict.keyup = function(event){
         if(!dict.end){
             var code = event.keyCode;
@@ -158,7 +158,7 @@ layer.photos = function(options, loop, key){
         }
     }
     
-    //切换
+    //切換
     dict.tabimg = function(key){
         if(data.length <= 1) return;
         photos.start = dict.imgIndex - 1;
@@ -166,7 +166,7 @@ layer.photos = function(options, loop, key){
         layer.photos(options, true, key);
     }
     
-    //一些动作
+    //一些動作
     dict.event = function(){
         dict.bigimg.hover(function(){
             dict.imgsee.show();
@@ -187,7 +187,7 @@ layer.photos = function(options, loop, key){
         $(document).on('keyup', dict.keyup);
     };
     
-    //图片预加载
+    //圖片預加載
     function loadImage(url, callback, error) {     
         var img = new Image();    
         img.onload = function(){
@@ -249,7 +249,7 @@ layer.photos = function(options, loop, key){
         layer.close(dict.loadi);
         layer.msg('&#x5F53;&#x524D;&#x56FE;&#x7247;&#x5730;&#x5740;&#x5F02;&#x5E38;<br>&#x662F;&#x5426;&#x7EE7;&#x7EED;&#x67E5;&#x770B;&#x4E0B;&#x4E00;&#x5F20;&#xFF1F;', {
             time: 30000, 
-            btn: ['下一张', '不看了'], 
+            btn: ['下一張', '不看了'], 
             yes: function(){
                 data.length > 1 && dict.imgnext(true,true);
             }

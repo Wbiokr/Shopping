@@ -1,6 +1,6 @@
 {% extends './base.html' %}
 {% block title %}
-<title>{{page_title}}-忘记密码</title>
+<title>{{page_title}}-忘記密碼</title>
 
 <script src="/public/assets/common/moment.min.js"></script>
 <script src="/public/assets/common/vue.v2.5.1.min.js"></script>
@@ -30,12 +30,12 @@
 <div id="main-container" class="account-page no-header-top">
     <div class="page-top-leader omega">
         <div class="container_12 relatived clearfix">
-            <h1 class="page-title">忘记密码</h1>
+            <h1 class="page-title">忘記密碼</h1>
             <div class="breadcrumb">
-                <span class="br_before">当前位置:</span>
-                <a href="/">首页</a>
+                <span class="br_before">當前位置:</span>
+                <a href="/">首頁</a>
                 <span class="br_sep">/</span>
-                <span class="cur_link">忘记密码</span>
+                <span class="cur_link">忘記密碼</span>
             </div>
         </div>
     </div><!-- .page-top-leader -->
@@ -43,16 +43,16 @@
         <div class="aside-container grid_9">
             {% if valid %}
             <div class="content">
-                <h3>重置密码</h3>
+                <h3>重置密碼</h3>
                 <form action="" method="" id="form_pass">
                     <input class="full-width" type="email" name="email"  v-model="email" style="display: none;"
                            required>
-                    <label>密码(*):</label>
+                    <label>密碼(*):</label>
                     <br>
                     <input class="full-width" id="password1" type="password" name="password" minlength="6" placeholder="" required>
                     <br>
                     <br>
-                    <label>确认密码(*):</label>
+                    <label>確認密碼(*):</label>
                     <br>
                     <input class="full-width" type="password" name="comfirmPassword" v-model="password" minlength="6" equalTo="#password1" placeholder="" required>
                     <br>
@@ -63,36 +63,36 @@
 
             {% else %}
             <div class="content">
-                <h3>邮箱找回</h3>
+                <h3>郵箱找回</h3>
                 <form action="" method="" id="form_valid">
-                    <!--<p class="subtitle">我是老客户</p>-->
-                    <label>用户名(邮箱):</label>
+                    <!--<p class="subtitle">我是老客戶</p>-->
+                    <label>用戶名(郵箱):</label>
                     <br>
                     <input class="full-width" type="email" name="email"  v-model="email"
-                           placeholder="请输入注册邮箱" required>
+                           placeholder="請輸入註冊郵箱" required>
                     <br>
                     <br>
-                    <label>验证码:</label>
+                    <label>驗證碼:</label>
                     <br>
                     <input class="full-width" type="text" v-model="code"
                            name="code" required>
                     <img _ngcontent-c3="" src="/captcha" id="img_captcha" onclick="refresh()">
                     <br>
                     <br>
-                    <input v-model="btn_valid" id="btn_sub" class="style-button " type="submit" value="验证"/>
+                    <input v-model="btn_valid" id="btn_sub" class="style-button " type="submit" value="驗證"/>
                 </form>
             </div>
             {% endif %}
         </div>
         <div id="column-left" class="grid_3 aside omega">
             <div class="box">
-                <div class="box-heading">账户管理</div>
+                <div class="box-heading">賬戶管理</div>
                 <div class="box-content">
                     <div class="box-category">
                         <ul>
-                            <li><a  href="/shop/login">登录</a></li>
-                            <li><a href="/shop/signIn">注册</a></li>
-                            <li><a class="active" href="/shop/forget">忘记密码</a></li>
+                            <li><a  href="/shop/login">登錄</a></li>
+                            <li><a href="/shop/signIn">註冊</a></li>
+                            <li><a class="active" href="/shop/forget">忘記密碼</a></li>
                         </ul>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
         data: {
             email: '',
             code: '',
-            btn_valid: '验证'
+            btn_valid: '驗證'
         }
     });
 </script>
@@ -132,7 +132,7 @@
             submitHandler: function (form) {
                 Ap.request.post('/email/send', {act:"forget",email: app.email,code:app.code}, function (res) {
                     if (res.success) {
-                        Ap.msg.alert("邮件已发送，验证后即可重置密码",function () {
+                        Ap.msg.alert("郵件已發送，驗證後即可重置密碼",function () {
                             countdown(60);
                             btn.attr("disabled", true);
                             btn.addClass("style-valid");
@@ -160,7 +160,7 @@
                     Ap.request.post('/shop/reset', {content: encrpted,act:"F",token:"{{token}}"}, function (res) {
                         //Ap.loading.end();
                         if (res.success) {
-                            Ap.msg.alert("密码修改成功，快去登录吧", function () {
+                            Ap.msg.alert("密碼修改成功，快去登錄吧", function () {
                                 window.location = "/shop/login";
                             });
                         } else {
@@ -171,7 +171,7 @@
             }
         });
         function countdown(time) {
-            app.btn_valid=`未收到，重新发送(${time})`;
+            app.btn_valid=`未收到，重新發送(${time})`;
             setTimeout(function () {
                 time--;
                 if(time>=0)
@@ -179,7 +179,7 @@
                 else {
                     btn.attr("disabled", false);
                     btn.removeClass("style-valid");
-                    app.btn_valid=`重新发送`;
+                    app.btn_valid=`重新發送`;
                 }
             },1000)
         }

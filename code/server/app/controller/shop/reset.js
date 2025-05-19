@@ -14,7 +14,7 @@ module.exports = app => {
             jsEncrypt.setPrivateKey(app.config.private_key);
             let _content = jsEncrypt.decrypt(content);
             if (!_content) {
-                ctx.failure("验证失败!");
+                ctx.failure("驗證失敗!");
                 return;
             }
             let json = JSON.parse(_content);
@@ -24,13 +24,13 @@ module.exports = app => {
             let userLogin = await ctx.model.UserLogin.findById(username);
 
             if (!userLogin) {
-                ctx.failure("修改失败!");
+                ctx.failure("修改失敗!");
                 return;
             }
             let res = bcrypt.compareSync(oldPassword, userLogin.password);
 
             if (!res) {
-                ctx.failure("原密码错误!");
+                ctx.failure("原密碼錯誤!");
                 // return;
             } else {
                 const saltRounds = 10;
@@ -45,13 +45,13 @@ module.exports = app => {
             // const userLogin=await ctx.model.UserLogin.updatePassword(email,password);
             
             // if(!userLogin){
-            //     ctx.failure("密码修改失败!");
+            //     ctx.failure("密碼修改失敗!");
             //     return;
             // }
             // if(act=="F"){
             //     await ctx.model.EmailValid.update({validStatus:"S"},{where:{token}});
             // }
-            // ctx.success("密码修改成功!");
+            // ctx.success("密碼修改成功!");
         }
         async index(ctx){
             let data= await ctx.getUserInfo();

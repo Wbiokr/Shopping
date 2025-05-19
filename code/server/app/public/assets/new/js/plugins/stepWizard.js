@@ -42,7 +42,7 @@ var StepWizard = function () {
                                     return false
                                 }
                                 Ap.request.post("/shop/order",{
-                                    billAmount: parseFloat($('#cart-total-price').val()),
+                                    billAmount: parseFloat($('#cart-total-price').text()),
                                     addrName: $('#addr-name').val(),
                                     addrPhone: $('#addr-phone').val(),
                                     addrCity: $('#addr-city').val(),

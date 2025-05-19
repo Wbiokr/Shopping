@@ -42,29 +42,29 @@ var Registration = function () {
 	            {
 	                username:
 	                {
-	                    required: '请输入邮箱',
-	                    email: '请输入正确的邮箱地址'
+	                    required: '請輸入郵箱',
+	                    email: '請輸入正確的郵箱地址'
 	                },
 									nickname:
 	                {
-	                    required: '请输入昵称'
+	                    required: '請輸入暱稱'
 	                },
 	                password:
 	                {
-	                    required: '请输入密码'
+	                    required: '請輸入密碼'
 	                },
 	                passwordConfirm:
 	                {
-	                    required: '请再次输入密码',
-	                    equalTo: '请输入相同的密码'
+	                    required: '請再次輸入密碼',
+	                    equalTo: '請輸入相同的密碼'
 	                },
 									code:
 	                {
-	                    required: '请输入验证码'
+	                    required: '請輸入驗證碼'
 	                },
 	                checkbox:
 	                {
-	                    required: '请勾选使用协议'
+	                    required: '請勾選使用協議'
 	                }
 	            },                  
 	            
@@ -86,7 +86,7 @@ var Registration = function () {
 									Ap.request.post('/shop/signIn',{content:encrpted,nickname:$('#sky-form4 .k-nickname').val(),code:$('#sky-form4 .k-code').val()},function (res) {
 											Ap.loading.end();
 											if(res.success){
-													Ap.msg.alert("注册成功,赶快去登录吧!",function () {
+													Ap.msg.alert("註冊成功,趕快去登錄吧!",function () {
 															window.location='/shop/login';
 													})
 											}else{

@@ -11,13 +11,13 @@
 //             const result=await ctx.model.ShopGoodsClass.findAll({
 //                 where:{parentId},raw:true
 //             });
-//             ctx.success("查询成功",result);
+//             ctx.success("查詢成功",result);
 //         }
 //         async common(ctx) {
 //             const result=await ctx.model.ShopGoodsClass.findAll({
 //                 where:{parentId:0},raw:true
 //             });
-//             ctx.success("查询成功",result);
+//             ctx.success("查詢成功",result);
 //         }
 //     };
 // };

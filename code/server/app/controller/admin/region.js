@@ -1,5 +1,5 @@
 /**
- * 数据库基本对象操作
+ * 數據庫基本對象操作
  */
 const { Controller } = require('egg');
 class RegionController extends Controller {
@@ -22,7 +22,7 @@ class RegionController extends Controller {
                 region_id: re.region_id,
             }
         }
-        ctx.success("查询成功!", res);
+        ctx.success("查詢成功!", res);
 
     }
 }

@@ -5,28 +5,28 @@
 module.exports = app => {
 
     //--------------------------------------------------
-    // 中间件
+    // 中間件
     //--------------------------------------------------
     const isLoginUser = app.middlewares.isLoginUser();
     //const isInstalled = app.middlewares.isInstalled();
 
     //--------------------------------------------------
-    // 基础接口
+    // 基礎接口
     //--------------------------------------------------
     app.get('/', app.controller.shop.home.index);
     app.get('/install', app.controller.install.index);
     app.get('/404', app.controller.home.notFound);
-    //邮件发送接口
+    //郵件發送接口
     app.post('/email/send', app.controller.email.send);
     app.get('/email/valid', app.controller.email.valid);
-    //验证码
+    //驗證碼
     app.get('/captcha', app.controller.captcha.index);
 
     //--------------------------------------------------
     // PC商城
     //--------------------------------------------------
     //app.get('/shop', app.controller.shop.home.index);
-    //注册&登录
+    //註冊&登錄
     app.get('/shop/login', app.controller.shop.login.index);
     app.post('/shop/login', app.controller.shop.login.login);
     app.post('/shop/logout', app.controller.shop.login.logout);
@@ -39,6 +39,7 @@ module.exports = app => {
     app.get('/shop/goodsQuery', app.controller.shop.goods.query);
     app.get('/shop/goods/:id', app.controller.shop.goods.show);
     app.get('/shop/cart', isLoginUser,app.controller.shop.cart.show);
+    app.get('/shop/cartList', isLoginUser,app.controller.shop.cart.list);
     app.del('/shop/cart/:id',isLoginUser, app.controller.shop.cart.del);
     app.post('/shop/cart',isLoginUser, app.controller.shop.cart.create);
     app.get('/shop/checkout',isLoginUser, app.controller.shop.order.checkout);
@@ -47,10 +48,11 @@ module.exports = app => {
     //app.get('/shop/confirmPay/:billNo', isLoginUser,app.controller.shop.pay.confirm);
     app.get('/shop/get', app.controller.shop.goods.get);
     // app.get('/shop/goodsClass', app.controller.shop.goods.shopGoodsClass.get);
-    // 隐私信息
+    // 隱私信息
     app.get('/static/privacy', app.controller.shop.static.privacy);
+    app.get('/static/about', app.controller.shop.static.aboutUs);
 
-    //个人中心
+    //個人中心
     app.get('/shop/uc', isLoginUser,app.controller.shop.uc.index);
     app.post('/shop/updatePassword',isLoginUser, app.controller.user.updatePassword);
     app.get('/shop/order',isLoginUser, app.controller.shop.order.index);
@@ -63,7 +65,7 @@ module.exports = app => {
     app.post('/shop/wishlist',isLoginUser, app.controller.shop.wishlist.create);
     app.del('/shop/wishlist/:id',isLoginUser, app.controller.shop.wishlist.del);
 
-    //联系我们
+    //聯繫我們
     app.get('/shop/contact', app.controller.shop.contact.index);
     app.post('/shop/contact', app.controller.shop.contact.create);
 
@@ -77,16 +79,16 @@ module.exports = app => {
     //支付API
     app.post('/api/pay/msg', app.controller.paybot.msg);
 
-    // model相关
+    // model相關
     // app.get('/model/:model', app.controller.model.common)
 
     //--------------------------------------------------
-    // admin管理后台
+    // admin管理後臺
     //--------------------------------------------------
     app.get('/admin', app.controller.admin.home.index);
     app.post('/admin/login', app.controller.admin.login.login);
     app.post('/admin/logout', app.controller.admin.login.logout);
-    //对象统一操作接口
+    //對象統一操作接口
     app.resources('/admin/table', isLoginUser ,app.controller.admin.table);
     app.get('/admin/user/info', isLoginUser ,app.controller.admin.user.info);
     app.get('/admin/goods/list', isLoginUser ,app.controller.admin.goods.list);
@@ -95,19 +97,22 @@ module.exports = app => {
     app.del('/admin/goods/:id', isLoginUser ,app.controller.admin.goods.del);
     app.post('/admin/goods/status', isLoginUser ,app.controller.admin.goods.status);
     app.post('/admin/goods/recommend', isLoginUser ,app.controller.admin.goods.recommend);
+    // app.post('/admin/goods/csv', isLoginUser ,app.controller.admin.order.export);
+    app.get('/admin/goodsExport', isLoginUser, app.controller.admin.goods.export);
     app.get('/admin/shopGoodsClass/list', app.controller.admin.shopGoodsClass.list);
     app.get('/admin/order/list', isLoginUser ,app.controller.admin.order.list);
     app.post('/admin/order/status', isLoginUser ,app.controller.admin.order.status);
-    app.get('/admin/order/export', app.controller.admin.order.export);
+    app.get('/admin/order/export', isLoginUser, app.controller.admin.order.export);
     app.get('/admin/custom/list', isLoginUser ,app.controller.admin.user.list);
     app.post('/admin/custom/status', isLoginUser ,app.controller.admin.user.status);
+    app.get('/admin/customExport', isLoginUser ,app.controller.admin.user.export);
     app.get('/admin/report', isLoginUser ,app.controller.admin.report.data);
     app.get('/admin/report/detail', isLoginUser ,app.controller.admin.report.detail);
 
 
     app.resources('/admin/region',isLoginUser ,app.controller.admin.region);
 
-    //上传文件
+    //上傳文件
     app.post('/admin/upload/:type', isLoginUser ,app.controller.file.upload);
     app.get('/file/download/:id', isLoginUser,app.controller.file.download);
 

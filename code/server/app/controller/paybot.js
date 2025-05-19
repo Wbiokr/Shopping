@@ -12,7 +12,7 @@ module.exports = app => {
         }
         async msg(ctx){
             let {time,memo,description,username,amount,sig,tradeNo,status}=ctx.request.body;
-            // 签名
+            // 簽名
             let md5 = crypto.createHash("md5");
             let sig_valid = [
                 time.toString(),
@@ -23,7 +23,7 @@ module.exports = app => {
             ].join("|");
             sig_valid = md5.update(sig_valid, "utf8").digest("hex");
             if(sig_valid!=sig){
-                ctx.failure("签名错误");
+                ctx.failure("簽名錯誤");
                 return;
             }
             let payMsg=await ctx.model.PayMsg.findOne({where:{tradeNo}});
@@ -32,17 +32,17 @@ module.exports = app => {
                 return;
             }
             payMsg=await ctx.model.PayMsg.create({
-                msgType:"支付宝转账",payTime:time,memo,description,username,amount,tradeNo,status
+                msgType:"支付寶轉賬",payTime:time,memo,description,username,amount,tradeNo,status
             });
             const order=await ctx.model.ShopOrder.findOne({where:{payCode:memo}});
             if(!order){
                 ctx.helper.sendContent({
                     to: "573391755@qq.com",
-                    title: '【Attention】天启皮肤商城系统通知',
-                    name:'系统收到一个转账消息，但未查询到相应订单信息!',
-                    content: `支付编号：${memo}，转账详情：${JSON.stringify(payMsg)}`,
+                    title: '【Attention】天啟皮膚商城系統通知',
+                    name:'系統收到一個轉賬消息，但未查詢到相應訂單信息!',
+                    content: `支付編號：${memo}，轉賬詳情：${JSON.stringify(payMsg)}`,
                     success:function () {
-                        console.log("邮件发送成功");
+                        console.log("郵件發送成功");
                     }
                 });
                 ctx.body="success";

@@ -1,5 +1,5 @@
 /**
- *  主页Controller
+ *  主頁Controller
  * @param app
  * @returns {OrderController}
  */
@@ -12,7 +12,6 @@ module.exports = app => {
                 where:{uid:data.uid}
             });
             data.wishlist=res.rows;
-            // data.collectGoods = res.rows.map(o =>)
             await this.ctx.render('shop/new/wishlist', data);
         }
 
@@ -21,13 +20,13 @@ module.exports = app => {
             const res = await this.ctx.model.ShopUserWishlist.findAndCountAll({
                 where:{uid:data.uid}
             });
-            return ctx.success('查询成功', res)
+            return ctx.success('查詢成功', res)
         }
         async del(ctx){
             const wishlist = await ctx.model.ShopUserWishlist.findById(parseInt(ctx.params.id));
             console.log('deelll', ctx.params, wishlist, 'eeeee');
             wishlist.destroy();
-            ctx.success("删除成功!");
+            ctx.success("刪除成功!");
         }
         async create(ctx) {
             const {goodsID} = ctx.request.body;

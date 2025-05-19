@@ -1,5 +1,5 @@
 /**
- * 登录Controller
+ * 登錄Controller
  * @param app
  */
 const ms = require('ms');
@@ -27,23 +27,23 @@ module.exports = app => {
             jsEncrypt.setPrivateKey(app.config.private_key);
             let _content = jsEncrypt.decrypt(content);
             if (!_content) {
-                ctx.failure("验证失败!");
+                ctx.failure("驗證失敗!");
                 return;
             }
             let json = JSON.parse(_content);
             const {username, password, rememberMe} = json;
             let user = await ctx.model.User.findOne({where: {username}});
             if (!user) {
-                ctx.failure("用户名或密码错误!");
+                ctx.failure("用戶名或密碼錯誤!");
                 return;
             }
             if (user.status=='C') {
-                ctx.failure("该用户已禁止登录!");
+                ctx.failure("該用戶已禁止登錄!");
                 return;
             }
             let userLogin = await ctx.model.UserLogin.findOne({where: {loginString: username}});
             if (!userLogin) {
-                ctx.failure("用户登录信息不存在!");
+                ctx.failure("用戶登錄信息不存在!");
                 return;
             }
             let res = bcrypt.compareSync(password, userLogin.password);
@@ -54,20 +54,20 @@ module.exports = app => {
                 //ctx.session.visited = ctx.session.visited ? ctx.session.visited++ : 1;
                 if (rememberMe) ctx.session.maxAge = ms('7d');
                 else ctx.session.maxAge = ms('2h');
-                // 调用 rotateCsrfSecret 刷新用户的 CSRF token
+                // 調用 rotateCsrfSecret 刷新用戶的 CSRF token
                 ctx.rotateCsrfSecret();
                 await ctx.model.UserLoginL.create({uid: user.uid,loginString:username,loginLogType:'L'});
                 user.update({
                     loginNum:user.loginNum+1,
                     lastLoginTime:moment()
                 });
-                ctx.success("登录成功!");
+                ctx.success("登錄成功!");
                 return;
             } else {
-                ctx.failure("用户名或密码错误!");
+                ctx.failure("用戶名或密碼錯誤!");
                 return;
             }
-            ctx.failure("登录失败!");
+            ctx.failure("登錄失敗!");
         }
         async logout(ctx) {
             let uid=ctx.session.uid;

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-    <title>确认订单</title>
+    <title>確認訂單</title>
 
     <link href="/public/css/cart.css" rel="stylesheet"/>
 <link rel="stylesheet" href="/public/js/icheck/style.css"/>
@@ -20,13 +20,13 @@
             <div class="step-box">
                 <div class="row">
                     <div class="step first active col-3">
-                        <span class="num">1</span><span class="line"></span><span class="label">我的购物车</span>
+                        <span class="num">1</span><span class="line"></span><span class="label">我的購物車</span>
                     </div>
                     <div class="step active col-3">
-                        <span class="num">2</span><span class="line"></span><span class="label">确认订单信息</span>
+                        <span class="num">2</span><span class="line"></span><span class="label">確認訂單信息</span>
                     </div>
                     <div class="step col-3">
-                        <span class="num">3</span><span class="line"></span><span class="label">选择支付方式</span>
+                        <span class="num">3</span><span class="line"></span><span class="label">選擇支付方式</span>
                     </div>
                     <div class="step last col-3">
                         <span class="num">4</span><span class="line"></span><span class="label">完成付款</span>
@@ -34,18 +34,18 @@
                 </div>
             </div>
         </div>
-    <!--头部-->
+    <!--頭部-->
 
     <div class="wrapper confirm-wrap" id="div_order">
         <div class="confirm-tit">
-           <span class="tit">确认商品信息:</span><div class="right"><a class="back" href="/shop/cart">返回购物车></a></div>
+           <span class="tit">確認商品信息:</span><div class="right"><a class="back" href="/shop/cart">返回購物車></a></div>
         </div>
         <div class="confirm-goods">
             <div class="confirm-goods-hd clearfix">
-                <div class="col col1">主题</div>
-                <div class="col col2">单价（元）</div>
-                <div class="col col3">数量</div>
-                <div class="col col4">小计（元）</div>
+                <div class="col col1">主題</div>
+                <div class="col col2">單價（元）</div>
+                <div class="col col3">數量</div>
+                <div class="col col4">小計（元）</div>
             </div>
             {% for goods in cart %}
             <div class="confirm-goods-bd">
@@ -54,7 +54,7 @@
                         <img src="{{goods.imgurl}}" alt="">
                         <div class="info">
                             <div class="name">{{goods.title}}</div>
-                            <div class="meta"><span>亮丽</span></div>
+                            <div class="meta"><span>亮麗</span></div>
                         </div>
                     </div>
                     <div class="col col2">￥{{goods.price}}</div>
@@ -64,19 +64,19 @@
             </div>
             {% endfor %}
             <div class="confirm-goods-ft clearfix">
-                <div class="fl"><span class="vm-ib">买家留言： </span><textarea class="ui-txtin" style="width: 410px;" name="" placeholder="在此输入给我们留言"></textarea></div>
-                <div class="fr">合计: ¥ {{sumPrice}}</div>
+                <div class="fl"><span class="vm-ib">買家留言： </span><textarea class="ui-txtin" style="width: 410px;" name="" placeholder="在此輸入給我們留言"></textarea></div>
+                <div class="fr">合計: ¥ {{sumPrice}}</div>
             </div>
         </div>
          <div class="confirm-total">
             <div class="box">
-                <div class="item">应付总额：<strong id="pay_price"> ¥ {{sumPrice}}</strong></div>
-                <a class="ui-btn-theme go-charge" href="javascript:void(0)" onclick="addOrder()">去结算</a>
+                <div class="item">應付總額：<strong id="pay_price"> ¥ {{sumPrice}}</strong></div>
+                <a class="ui-btn-theme go-charge" href="javascript:void(0)" onclick="addOrder()">去結算</a>
             </div>
         </div>
     </div>
 
-    <!--脚部-->
+    <!--腳部-->
     <div class="fatfooter">
 
     </div>
@@ -90,15 +90,15 @@
             }
         })
     }
-//这里不使用自带按钮，因为设计按钮较特殊，不准备作为通用样式
+//這裡不使用自帶按鈕，因為設計按鈕較特殊，不準備作為通用樣式
 $('.confirm-address .edit,.confirm-address .add').on('click',function () {
     layer.open({
         type: 1,
         skin: 'layui-layer-seaing',
-        title: '标题',
+        title: '標題',
         area: ['720px', 'auto'],
         content: $('#addressform')
-        //btn: ['按钮一', '按钮二']
+        //btn: ['按鈕一', '按鈕二']
     });
 });
 $(document.body).on('click','.layer-address .cancle',function () {

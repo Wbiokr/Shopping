@@ -1,5 +1,5 @@
 /**
- * 日报表
+ * 日報表
  * @type
  */
 let moment=require('moment')

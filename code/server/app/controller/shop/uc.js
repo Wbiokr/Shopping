@@ -1,5 +1,5 @@
 /**
- *  主页Controller
+ *  主頁Controller
  * @param app
  * @returns {HomeController}
  */

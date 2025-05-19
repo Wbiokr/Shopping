@@ -1,6 +1,6 @@
 {% extends './base.html' %}
 {% block title %}
-<title>{{page_title}}-购物车</title>
+<title>{{page_title}}-購物車</title>
 <link rel="stylesheet" href="/public/assets/new/plugins/jquery-steps/css/custom-jquery.steps.css">
 
 
@@ -14,12 +14,12 @@
     <!--=== Breadcrumbs v4 ===-->
     <div class="breadcrumbs-v4">
         <div class="container">
-            <span class="page-name">购物车</span>
-            <!-- <h1>购物车 <span class="shop-green"></span></h1> -->
+            <span class="page-name">購物車</span>
+            <!-- <h1>購物車 <span class="shop-green"></span></h1> -->
             <ul class="breadcrumb-v4-in">
-                <li><a href="/">首页</a></li>
-                <li><a href=/shop/goods"">产品列表</a></li>
-                <li class="active">购物车</li>
+                <li><a href="/">首頁</a></li>
+                <li><a href=/shop/goods"">產品列表</a></li>
+                <li class="active">購物車</li>
             </ul>
         </div><!--/end container-->
     </div> 
@@ -32,8 +32,8 @@
                 <div>
                     <div class="header-tags">            
                         <div class="overflow-h">
-                            <h2>购物车</h2>
-                            <p>检查 &amp; 编辑购物车</p>
+                            <h2>購物車</h2>
+                            <p>檢查 &amp; 編輯購物車</p>
                             <i class="rounded-x fa fa-check"></i>
                         </div>    
                     </div>
@@ -42,10 +42,10 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>产品</th>
-                                        <th>单价</th>
-                                        <th>数量</th>
-                                        <th>总价</th>
+                                        <th>產品</th>
+                                        <th>單價</th>
+                                        <th>數量</th>
+                                        <th>總價</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,15 +55,15 @@
                                           
                                             <img class="img-responsive" src="{{goods.imgurl}}" alt="">
                                             <div class="product-it-in">
-                                                <h3>{{goods.name}}</h3>
+                                                <h3><a href="/shop/goods/{{goods.goodsID}}" class="c-p">{{goods.name}}</a></h3>
                                                 <span>{{goods.title}}</span>
                                             </div>    
                                         </td>
                                         <td class="g-price">{{goods.price}}元</td>
                                         <td>
-                                            <button type='button' class="quantity-button" name='subtract' onclick='subtractQty()' value='-'>-</button>
-                                            <input type='text' class="quantity-field" name='qty1' value="{{goods.num}}" />
-                                            <button type='button' class="quantity-button" name='add' onclick='plusQty()' value='+'>+</button>
+                                            <button type='button' class="quantity-button" name='subtract' onclick='subtractQty("{{goods.goodsID}}")' value='-'>-</button>
+                                            <input type='text' class="quantity-field" name='qty1' value="{{goods.num}}" onblur="updateQty('{{goods.goodsID}}','{{goods.price}}',this)" />
+                                            <button type='button' class="quantity-button" name='add' onclick='plusQty("{{goods.goodsID}}")' value='+'>+</button>
                                         </td>
                                         <td class="shop-red">{{goods.price*goods.num}}元</td>
                                         <td>
@@ -78,31 +78,31 @@
                     
                     <div class="header-tags">
                         <div class="overflow-h">
-                            <h2>订单信息</h2>
-                            <p>请填写地址信息</p>
+                            <h2>訂單信息</h2>
+                            <p>請填寫地址信息</p>
                             <i class="rounded-x fa fa-home"></i>
                         </div>    
                     </div>
                     <section class="billing-info">
                         <div class="row">
                             <div class="col-md-12 md-margin-bottom-40">
-                                <h2 class="title-type">订单地址</h2>
+                                <h2 class="title-type">訂單地址</h2>
                                 <div class="billing-info-inputs checkbox-list">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <input id="addr-name" type="text" placeholder="姓名" name="firstname" class="form-control required">
                                         </div>
                                         <div class="col-sm-6">
-                                            <input id="addr-phone" type="tel" placeholder="电话" name="phone" class="form-control required">
+                                            <input id="addr-phone" type="tel" placeholder="電話" name="phone" class="form-control required">
                                         </div>
                                     </div>
-                                    <input id="addr-address" type="text" placeholder="详细地址" name="address2" class="form-control required">
+                                    <input id="addr-address" type="text" placeholder="詳細地址" name="address2" class="form-control required">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <input id="addr-city" type="text" placeholder="城市" name="city" class="form-control required">
                                         </div>
                                         <div class="col-sm-6">
-                                            <input id="addr-zip" type="text" placeholder="邮编" name="zip" class="form-control required">
+                                            <input id="addr-zip" type="text" placeholder="郵編" name="zip" class="form-control required">
                                         </div>
                                     </div>
                                 </div>
@@ -113,14 +113,14 @@
                     <div class="header-tags">
                         <div class="overflow-h">
                             <h2>支付</h2>
-                            <p>请支付您的订单</p>
+                            <p>請支付您的訂單</p>
                             <i class="rounded-x fa fa-credit-card"></i>
                         </div>    
                     </div>
                     <section>
                         <div class="row">
                             <div class="col-md-12 md-margin-bottom-50">
-                                <h2 class="title-type">请扫码支付(<span class="order-num c-red">--</span>)</h2>
+                                <h2 class="title-type">請掃碼支付(<span class="order-num c-red">--</span>)</h2>
                                 <!-- Accordion -->
                                 <div class="accordion-v2 t-c">
                                     <!-- <div class="panel-group" id="accordion">
@@ -317,6 +317,12 @@
         // StyleSwitcher.initStyleSwitcher();      
         calcTotal()
 });
+
+function updateQty(goodsID, price, target) {
+    // console.log(1, this, arguments)
+    target.value = Math.max(parseInt(target.value) || 1, 1)
+    addCart(goodsID, target.value, price, false)
+}
 </script>
 
 {% endblock %}

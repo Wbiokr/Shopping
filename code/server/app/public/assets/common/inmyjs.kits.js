@@ -42,7 +42,7 @@ $.ajaxSetup({
 
 var Ap={};
 /**
- * 封装ajax请求
+ * 封裝ajax請求
  */
 Ap.request={
     ajax:function(url,data,type,successCallback,errorCallback,contentType){
@@ -63,7 +63,7 @@ Ap.request={
             error: function (XMLHttpRequest,msg,exception) {
                 Ap.loading.end();
                 if(XMLHttpRequest.responseText=="AccessDenied"){
-                    Ap.msg.confirm("登录方可操作，快去登录吧！",function (res) {
+                    Ap.msg.confirm("登錄方可操作，快去登錄吧！",function (res) {
                         if(res)window.location="/shop/login";
                     });
                     return;
@@ -98,13 +98,13 @@ Ap.request={
 };
 
 /**
- * 提示框统一
+ * 提示框統一
  * 使用jquery.alertify
  * @type {{}}
  */
 alertify.set({
     labels : {
-        ok   : "确认",
+        ok   : "確認",
         cancel : "取消"
     },
     delay : 5000,
@@ -130,16 +130,16 @@ Ap.msg={
 }
 
 /**
- * 统一进度条
+ * 統一進度條
  * @type {{start: Ap.loading.start, end: Ap.loading.end}}
  */
 Ap.loading={
     /**
-     * 打开数据加载进度框
+     * 打開數據加載進度框
      */
     start :function(msg) {
         $(".ap-loading").show();
-        msg=msg?msg:"正在加载... ...";
+        msg=msg?msg:"正在加載... ...";
         $("#ap_loading_title").html(msg);
     },
     end : function () {
@@ -148,7 +148,7 @@ Ap.loading={
 };
 
 /**
- * 基础工具类
+ * 基礎工具類
  * @type
  */
 Ap.util={
@@ -162,7 +162,7 @@ Ap.util={
         let parse = eval(this.compile(template));
         return parse(data);
     },
-    //编译模板
+    //編譯模板
     compile:function(template) {
         const evalExpr = /<%=(.+?)%>/g;
         const expr = /<%([\s\S]+?)%>/g;
@@ -189,7 +189,7 @@ Ap.util={
         return script;
     },
     /**
-     * 获取form表单的值
+     * 獲取form表單的值
      * @param form
      * @returns {{}}
      */
@@ -221,7 +221,7 @@ Ap.util={
         d.setMonth(d.getMonth() + 1);
         return d.format("yyyyMM");
     },
-    //比较两个时间
+    //比較兩個時間
     compareDate:function(date,value) {
         var mydate = new Date(date);
         var nowdate = new Date();
@@ -232,16 +232,16 @@ Ap.util={
         return 1;
     },
     /**
-     * 当前时间戳
-     * @return <int>        unix时间戳(秒)
+     * 當前時間戳
+     * @return <int>        unix時間戳(秒)
      */
     curTime: function(){
         return Date.parse(new Date())/1000;
     },
     /**
-     * 日期 转换为 Unix时间戳
+     * 日期 轉換為 Unix時間戳
      * @param <string> 2014-01-01 20:20:20  日期格式
-     * @return <int>        unix时间戳(秒)
+     * @return <int>        unix時間戳(秒)
      */
     dateToUnix: function(string) {
         var f = string.split(' ', 2);
@@ -257,10 +257,10 @@ Ap.util={
         )).getTime() / 1000;
     },
     /**
-     * 时间戳转换日期
-     * @param <int> unixTime    待时间戳(秒)
-     * @param <bool> isFull    返回完整时间(Y-m-d 或者 Y-m-d H:i:s)
-     * @param <int>  timeZone   时区
+     * 時間戳轉換日期
+     * @param <int> unixTime    待時間戳(秒)
+     * @param <bool> isFull    返回完整時間(Y-m-d 或者 Y-m-d H:i:s)
+     * @param <int>  timeZone   時區
      */
     unixToDate: function(unixTime,timeZone) {
         if (typeof (timeZone) == 'number')
@@ -279,7 +279,7 @@ Ap.util={
             evt.cancelBubble = true;
         }
     },
-    // 获取event
+    // 獲取event
     getEvent:function() {
         if (document.all)
             return window.event;

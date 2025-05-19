@@ -16,14 +16,14 @@ module.exports = app => {
             jsEncrypt.setPrivateKey(app.config.private_key);
             let _content = jsEncrypt.decrypt(content);
             if (!_content) {
-                ctx.failure("验证失败!");
+                ctx.failure("驗證失敗!");
                 return;
             }
             let json = JSON.parse(_content);
             const {oldPassword, newPassword} = json;
             let userLogin = await ctx.model.UserLogin.findById(ctx.session.username);
             if (!userLogin) {
-                ctx.failure("修改失败!");
+                ctx.failure("修改失敗!");
                 return;
             }
             let res = bcrypt.compareSync(oldPassword, userLogin.password);
@@ -36,7 +36,7 @@ module.exports = app => {
                 ctx.success("修改成功!");
                 return;
             }else {
-                ctx.failure("原密码错误!");
+                ctx.failure("原密碼錯誤!");
                 return;
             }
         }

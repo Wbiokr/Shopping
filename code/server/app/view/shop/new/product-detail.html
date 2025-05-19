@@ -1,6 +1,6 @@
 {% extends './base.html' %}
 {% block title %}
-<title>{{page_title}}-产品详情</title>
+<title>{{page_title}}-產品詳情</title>
 
 <link rel="stylesheet" href="/public/assets/new/plugins/master-slider/quick-start/masterslider/style/masterslider.css">
 <link rel='stylesheet' href="/public/assets/new/plugins/master-slider/quick-start/masterslider/skins/default/style.css">
@@ -13,8 +13,8 @@
         <div class="container">
             <ul class="breadcrumb-v5">
                 <li><a href="/"><i class="fa fa-home"></i></a></li>
-                <li><a href="/shop/goods">产品列表</a></li>
-                <li class="active">产品详情</li>
+                <li><a href="/shop/goods">產品列表</a></li>
+                <li class="active">產品詳情</li>
             </ul> 
         </div>
         <!-- End Breadcrumbs v5 -->
@@ -69,7 +69,7 @@
                         <li class="line-through">{{goods.priceMarket}}元</li>
                         <!-- <li><small class="shop-bg-red time-day-left">4 days left</small></li> -->
                     </ul><!--/end shop product prices-->
-                    <h5 class="c-red f-s-16">限时限量折扣！</h5>
+                    <h5 class="c-red f-s-16">限時限量折扣！</h5>
 
                     <!-- <h3 class="shop-product-title">Size</h3>
                     <ul class="list-inline product-size margin-bottom-30">
@@ -106,14 +106,14 @@
                         </li>  
                     </ul> -->
 
-                    <h3 class="shop-product-title">数量</h3>
+                    <h3 class="shop-product-title">數量</h3>
                     <div class="margin-bottom-40">
                         <form name="f1" class="product-quantity sm-margin-bottom-20">
-                            <button type='button' class="quantity-button" name='subtract' onclick='javascript: subtractQty();' value='-'>-</button>
-                            <input type='text' class="quantity-field" name='qty' value="1" id='qty'/>
+                            <button type='button' class="quantity-button" name='subtract' onclick='javascript: minusQty("");' value='-'>-</button>
+                            <input type='text' class="quantity-field" name='qty' value="1" id='qty' onblur="checkQty(this)"/>
                             <button type='button' class="quantity-button" name='add' onclick='javascript: document.getElementById("qty").value++;' value='+'>+</button>
                         </form>
-                        <button type="button" class="btn-u btn-u-sea-shop btn-u-lg" onclick="addNumCart('{{goods.goodsID}}','{{goods.price}}')">加入购物车</button>
+                        <button type="button" class="btn-u btn-u-sea-shop btn-u-lg" onclick="addNumCart('{{goods.goodsID}}','{{goods.price}}')">加入購物車</button>
                     </div><!--/end product quantity-->    
 
                     <ul class="list-inline add-to-wishlist add-to-wishlist-brd">
@@ -142,8 +142,8 @@
                     <i class="fa fa-truck"></i>
                 </div>
                 <div class="product-service-in">
-                    <h3>免运费</h3>
-                    <p>商场内所有商品都是免运费</p>
+                    <h3>免運費</h3>
+                    <p>商場內所有商品都是免運費</p>
                     <!-- <a href="#">+Read More</a> -->
                 </div>
             </div>
@@ -152,8 +152,8 @@
                     <i class="icon-earphones-alt"></i>
                 </div>
                 <div class="product-service-in">
-                    <h3>客户服务</h3>
-                    <p>在这里，您可以享受等同于线下商城的尊贵服务</p>
+                    <h3>客戶服務</h3>
+                    <p>在這裡，您可以享受等同於線下商城的尊貴服務</p>
                     <!-- <a href="#">+Read More</a> -->
                 </div>
             </div>
@@ -162,8 +162,8 @@
                     <i class="icon-refresh"></i>
                 </div>
                 <div class="product-service-in">
-                    <h3>售后</h3>
-                    <p>所有商品收货7天内无理由退货</p>
+                    <h3>售後</h3>
+                    <p>所有商品收貨7天內無理由退貨</p>
                     <!-- <a href="#">+Read More</a> -->
                 </div>
             </div>
@@ -172,7 +172,7 @@
 
         <div class="tab-v5">
             <ul class="nav nav-tabs" role="tablist">
-                <li class="active"><a href="#description" role="tab" data-toggle="tab">详情描述</a></li>
+                <li class="active"><a href="#description" role="tab" data-toggle="tab">詳情描述</a></li>
                 <!-- <li><a href="#reviews" role="tab" data-toggle="tab">Reviews (1)</a></li> -->
             </ul>
 
@@ -206,18 +206,18 @@
                             </div>
                         </div>    
                     </div>
-                    <h3 class="heading-md margin-bottom-30">增加评论</h3>
+                    <h3 class="heading-md margin-bottom-30">增加評論</h3>
                     <form method="post" id="sky-form3" class="sky-form sky-changes-4">
                         <fieldset>
                             <div class="margin-bottom-30">
-                                <label class="label-v2">用户名</label>
+                                <label class="label-v2">用戶名</label>
                                 <label class="input w-per-100">
                                     <input type="text" name="name" id="name" class="w-per-100">
                                 </label>
                             </div>    
                             
                             <div class="margin-bottom-30">
-                                <label class="label-v2">邮箱</label>
+                                <label class="label-v2">郵箱</label>
                                 <label class="input w-per-100">
                                     <input type="email" name="email" id="email"  class="w-per-100">
                                 </label>
@@ -258,8 +258,8 @@
      <!--=== Illustration v2 ===-->
     <div class="container">
         <div class="heading heading-v1 margin-bottom-20">
-            <h2>精品推荐</h2>
-            <p>商城采用精准推荐算法，能够为您挑选最适合您的搭配套装</p>
+            <h2>精品推薦</h2>
+            <p>商城採用精準推薦算法，能夠為您挑選最適合您的搭配套裝</p>
         </div>
 
         <div class="illustration-v2 margin-bottom-60">
@@ -311,7 +311,20 @@
             var num = document.getElementById('qty').value;
             // console.log(num, arguments)
             
-          addCart(id, num, price)
+          addCart(id, num, price, true)
+        }
+
+        function minusQty() {
+            var num = document.getElementById('qty').value;
+            if (num <= 1) return
+            document.getElementById('qty').value = parseInt(num) - 1
+        }
+
+        function checkQty() {
+            var num = parseInt(document.getElementById('qty').value) || 0;
+            // if (num <= 0) {
+            document.getElementById('qty').value = Math.max(num, 1)
+            // }
         }
     </script>
 

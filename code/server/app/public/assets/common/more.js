@@ -1,12 +1,12 @@
 /**
- * 调用参数,方法如:$('#more').more({'url': 'data.php'});
- * limit  :'10'           每次显示记录数
- * url :'comments.php'     请求后台的地址
- * data:{},                自定义参数
- * template:'.single_item' html记录DIV的class属性
- * trigger :'#get_more'    触发加载更多记录的class属性
- * scroll  :'false'        是否支持滚动触发加载
- * offset  :'100'          滚动触发加载时的偏移量
+ * 調用參數,方法如:$('#more').more({'url': 'data.php'});
+ * limit  :'10'           每次顯示記錄數
+ * url :'comments.php'     請求後臺的地址
+ * data:{},                自定義參數
+ * template:'.single_item' html記錄DIV的class屬性
+ * trigger :'#get_more'    觸發加載更多記錄的class屬性
+ * scroll  :'false'        是否支持滾動觸發加載
+ * offset  :'100'          滾動觸發加載時的偏移量
  */
 (function($) {
     var target = null;
@@ -30,13 +30,13 @@
                 if (options) {
                     $.extend(settings, options);
                 }
-                $(this).append('<div id="waitbox"><p>载入中..</p></div>');
+                $(this).append('<div id="waitbox"><p>載入中..</p></div>');
 
                 target = $(this);
                 if (!settings.scroll) {
                     $(this).find(settings.trigger).bind('click.more', methods.get_data);
                 } else {
-                    //开始监控滚动栏scroll
+                    //開始監控滾動欄scroll
                     $(window).scroll(function(){
                         var scrollTop = $(this).scrollTop();
                         var scrollHeight = $(document).height();
@@ -74,7 +74,7 @@
                 $(data).each(function () {
                     root.append(Ap.util.renderTemplate(settings.template, this));
                 });
-                root.append("<div id='load_more'><p>----------下滑加载更多----------</p></div>");
+                root.append("<div id='load_more'><p>----------下滑加載更多----------</p></div>");
                 variables.page++;
             }
             if (counter < settings.limit)

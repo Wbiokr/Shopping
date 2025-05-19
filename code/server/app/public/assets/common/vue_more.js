@@ -1,5 +1,5 @@
 /**
- * 基于vue动态分页
+ * 基於vue動態分頁
  */
 (function($) {
     var taget=null;
@@ -19,7 +19,7 @@
         init: function(options) {
             var me=this;
             if(taget==null){
-                Ap.msg.error("列表容器错误");
+                Ap.msg.error("列表容器錯誤");
                 return null;
             }
             if (options) {
@@ -28,7 +28,7 @@
             $.extend(settings.vue, {
                 el: taget[0],
                 data: {
-                    load_more_msg:'下滑加载更多',
+                    load_more_msg:'下滑加載更多',
                     listData: []
                 },
                 methods: {
@@ -51,7 +51,7 @@
             });
             app=new Vue(settings.vue);
             if (settings.scroll) {
-                //开始监控滚动栏scroll
+                //開始監控滾動欄scroll
                 $(window).scroll(function(){
                     var scrollTop = $(this).scrollTop();
                     var scrollHeight = $(document).height();
@@ -66,18 +66,19 @@
             return me;
         },
         getData: function() {
-            //taget.append('<div id="waitbox"><p>载入中..</p></div>');
+            //taget.append('<div id="waitbox"><p>載入中..</p></div>');
             var data = settings.params;
             data['page'] = page;
             data['limit'] = settings.limit;
+            console.log(555, settings)
             Ap.request.get(settings.url,data,function (res) {
                 //$("#waitbox").remove();
                 if(res.success){
                     if(page>1){
                         if(res.result.length==0){
-                            app.load_more_msg='已经到底啦';
+                            app.load_more_msg='已經到底啦';
                         }else{
-                            app.load_more_msg='下滑加载更多';
+                            app.load_more_msg='下滑加載更多';
                         }
                         app.listData=app.listData.concat(res.result);
                     }else{
@@ -91,7 +92,7 @@
             if(params)
                 $.extend(settings.params, params);
             page=1;
-            app.load_more_msg='下滑加载更多';
+            app.load_more_msg='下滑加載更多';
             this.getData();
         }
     };

@@ -1,5 +1,5 @@
 /**
- * 统一错误处理
+ * 統一錯誤處理
  * @returns {Function}
  */
 module.exports = () => {

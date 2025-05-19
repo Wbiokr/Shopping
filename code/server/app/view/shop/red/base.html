@@ -93,7 +93,7 @@
 <div id="wrapper">
     <div id="demo-panel">
         <span aria-hidden="true" data-icon="&#xe01c;" class="panle-toggle icomoon"></span>
-        <h5>选择一种颜色吧</h5>
+        <h5>選擇一種顏色吧</h5>
         <div class="style-preview yellow-box" data-style="yellow"></div>
         <div class="style-preview red-box" data-style="red"></div>
         <div class="style-preview blue-box" data-style="blue"></div>
@@ -102,13 +102,13 @@
         <div class="style-preview brown-box" data-style="brown"></div>
         <div class="style-preview deep-blue-box" data-style="deep-blue"></div>
         <div class="style-preview orange-box" data-style="orange"></div>
-        <h5>局部定制</h5>
-        <p>选择区域,更换背景</p>
+        <h5>局部定製</h5>
+        <p>選擇區域,更換背景</p>
         <select name="pattren-for" style="width: 150px;" id="pattren-for">
-            <option value="body">整体</option>
-            <option value="header">导航</option>
-            <option value="#top-wrapper">顶部</option>
-            <option value="#main-container">内容</option>
+            <option value="body">整體</option>
+            <option value="header">導航</option>
+            <option value="#top-wrapper">頂部</option>
+            <option value="#main-container">內容</option>
             <option value="footer">底部</option>
         </select>
         <div class="pattern-preview p1"></div>
@@ -165,21 +165,21 @@
                    <!-- <form action="#" method="get">
                         <div class="top-select-menu">
                             <div>
-                                <a class="active_option" title="人民币">￥</a>
+                                <a class="active_option" title="人民幣">￥</a>
                             </div>
                             <i class="icomoon" aria-hidden="true" data-icon="&#xe00f;"></i>
                         </div>
                     </form>-->
-                    <a style="color:#cacaca;" href="/">首页</a>
+                    <a style="color:#cacaca;" href="/">首頁</a>
                 </div><!-- end #currency -->
             </div>
             <div class="grid_7 account-links">
                 {% if uid %}
-                <a href="/shop/uc"><i class="icomoon" aria-hidden="true" data-icon="&#x2191;"></i>欢迎您, {{nickname}}</a>
+                <a href="/shop/uc"><i class="icomoon" aria-hidden="true" data-icon="&#x2191;"></i>歡迎您, {{nickname}}</a>
                 <a href="javascript:void(0) " onclick="logout()"><i class="icomoon" aria-hidden="true" data-icon="&#x2617;"></i>退出</a>
-                <a href="/shop/order"><i class="ico iconfont icon-dianpu" ></i>我的订单</a>
+                <a href="/shop/order"><i class="ico iconfont icon-dianpu" ></i>我的訂單</a>
                 {% else %}
-                <a href="/shop/login"><i class="icomoon" aria-hidden="true" data-icon="&#x2617;"></i>登录</a>
+                <a href="/shop/login"><i class="icomoon" aria-hidden="true" data-icon="&#x2617;"></i>登錄</a>
                 {% endif %}
             </div>
             {% if uid %}
@@ -188,7 +188,7 @@
                     <span class="cart-top"><i class="cart-top-icon icomoon" aria-hidden="true" data-icon="&#x25e0;"></i>
                     </span>
                     <a class="checkout-icon right icomoon" onclick="checkout()" aria-hidden="true" data-icon="&#xe014;" href="javascript:void(0);"></a>
-                    <div class="cart-data">购物车 (<span class="cart_num">{{cartCount}}</span>) 件</div>
+                    <div class="cart-data">購物車 (<span class="cart_num">{{cartCount}}</span>) 件</div>
                     <div class="cart-dropdown hidden_box">
                         <div id="cart-list">
                             {% for goods in cart %}
@@ -209,23 +209,23 @@
                             <table class="mini-cart-total">
                                 <tbody>
                                 <tr>
-                                    <td class="left"><span>小计: </span></td>
+                                    <td class="left"><span>小計: </span></td>
                                     <td class="right"><span class="cart_xj">￥0.00</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="left"><span>优惠: </span></td>
+                                    <td class="left"><span>優惠: </span></td>
                                     <td class="right"><span>￥0.00</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="left"><span>总计: </span></td>
+                                    <td class="left"><span>總計: </span></td>
                                     <td class="right"><span class="total cart_total">￥0.00</span></td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div><!-- end .cart-list -->
                         <div class="checkout clearfix">
-                            <a class="cart left" href="/shop/cart"><i class="icomoon" aria-hidden="true" data-icon="&#x25e0;"></i>查看购物车</a>
-                            <a class="check right"  onclick="checkout()" href="javascript:void(0);">去结算<i class="icomoon" aria-hidden="true" data-icon="&#xe014;"></i></a>
+                            <a class="cart left" href="/shop/cart"><i class="icomoon" aria-hidden="true" data-icon="&#x25e0;"></i>查看購物車</a>
+                            <a class="check right"  onclick="checkout()" href="javascript:void(0);">去結算<i class="icomoon" aria-hidden="true" data-icon="&#xe014;"></i></a>
                         </div>
                     </div>
                 </div><!-- end .mini-cart -->
@@ -242,12 +242,12 @@
                 <a href="/"><img src="{{baseConfig.logo}}" alt="logo" /></a>
             </div>
             <nav class="grid_8 right omega">
-                <div class="mobile-menu-trigger"><span class="icomoon mobile-icon-menu" aria-hidden="true">&#xe008;</span><a class="menu-label">选择一个页面</a></div>
+                <div class="mobile-menu-trigger"><span class="icomoon mobile-icon-menu" aria-hidden="true">&#xe008;</span><a class="menu-label">選擇一個頁面</a></div>
                 <ul class="primary-nav">
-                    <li><a {% if active_page=='1' %}class="active-page" {% endif %} href="/">首页</a></li>
-                    <li><a {% if active_page=='2' %}class="active-page" {% endif %} href="/shop/goods">产品</a></li>
+                    <li><a {% if active_page=='1' %}class="active-page" {% endif %} href="/">首頁</a></li>
+                    <li><a {% if active_page=='2' %}class="active-page" {% endif %} href="/shop/goods">產品</a></li>
                     <li><a {% if active_page=='3' %}class="active-page" {% endif %} href="/shop/blog">博客</a></li>
-                    <li><a {% if active_page=='4' %}class="active-page" {% endif %} href="/shop/contact">联系我们</a></li>
+                    <li><a {% if active_page=='4' %}class="active-page" {% endif %} href="/shop/contact">聯繫我們</a></li>
                     <li class="search-wrapper">
                         <a href="#" aria-hidden="true" data-icon="&#x2610;" class="search-popup-trigger icomoon"></a>
                         <div id="top-search-wrapper">
@@ -274,28 +274,28 @@
                 <span class="icomoon" aria-hidden="true" data-icon="&#xe078;"></span>
                 <div class="base-info-data">
                     <h4>注重安全</h4>
-                    <span>信息安全防护</span>
+                    <span>信息安全防護</span>
                 </div>
             </div>
             <div class="info-block grid_3">
                 <span class="icomoon" aria-hidden="true" data-icon="&#x25df;"></span>
                 <div class="base-info-data">
-                    <h4>客户至上 </h4>
-                    <span>最大程度满足客户需求</span>
+                    <h4>客戶至上 </h4>
+                    <span>最大程度滿足客戶需求</span>
                 </div>
             </div>
             <div class="info-block grid_3">
                 <span class="icomoon" aria-hidden="true" data-icon="&#xe06a;"></span>
                 <div class="base-info-data">
-                    <h4>专业开发</h4>
-                    <span>没有做不到,只有想不到 </span>
+                    <h4>專業開發</h4>
+                    <span>沒有做不到,只有想不到 </span>
                 </div>
             </div>
             <div class="info-block grid_3 omega">
                 <span class="icomoon" aria-hidden="true" data-icon="&#xe012;"></span>
                 <div class="base-info-data">
                     <h4>高效快速</h4>
-                    <span>扁平化管理,极速反应 </span>
+                    <span>扁平化管理,極速反應 </span>
                 </div>
             </div>
         </div>
@@ -305,16 +305,16 @@
         <div class="container_12">
             <div class="grid_4 widget-box">
                 <div class="box-heading">
-                    <h4>关于我们</h4>
+                    <h4>關於我們</h4>
                 </div>
                 <ul class="list-links">
-                    <li><a href="#">团队介绍</a></li>
-                    <li><a href="#">开发能力</a></li>
+                    <li><a href="#">團隊介紹</a></li>
+                    <li><a href="#">開發能力</a></li>
                 </ul>
             </div>
             <div class="grid_4 widget-box">
                 <div class="box-heading">
-                    <h4>联系我们</h4>
+                    <h4>聯繫我們</h4>
                 </div>
                 <ul class="contact-info">
                     <li><i class="icomoon" aria-hidden="true" data-icon="&#x25df;"></i><span>{{shop.serviceCall}}</span></li>
@@ -332,7 +332,7 @@
             </div>
             <div class="footer-base">
                 <div class="grid_6 copyright">
-                    <p>{{baseConfig.CopyRight}}<a href="http://www.miitbeian.gov.cn">备案号：{{baseConfig.ICPNO}}</a></p>
+                    <p>{{baseConfig.CopyRight}}<a href="http://www.miitbeian.gov.cn">備案號：{{baseConfig.ICPNO}}</a></p>
                 </div>
                 <div class="grid_6 payments omega">
                     <ul>
@@ -349,7 +349,7 @@
     let cartCount="{{cartCount}}";
     function checkout() {
         if(cartCount<=0)
-            Ap.msg.warning("购物车还是空的")
+            Ap.msg.warning("購物車還是空的")
         else{
             window.location="/shop/checkout";
         }
@@ -367,10 +367,10 @@
                 $(".div_cart_"+id).slideUp('fast',function(){
                     $(".div_cart_"+id).remove();
                     setAccount();
-                    Ap.msg.success("已从购物车中删除");
+                    Ap.msg.success("已從購物車中刪除");
                 });
             }else{
-                Ap.msg.error("删除失败");
+                Ap.msg.error("刪除失敗");
             }
         });
     }
@@ -378,9 +378,9 @@
         Ap.request.del("/shop/wishlist/"+id,{},function (res) {
             if (res.success) {
                 $(".div_wishlist_"+id).remove();
-                Ap.msg.success("已删除收藏");
+                Ap.msg.success("已刪除收藏");
             }else{
-                Ap.msg.error("删除失败");
+                Ap.msg.error("刪除失敗");
             }
         });
     }
@@ -389,17 +389,17 @@
             if (res.success) {
                 Ap.msg.success("已收藏");
             }else{
-                Ap.msg.error("收藏失败");
+                Ap.msg.error("收藏失敗");
             }
         });
     }
     function addCompare(goodsID) {
-        Ap.msg.success("功能还在开发中，尽请期待！");
+        Ap.msg.success("功能還在開發中，盡請期待！");
     }
     function addCart(goodsID,num,price) {
         Ap.request.post("/shop/cart",{goodsID,num,price},function (res) {
             if(res.success){
-                Ap.msg.success("已加入购物车");
+                Ap.msg.success("已加入購物車");
                 let goods=res.result[0];
                 let isNew=res.result[1];
                 if(isNew) {
@@ -420,7 +420,7 @@
                     setAccount();
                 }
             }else{
-                Ap.msg.error("加入购物车失败");
+                Ap.msg.error("加入購物車失敗");
             }
         });
     }

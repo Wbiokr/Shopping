@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-    <title>登陆</title>
+    <title>登陸</title>
     <link href="/public/css/login.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/public/js/icheck/style.css"/>
     <script src="/public/js/icheck/icheck.min.js"></script>
@@ -15,7 +15,7 @@
 {% endblock %}
 {% block header %}{% endblock %}
 {% block body %}
-<!--头部-->
+<!--頭部-->
     <div class="login-header">
         <div class="wrapper">
             <a href="" class="logo">
@@ -32,23 +32,23 @@
             <div class="login-box">
                 <form action="" method="" id="form_login">
                     <div class="box-hd">
-                        <span class="tit">用户登录</span>
-                        <a href="/signIn">注册新账号</a>
+                        <span class="tit">用戶登錄</span>
+                        <a href="/signIn">註冊新賬號</a>
                     </div>
                     <label class="txtin-box">
                         <span class="ico user"></span>
-                        <input class="txtin" type="text" v-model="username" v-on:focus="focus" name="username" minlength="3" placeholder="用户名" required/>
+                        <input class="txtin" type="text" v-model="username" v-on:focus="focus" name="username" minlength="3" placeholder="用戶名" required/>
                     </label>
                     <label class="txtin-box">
                         <span class="ico pwd"></span>
-                        <input class="txtin" type="password" v-model="password" v-on:focus="focus" name="password" minlength="6" placeholder="密码" required/>
+                        <input class="txtin" type="password" v-model="password" v-on:focus="focus" name="password" minlength="6" placeholder="密碼" required/>
                         <label id="label_error" style="color: red;"></label>
                     </label>
                     <div class="clearfix tool">
-                        <label class="check"><input type="checkbox" v-model="rememberMe" name="rememberMe" />自动登录</label>
-                        <a class="find" href="">忘记密码？</a>
+                        <label class="check"><input type="checkbox" v-model="rememberMe" name="rememberMe" />自動登錄</label>
+                        <a class="find" href="">忘記密碼？</a>
                     </div>
-                    <input class="tj" type="submit" value="登&ensp;录" />
+                    <input class="tj" type="submit" value="登&ensp;錄" />
                    <!-- <div class="other-way clearfix">
                         <a class="item first" href="">
                             <img src="/public/img/login/weixin.jpg" alt="" class="ico" />
@@ -111,6 +111,6 @@
 {% endblock %}
 {% block footer %}
 <div class="login-footer">
-    天启工作室 版权所有 Copyright © 2016-2018   备案号：
+    天啟工作室 版權所有 Copyright © 2016-2018   備案號：
 </div>
 {% endblock %}

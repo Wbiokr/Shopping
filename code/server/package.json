@@ -1,11 +1,12 @@
 {
   "name": "电子表",
   "version": "1.0.0",
-  "description": "apshop plat",
+  "description": "",
   "scripts": {
     "dev": "egg-bin dev",
-    "start": "egg-scripts start --port=7001 --daemon --title=apshop",
-    "stop": "egg-scripts stop --title=apshop",
+    "start": "npm run lang && egg-scripts start --port=7001 --daemon --title=WBIOKR",
+    "stop": "egg-scripts stop --title=WBIOKR",
+    "lang": "node lang.js",
     "migrate:new": "egg-sequelize migration:create",
     "migrate:up": "egg-sequelize db:migrate",
     "migrate:down": "egg-sequelize db:migrate:undo"

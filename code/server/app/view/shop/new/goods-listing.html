@@ -16,10 +16,10 @@
     <!--=== Breadcrumbs v4 ===-->
     <div class="breadcrumbs-v4">
         <div class="container">
-            <span class="page-name">商品列表页面</span>
+            <span class="page-name">商品列表頁面</span>
             <!-- <h1>Maecenas <span ÷class="shop-green">enim</span> sapien</h1> -->
             <ul class="breadcrumb-v4-in p-tb-20">
-                <li><a href="/">首页</a></li>
+                <li><a href="/">首頁</a></li>
                 <!-- <li><a href="">Product</a></li> -->
                 <li class="active">商品列表</li>
             </ul>
@@ -35,7 +35,7 @@
                 <div class="row margin-bottom-5">
                     <div class="col-sm-4 result-category">
                         <h2>所有商品</h2>
-                        <small class="shop-bg-red badge-results">总共<span id="page-total">--</span>条数据</small>
+                        <small class="shop-bg-red badge-results">總共<span id="page-total">--</span>條數據</small>
                     </div>
                     <div class="col-sm-8">
                         <ul class="list-inline clear-both">
@@ -47,20 +47,20 @@
                                 <h3>排序 :</h3>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                        <span class="select-val">综合</span> <span class="caret"></span>
+                                        <span class="select-val">綜合</span> <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">综合</a></li>
+                                        <li><a href="#">綜合</a></li>
                                         <li><a href="#">新品</a></li>
-                                        <li><a href="#">价格</a></li>
-                                        <li><a href="#">销量</a></li>
+                                        <li><a href="#">價格</a></li>
+                                        <li><a href="#">銷量</a></li>
                                         <!-- <li><a href="#">收藏量</a></li> -->
                                         <!-- <li><a href="#">New Arrived</a></li> -->
                                     </ul>
                                 </div>
                             </li>
                             <li class="sort-list-btn size-key-container">
-                                <h3>单页条数 :</h3>
+                                <h3>單頁條數 :</h3>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                         <span class="select-val">9</span> <span class="caret"></span>
@@ -219,7 +219,7 @@
             const collectInfo = collectGoods.find(o => o.goodsID == id)
             console.log(id, collectInfo, collectGoods)
             if (!collectInfo) {
-              Ap.msg.error('操作失败')
+              Ap.msg.error('操作失敗')
               return
             }
             delWishList(collectInfo.id)
@@ -244,11 +244,11 @@
 
     function onList(page) {
       var keysMap = {
-        '综合': 'opAt',
+        '綜合': 'opAt',
         '新品': 'upAt',
-        '价格': 'price',
-        '销量': 'numSale',
-        // '销量': 'stock',
+        '價格': 'price',
+        '銷量': 'numSale',
+        // '銷量': 'stock',
       }
       Ap.request.get('/shop/goodsQuery', {
         page: page,
@@ -265,7 +265,7 @@
               pageNum: Math.ceil(res.result.pagination.total / res.result.pagination.pageSize),
               current: page,
               backfun: function(e) {
-                // console.log(e);//回调
+                // console.log(e);//回調
                 onList(e.current)
               }
             });
@@ -279,7 +279,7 @@
               html += '<div class="product-img product-img-brd">'
               html += '<a href="/shop/goods/' + item.goodsID +'"><img class="full-width img-responsive" src="'+ item.imgurl +'" alt=""></a>'
               // html += '<a class="product-review" href="shop-ui-inner.html">Quick review</a>''
-              html += '<a class="add-to-cart add-to-cart-btn" data-id="'+ item.goodsID +'" data-price="'+ item.price +'" href="#"><i class="fa fa-shopping-cart"></i>加入购物车</a>'
+              html += '<a class="add-to-cart add-to-cart-btn" data-id="'+ item.goodsID +'" data-price="'+ item.price +'" href="#"><i class="fa fa-shopping-cart"></i>加入購物車</a>'
               if (item.newFlag == 1) {
                 html += '<div class="shop-rgba-dark-green rgba-banner">NEW</div>'
               }
@@ -309,16 +309,13 @@
                 html += '</div>'
               }
 
-              $('.filter-results').html('')
-
-              // setTimeout(()=>{
-
-                $('.filter-results').html(html)
-                getWishList()
-              // },400)
             });
+            $('.filter-results').html('')
+
+            $('.filter-results').html(html)
+            getWishList()
           }else{
-              Ap.msg.error(res.msg || '请求异常');
+              Ap.msg.error(res.msg || '請求異常');
           }
       })
     }

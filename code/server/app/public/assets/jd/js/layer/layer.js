@@ -1,7 +1,7 @@
 ﻿/*!
 
- @Name：layer v2.1 弹层组件
- @Author：贤心
+ @Name：layer v2.1 彈層組件
+ @Author：賢心
  @Site：http://layer.layui.com
  @License：LGPL
         
@@ -17,18 +17,18 @@ var $, win, ready = {
         return jsPath.substring(0, jsPath.lastIndexOf("/") + 1);
     }(),
     
-    //屏蔽Enter触发弹层
+    //屏蔽Enter觸發彈層
     enter: function(e){
         if(e.keyCode === 13) e.preventDefault();
     },
     config: {}, end: {},
     btn: ['&#x786E;&#x5B9A;','&#x53D6;&#x6D88;'],
     
-    //五种原始层模式
+    //五種原始層模式
     type: ['dialog', 'page', 'iframe', 'loading', 'tips']
 };
 
-//默认内置方法。
+//默認內置方法。
 var layer = {
     v: '2.1',
     ie6: !!window.ActiveXObject&&!window.XMLHttpRequest,
@@ -50,7 +50,7 @@ var layer = {
         return this;
     },
     
-    //载入配件
+    //載入配件
     use: function(module, fn, readyMethod){
         var i = 0, head = $('head')[0];
         var module = module.replace(/\s/g, '');
@@ -66,7 +66,7 @@ var layer = {
         if(!$('#'+ id)[0]){
             head.appendChild(node);
         }
-        //轮询加载就绪
+        //輪詢加載就緒
         ;(function poll() {
             ;(iscss ? parseInt($('#'+id).css('width')) === 1989 : layer[readyMethod||id]) ? function(){
                 fn && fn();
@@ -85,7 +85,7 @@ var layer = {
         return this;
     },
     
-    //各种快捷引用
+    //各種快捷引用
     alert: function(content, options, yes){
         var type = typeof options === 'function';
         if(type) yes = options;
@@ -109,7 +109,7 @@ var layer = {
         }, type ? {} : options));
     },
     
-    msg: function(content, options, end){ //最常用提示层
+    msg: function(content, options, end){ //最常用提示層
         var type = typeof options === 'function', rskin = ready.config.skin;
         var skin = (rskin ? rskin + ' ' + rskin + '-msg' : '')||'layui-layer-msg';
         var shift = doms.anim.length - 1;
@@ -163,11 +163,11 @@ var Class = function(setings){
 
 Class.pt = Class.prototype;
 
-//缓存常用字符
+//緩存常用字符
 var doms = ['layui-layer', '.layui-layer-title', '.layui-layer-main', '.layui-layer-dialog', 'layui-layer-iframe', 'layui-layer-content', 'layui-layer-btn', 'layui-layer-close'];
 doms.anim = ['layui-anim', 'layui-anim-01', 'layui-anim-02', 'layui-anim-03', 'layui-anim-04', 'layui-anim-05', 'layui-anim-06'];
 
-//默认配置
+//默認配置
 Class.pt.config = {
     type: 0,
     shade: 0.3,
@@ -177,12 +177,12 @@ Class.pt.config = {
     offset: 'auto',
     area: 'auto',
     closeBtn: 1,
-    time: 0, //0表示不自动关闭
+    time: 0, //0表示不自動關閉
     zIndex: 19891014, 
     maxWidth: 360,
     shift: 0,
     icon: -1,
-    scrollbar: true, //是否允许浏览器滚动条
+    scrollbar: true, //是否允許瀏覽器滾動條
     tips: 2
 };
 
@@ -200,7 +200,7 @@ Class.pt.vessel = function(conType, callback){
         //遮罩
         config.shade ? ('<div class="layui-layer-shade" id="layui-layer-shade'+ times +'" times="'+ times +'" style="'+ ('z-index:'+ (zIndex-1) +'; background-color:'+ (config.shade[1]||'#000') +'; opacity:'+ (config.shade[0]||config.shade) +'; filter:alpha(opacity='+ (config.shade[0]*100||config.shade*100) +');') +'"></div>') : '',
         
-        //主体
+        //主體
         '<div class="'+ doms[0] +' '+ (doms.anim[config.shift]||'') + (' layui-layer-'+ready.type[config.type]) + (((config.type == 0 || config.type == 2) && !config.shade) ? ' layui-layer-border' : '') + ' ' + (config.skin||'') +'" id="'+ doms[0] + times +'" type="'+ ready.type[config.type] +'" times="'+ times +'" showtime="'+ config.time +'" conType="'+ (conType ? 'object' : 'string') +'" style="z-index: '+ zIndex +'; width:'+ config.area[0] + ';height:' + config.area[1] + (config.fix ? '' : ';position:absolute;') +'">'
             + (conType && config.type != 2 ? '' : titleHTML)
             +'<div class="layui-layer-content'+ ((config.type == 0 && config.icon !== -1) ? ' layui-layer-padding' :'') + (config.type == 3 ? ' layui-layer-loading'+config.icon : '') +'">'
@@ -225,7 +225,7 @@ Class.pt.vessel = function(conType, callback){
     return that;
 };
 
-//创建骨架
+//創建骨架
 Class.pt.creat = function(){
     var that = this, config = that.config, times = that.index, nodeIndex;
     var content = config.content, conType = typeof content === 'object';
@@ -284,7 +284,7 @@ Class.pt.creat = function(){
         $(document).off('keydown', ready.enter);
     });
 
-    //坐标自适应浏览器窗口尺寸
+    //座標自適應瀏覽器窗口尺寸
     config.type == 4 ? that.tips() : that.offset();
     if(config.fix){
         win.on('resize', function(){
@@ -300,11 +300,11 @@ Class.pt.creat = function(){
     that.move().callback();
 };
 
-//自适应
+//自適應
 Class.pt.auto = function(index){
     var that = this, config = that.config, layero = $('#'+ doms[0] + index);
     if(config.area[0] === '' && config.maxWidth > 0){
-        //为了修复IE7下一个让人难以理解的bug
+        //為了修復IE7下一個讓人難以理解的bug
         if(/MSIE 7/.test(navigator.userAgent) && config.btn){
             layero.width(layero.innerWidth());
         }
@@ -335,7 +335,7 @@ Class.pt.auto = function(index){
     return that;
 };
 
-//计算坐标
+//計算座標
 Class.pt.offset = function(){
     var that = this, config = that.config, layero = that.layero;
     var area = [layero.outerWidth(), layero.outerHeight()];
@@ -389,7 +389,7 @@ Class.pt.tips = function(){
         };
     };
     
-    //辨别tips的方位
+    //辨別tips的方位
     goal.where = [function(){ //上                
         goal.autoLeft();
         goal.tipTop = goal.top - layArea[1] - 10;
@@ -409,7 +409,7 @@ Class.pt.tips = function(){
     }];
     goal.where[guide-1]();
     
-    /* 8*2为小三角形占据的空间 */
+    /* 8*2為小三角形佔據的空間 */
     if(guide === 1){
         goal.top - (win.scrollTop() + layArea[1] + 8*2) < 0 && goal.where[2]();
     } else if(guide === 2){
@@ -427,7 +427,7 @@ Class.pt.tips = function(){
     layero.css({left: goal.tipLeft, top: goal.tipTop});
 }
 
-//拖拽层
+//拖拽層
 Class.pt.move = function(){
     var that = this, config = that.config, conf = {
         setY: 0,
@@ -514,7 +514,7 @@ Class.pt.callback = function(){
     }
     layer.ie6 && that.IE6(layero);
     
-    //按钮
+    //按鈕
     layero.find('.'+ doms[6]).children('a').on('click', function(){
         var index = $(this).index();
         config['btn'+(index+1)] && config['btn'+(index+1)](that.index, layero);
@@ -533,10 +533,10 @@ Class.pt.callback = function(){
         close === false || layer.close(that.index);
     }
     
-    //右上角关闭回调
+    //右上角關閉回調
     layero.find('.'+ doms[7]).on('click', cancel);
     
-    //点遮罩关闭
+    //點遮罩關閉
     if(config.shadeClose){
         $('#layui-layer-shade'+ that.index).on('click', function(){
             layer.close(that.index);
@@ -549,7 +549,7 @@ Class.pt.callback = function(){
         config.min && config.min(layero);
     });
     
-    //全屏/还原
+    //全屏/還原
     layero.find('.layui-layer-max').on('click', function(){
         if($(this).hasClass('layui-layer-maxmin')){
             layer.restore(that.index);
@@ -563,7 +563,7 @@ Class.pt.callback = function(){
     config.end && (ready.end[that.index] = config.end);
 };
 
-//for ie6 恢复select
+//for ie6 恢復select
 ready.reselect = function(){
     $.each($('select'), function(index , value){
         var sthis = $(this);
@@ -577,14 +577,14 @@ ready.reselect = function(){
 Class.pt.IE6 = function(layero){
     var that = this, _ieTop = layero.offset().top;
     
-    //ie6的固定与相对定位
+    //ie6的固定與相對定位
     function ie6Fix(){
         layero.css({top : _ieTop + (that.config.fix ? win.scrollTop() : 0)});
     };
     ie6Fix();
     win.scroll(ie6Fix);
 
-    //隐藏select
+    //隱藏select
     $('select').each(function(index , value){
         var sthis = $(this);
         if(!sthis.parents('.'+doms[0])[0]){
@@ -594,11 +594,11 @@ Class.pt.IE6 = function(layero){
     });
 };
 
-//需依赖原型的对外方法
+//需依賴原型的對外方法
 Class.pt.openLayer = function(){
     var that = this;
     
-    //置顶当前窗口
+    //置頂當前窗口
     layer.zIndex = that.config.zIndex;
     layer.setTop = function(layero){
         var setZindex = function(){
@@ -633,22 +633,22 @@ ready.rescollbar = function(index){
     }
 };
 
-/** 内置成员 */
+/** 內置成員 */
 
 window.layer = layer;
 
-//获取子iframe的DOM
+//獲取子iframe的DOM
 layer.getChildFrame = function(selector, index){
     index = index || $('.'+doms[4]).attr('times');
     return $('#'+ doms[0] + index).find('iframe').contents().find(selector);    
 };
 
-//得到当前iframe层的索引，子iframe时使用
+//得到當前iframe層的索引，子iframe時使用
 layer.getFrameIndex = function(name){
     return $('#'+ name).parents('.'+doms[4]).attr('times');
 };
 
-//iframe层自适应宽高
+//iframe層自適應寬高
 layer.iframeAuto = function(index){
     if(!index) return;
     var heg = layer.getChildFrame('html', index).outerHeight();
@@ -664,7 +664,7 @@ layer.iframeSrc = function(index, url){
     $('#'+ doms[0] + index).find('iframe').attr('src', url);
 };
 
-//设定层的样式
+//設定層的樣式
 layer.style = function(index, options){
     var layero = $('#'+ doms[0] + index), type = layero.attr('type');
     var titHeight = layero.find(doms[1]).outerHeight() || 0;
@@ -690,7 +690,7 @@ layer.min = function(index, options){
     ready.rescollbar(index);
 };
 
-//还原
+//還原
 layer.restore = function(index){
     var layero = $('#'+ doms[0] + index), area = layero.attr('area').split(',');
     var type = layero.attr('type');
@@ -727,13 +727,13 @@ layer.full = function(index){
     }, 100);
 };
 
-//改变title
+//改變title
 layer.title = function(name, index){
     var title = $('#'+ doms[0] + (index||layer.index)).find(doms[1]);
     title.html(name);
 };
 
-//关闭layer总方法
+//關閉layer總方法
 layer.close = function(index){
     var layero = $('#'+ doms[0] + index), type = layero.attr('type');
     if(!layero[0]) return;
@@ -763,7 +763,7 @@ layer.close = function(index){
     delete ready.end[index]; 
 };
 
-//关闭所有层
+//關閉所有層
 layer.closeAll = function(type){
     $.each($('.'+doms[0]), function(){
         var othis = $(this);

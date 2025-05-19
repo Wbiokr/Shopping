@@ -1,5 +1,5 @@
 /**
- * 全部独立函数
+ * 全部獨立函數
  * @type
  */
 const moment = require('moment');
@@ -64,34 +64,34 @@ module.exports = {
         console.log('******** File created from base64 encoded string ********');
         return true;
     },
-    //base64编码
+    //base64編碼
     str2base64(str){
         let b = new Buffer(str);
         return b.toString('base64');
     },
-    //base64解码
+    //base64解碼
     base642str(str){
         let b = new Buffer(str, 'base64');
         return b.toString();
     },
     //加密
     cryptoStr(str){
-        let cipher=crypto.createCipher("aes128","apshop147852");
+        let cipher=crypto.createCipher("aes128","wbiokr147852");
         let encrypted=cipher.update(str,"utf8","hex");
         encrypted+=cipher.final("hex");
         return encrypted;
     },
     //解密
     decryptoStr(str){
-        let decipher=crypto.createDecipher("aes128","apshop147852");
+        let decipher=crypto.createDecipher("aes128","wbiokr147852");
         let decrypted=decipher.update(str,"hex","utf8");
         decrypted+=decipher.final("utf8");
         return decrypted;
     },
     /**
      * @param {String} recipient 收件人
-     * @param {String} subject 发送的主题
-     * @param {String} html 发送的html内容
+     * @param {String} subject 發送的主題
+     * @param {String} html 發送的html內容
      */
     send(obj) {
         let config=this.app.config;
@@ -127,17 +127,17 @@ module.exports = {
     <div style="width:100%; max-width:640px; margin:0 auto;">
         <div style="padding:0 25px; height:100px; background-color:#FF6C2C; color:#fff;">
             <div style=" display:inline-block; vertical-align:middle; padding-right:10px; margin-right:10px; border-right:1px solid #fff; float:left; margin-top:35px;"><img src="javascript:;" style="max-width:105px; max-height:24px;"></div>
-            <span style="display:inline-block; height:24px; margin-top:35px; line-height:24px; float:left; font-size:16px;">开发如此简单</span></div>
+            <span style="display:inline-block; height:24px; margin-top:35px; line-height:24px; float:left; font-size:16px;">開發如此簡單</span></div>
         <div style="padding:35px 25px; font-size:16px;">
-            <h4 style="font-size:16px; color:#4A4A4A; font-weight:normal; padding:0; margin:0; padding-bottom:20px; ">点击下面链接以完成验证</h4>
-            <p style="padding:10px 35px; line-height:26px; word-break:break-all;"><a style="display:inline-block; padding:4px 15px; background-color:#FF6C2C; color:#fff; text-decoration:none; margin-bottom:15px;" href="${obj.href}" target="_blank">立即验证</a><br>
+            <h4 style="font-size:16px; color:#4A4A4A; font-weight:normal; padding:0; margin:0; padding-bottom:20px; ">點擊下面鏈接以完成驗證</h4>
+            <p style="padding:10px 35px; line-height:26px; word-break:break-all;"><a style="display:inline-block; padding:4px 15px; background-color:#FF6C2C; color:#fff; text-decoration:none; margin-bottom:15px;" href="${obj.href}" target="_blank">立即驗證</a><br>
                 <a href="${obj.href}" target="_blank">${obj.href} </a></p>
             <div style="text-align:right; font-size:14px; margin-top:50px;">Inmyjs工作室</div>
         </div>
         <div style="padding:0 25px; background-color:#F6F6F6; color:#979797; font-size:14px;">
-            <p style="padding:20px 0; line-height:20px;">如果您并未发过此请求，可能是因为其他用户在验证邮箱时误输入了您的邮箱地址而使你收到了 这封邮件，请忽略此封邮件，无需进行任何操作。</p>
-            <p style="padding:5px 0; line-height:24px">如有任何问题，请与我们联系，我们将尽快为你解答。<br>
-                Email:<span style="color:#FF6C2C;"><a href="573391755@qq.com" target="_blank">573391755@qq.com</a></span>&nbsp;&nbsp; 电话：<span><span style="color:#FF6C2C; border-bottom:1px dashed #ccc;z-index:1" t="7" onclick="return false;" data=""></span></span></p>
+            <p style="padding:20px 0; line-height:20px;">如果您並未發過此請求，可能是因為其他用戶在驗證郵箱時誤輸入了您的郵箱地址而使你收到了 這封郵件，請忽略此封郵件，無需進行任何操作。</p>
+            <p style="padding:5px 0; line-height:24px">如有任何問題，請與我們聯繫，我們將盡快為你解答。<br>
+                Email:<span style="color:#FF6C2C;"><a href="573391755@qq.com" target="_blank">573391755@qq.com</a></span>&nbsp;&nbsp; 電話：<span><span style="color:#FF6C2C; border-bottom:1px dashed #ccc;z-index:1" t="7" onclick="return false;" data=""></span></span></p>
         </div>
     </div>
     <br><br>`;
@@ -149,16 +149,16 @@ module.exports = {
     <div style="width:100%; max-width:640px; margin:0 auto;">
         <div style="padding:0 25px; height:100px; background-color:#FF6C2C; color:#fff;">
             <div style=" display:inline-block; vertical-align:middle; padding-right:10px; margin-right:10px; border-right:1px solid #fff; float:left; margin-top:35px;"><img src="javascript:;" style="max-width:105px; max-height:24px;"></div>
-            <span style="display:inline-block; height:24px; margin-top:35px; line-height:24px; float:left; font-size:16px;">系统通知</span></div>
+            <span style="display:inline-block; height:24px; margin-top:35px; line-height:24px; float:left; font-size:16px;">系統通知</span></div>
         <div style="padding:35px 25px; font-size:16px;">
             <h4 style="font-size:16px; color:#4A4A4A; font-weight:normal; padding:0; margin:0; padding-bottom:20px; ">${obj.name}</h4>
             <p style="padding:10px 35px; line-height:26px; word-break:break-all;">${obj.content}</p>
             <div style="text-align:right; font-size:14px; margin-top:50px;">Inmyjs工作室</div>
         </div>
         <div style="padding:0 25px; background-color:#F6F6F6; color:#979797; font-size:14px;">
-            <p style="padding:20px 0; line-height:20px;">如果您并未发过此请求，可能是因为其他用户在验证邮箱时误输入了您的邮箱地址而使你收到了 这封邮件，请忽略此封邮件，无需进行任何操作。</p>
-            <p style="padding:5px 0; line-height:24px">如有任何问题，请与我们联系，我们将尽快为你解答。<br>
-                Email:<span style="color:#FF6C2C;"><a href="573391755@qq.com" target="_blank">573391755@qq.com</a></span>&nbsp;&nbsp; 电话：<span><span style="color:#FF6C2C; border-bottom:1px dashed #ccc;z-index:1" t="7" onclick="return false;" data=""></span></span></p>
+            <p style="padding:20px 0; line-height:20px;">如果您並未發過此請求，可能是因為其他用戶在驗證郵箱時誤輸入了您的郵箱地址而使你收到了 這封郵件，請忽略此封郵件，無需進行任何操作。</p>
+            <p style="padding:5px 0; line-height:24px">如有任何問題，請與我們聯繫，我們將盡快為你解答。<br>
+                Email:<span style="color:#FF6C2C;"><a href="573391755@qq.com" target="_blank">573391755@qq.com</a></span>&nbsp;&nbsp; 電話：<span><span style="color:#FF6C2C; border-bottom:1px dashed #ccc;z-index:1" t="7" onclick="return false;" data=""></span></span></p>
         </div>
     </div>
     <br><br>`;

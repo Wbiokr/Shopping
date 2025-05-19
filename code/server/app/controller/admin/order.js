@@ -1,5 +1,5 @@
 /**
- *  主页Controller
+ *  主頁Controller
  * @param app
  * @returns {GoodsController}
  */
@@ -18,12 +18,12 @@ module.exports = app => {
                 where:{billNo:{[Op.like]: `%${billNo}%`},billStatus:{[Op.like]: `%${billStatus}%`},billDate:{[Op.between]: [startDate, endDate]}
                 },offset,limit
             });
-            ctx.success("查询成功!",result.rows,result.count);
+            ctx.success("查詢成功!",result.rows,result.count);
         }
         async detail(ctx){
             const order = await ctx.model.ShopOrder.findOne({where:{billNo:ctx.params.id},raw:true});
             if(!order){
-                ctx.failure("查询失败");
+                ctx.failure("查詢失敗");
                 return;
             }
             const goodsImages = await ctx.model.ShopOrderImages.findAll({
@@ -36,39 +36,39 @@ module.exports = app => {
                 imgs.push({name:img.name,url:img.imgurl,status:'finished'});
             }
             order.goodsImages=imgs;
-            ctx.success("查询成功!",order);
+            ctx.success("查詢成功!",order);
         }
         async del(ctx){
             const order = await ctx.model.ShopOrder.findById(ctx.params.id);
             if(!order){
-                ctx.failure("删除失败!");
+                ctx.failure("刪除失敗!");
                 return;
             }
             if(order.billStatus=='S'){
-                ctx.failure("已付款订单不允许删除!");
+                ctx.failure("已付款訂單不允許刪除!");
                 return;
             }
             order.destroy();
-            ctx.success("删除成功!");
+            ctx.success("刪除成功!");
         }
         async status(ctx) {
             let {billStatus, billNo,opBy} = ctx.request.body;
             let order = await ctx.model.ShopOrder.findById(billNo);
             if (!order) {
-                ctx.failure("操作失败，未查询到订单信息！");
+                ctx.failure("操作失敗，未查詢到訂單信息！");
                 return;
             }
             if(billStatus=='S'){
                 let payDate=moment();
                 let amount=Number(order.payableAmount)-Number(order.paidAmount);
                 await ctx.model.ShopPayment.create({
-                    billNo,payCode:order.payCode,payDate,uid:order.uid,paidAmount:amount,billStatus:"S",opBy,payType:'A',note:opBy+'管理员后台确认收款'
+                    billNo,payCode:order.payCode,payDate,uid:order.uid,paidAmount:amount,billStatus:"S",opBy,payType:'A',note:opBy+'管理員後臺確認收款'
                 });
             }
             order.update({
                 billStatus
             });
-            ctx.success("状态更新成功!");
+            ctx.success("狀態更新成功!");
         }
         async export(ctx) {
             try {
@@ -83,28 +83,28 @@ module.exports = app => {
                 const data = result.rows
 
                 const columns = [
-                    { header: '订单编号', key: 'billNo', width: 10 },
-                    { header: '下单时间', key: 'createTime', width: 20 },
-                    { header: '支付编号', key: 'payCode', width: 10 },
-                    { header: '客户', key: 'username', width: 30 },
-                    { header: '订单金额', key: 'billAmount', width: 20 },
-                    { header: '优惠金额', key: 'prefAmount', width: 20 },
-                    { header: '应付金额', key: 'payableAmount', width: 20 },
-                    { header: '实付金额', key: 'paidAmount', width: 20 },
-                    { header: '备注', key: 'note', width: 20 },
-                    { header: '状态', key: 'billStatus', width: 20 },
+                    { header: '訂單編號', key: 'billNo', width: 10 },
+                    { header: '下單時間', key: 'createTime', width: 20 },
+                    { header: '支付編號', key: 'payCode', width: 10 },
+                    { header: '客戶', key: 'username', width: 30 },
+                    { header: '訂單金額', key: 'billAmount', width: 20 },
+                    { header: '優惠金額', key: 'prefAmount', width: 20 },
+                    { header: '應付金額', key: 'payableAmount', width: 20 },
+                    { header: '實付金額', key: 'paidAmount', width: 20 },
+                    { header: '備註', key: 'note', width: 20 },
+                    { header: '狀態', key: 'billStatus', width: 20 },
                 ];
                 const keys = columns.map(o => o.key)
                 let csvContent = columns.map(o => o.header).join(',') + '\n';
 
                 data.forEach(row => {
-                    // 确保中文和特殊字符正确处理
+                    // 確保中文和特殊字符正確處理
                     const values = keys.map(k => row[k]);
                     csvContent += values.join(',') + '\n';
                 });
                 
-                // 4. 设置响应头
-                const fileName = encodeURIComponent('学生成绩表_' + new Date().getTime() + '.csv');
+                // 4. 設置響應頭
+                const fileName = encodeURIComponent('訂單列表_' + new Date().getTime() + '.csv');
                 ctx.set({
                     'Content-Type': 'text/csv; charset=utf-8',
                     'Content-Disposition': `attachment; filename="${fileName}"`,
@@ -112,14 +112,14 @@ module.exports = app => {
                     'Pragma': 'no-cache'
                 });
                 
-                // 5. 返回 CSV 内容（使用 UTF-8 BOM 确保 Excel 正确显示中文）
+                // 5. 返回 CSV 內容（使用 UTF-8 BOM 確保 Excel 正確顯示中文）
                 ctx.status = 200;
-                ctx.body = '\ufeff' + csvContent; // 添加 BOM 头
+                ctx.body = '\ufeff' + csvContent; // 添加 BOM 頭
 
             } catch (error) {
-                ctx.logger.error('导出 Excel 失败:', error);
+                ctx.logger.error('導出 Excel 失敗:', error);
                 ctx.status = 500;
-                ctx.body = { error: '导出失败，请重试' };
+                ctx.body = { error: '導出失敗，請重試' };
             }
             
         }

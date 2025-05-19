@@ -1,5 +1,5 @@
 /**
- * 数据库基本对象操作
+ * 數據庫基本對象操作
  */
 const { Controller } = require('egg');
 class TreeController extends Controller {
@@ -11,7 +11,7 @@ class TreeController extends Controller {
             model: ctx.model[modelClass] ,
             type: ctx.model.QueryTypes.SELECT,
         });
-        ctx.success("查询成功!", res);
+        ctx.success("查詢成功!", res);
 
     }
     async show(ctx) {
@@ -19,7 +19,7 @@ class TreeController extends Controller {
         let modelClass=model.substring(0,1).toUpperCase()+model.substring(1);
         let id = ctx.params.id;
         let res = await ctx.model[modelClass].findById(id);
-        ctx.success("查询成功!", res);
+        ctx.success("查詢成功!", res);
 
     }
     async create(ctx){
@@ -40,7 +40,7 @@ class TreeController extends Controller {
             ctx.success("更新成功!");
             return;
         }
-        ctx.failure("更新失败!");
+        ctx.failure("更新失敗!");
     }
     async destroy(ctx){
         let model=ctx.params.model;
@@ -49,10 +49,10 @@ class TreeController extends Controller {
         let res=await ctx.model[modelClass].findById(id);
         if(res){
             res.destroy();
-            ctx.success("删除成功!");
+            ctx.success("刪除成功!");
             return;
         }
-        ctx.failure("删除失败!");
+        ctx.failure("刪除失敗!");
     }
 }
 module.exports = TreeController;

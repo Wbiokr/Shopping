@@ -9,12 +9,12 @@ module.exports = app => {
         async send(ctx){
             const {email,act,code} = ctx.request.body;
             if(code!=ctx.session.captcha){
-                ctx.failure("验证码错误");
+                ctx.failure("驗證碼錯誤");
                 return;
             }
             const user=await ctx.model.User.findOne({where:{username:email}});
             if(!user){
-                ctx.failure("该邮件未注册过");
+                ctx.failure("該郵件未註冊過");
                 return;
             }
             let validTime=moment().add(2, 'h');
@@ -30,13 +30,13 @@ module.exports = app => {
                     });
                     ctx.helper.sendValidate({
                         to: email,
-                        title: '欢迎注册APSHOP官方网站',
+                        title: '歡迎註冊',
                         href: url,
                         success:function () {
 
                         }
                     });
-                    ctx.success("邮件发送成功");
+                    ctx.success("郵件發送成功");
                     break;
                 case "forget":
                     await ctx.model.EmailValid.create({
@@ -44,13 +44,13 @@ module.exports = app => {
                     });
                     ctx.helper.sendValidate({
                         to: email,
-                        title: 'APSHOP邮箱验证',
+                        title: '郵箱驗證',
                         href: url,
                         success:function () {
 
                         }
                     });
-                    ctx.success("邮件发送成功");
+                    ctx.success("郵件發送成功");
                     break;
                 default:
                     console.log("default");

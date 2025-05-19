@@ -1,5 +1,5 @@
 /**
- * 登录Controller
+ * 登錄Controller
  * @param app
  */
 
@@ -15,7 +15,7 @@ module.exports = app => {
             jsEncrypt.setPrivateKey(app.config.private_key);
             let _content = jsEncrypt.decrypt(content);
             if (!_content) {
-                ctx.failure("验证失败!");
+                ctx.failure("驗證失敗!");
                 return;
             }
             let json = JSON.parse(_content);
@@ -23,16 +23,16 @@ module.exports = app => {
             //const {username, password}= ctx.request.body;
             let user = await ctx.model.User.findOne({where: {username}});
             if (!user) {
-                ctx.failure("用户名或密码错误!");
+                ctx.failure("用戶名或密碼錯誤!");
                 return;
             }
             if (user.userType!='A') {
-                ctx.failure("非管理员身份禁止登录!");
+                ctx.failure("非管理員身份禁止登錄!");
                 return;
             }
             let userLogin = await ctx.model.UserLogin.findOne({where: {loginString: username}});
             if (!userLogin) {
-                ctx.failure("用户登录信息不存在!");
+                ctx.failure("用戶登錄信息不存在!");
                 return;
             }
             let res = bcrypt.compareSync(password, userLogin.password);
@@ -49,13 +49,13 @@ module.exports = app => {
                 ctx.session.uid=user.uid;
                 ctx.session.username=username;
                 ctx.session.nickname=user.nickname;
-                ctx.success("登录成功!",{token});
+                ctx.success("登錄成功!",{token});
                 return;
             } else {
-                ctx.failure("用户名或密码错误!");
+                ctx.failure("用戶名或密碼錯誤!");
                 return;
             }
-            ctx.failure("登录失败!");
+            ctx.failure("登錄失敗!");
         }
         async logout(ctx) {
             const {token}= ctx.request.body;

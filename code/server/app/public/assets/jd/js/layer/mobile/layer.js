@@ -1,10 +1,10 @@
 /*!
 
- @Name：layer mobile v1.7 弹层组件移动版
- @Author：贤心
+ @Name：layer mobile v1.7 彈層組件移動版
+ @Author：賢心
  @Date：2015-11-25
- @Copyright：Sentsin Xu(贤心)
- @官网：http://layer.layui.com/mobile/
+ @Copyright：Sentsin Xu(賢心)
+ @官網：http://layer.layui.com/mobile/
  @License：MIT
         
  */
@@ -16,7 +16,7 @@ var doc = document, query = 'querySelectorAll', claname = 'getElementsByClassNam
     return doc[query](s);
 };
 
-//默认配置
+//默認配置
 var config = {
      type: 0,
      shade: true,
@@ -36,7 +36,7 @@ var ready = {
     timer: {}, end: {}
 };
 
-//点触事件
+//點觸事件
 ready.touch = function(elem, fn){
     var move;
     if(!/Android|iPhone|SymbianOS|Windows Phone|iPad|iPod/.test(navigator.userAgent)){
@@ -125,14 +125,14 @@ Layer.prototype.view = function(){
 Layer.prototype.action = function(config, elem){
     var that = this;
     
-    //自动关闭
+    //自動關閉
     if(config.time){
         ready.timer[that.index] = setTimeout(function(){
             layer.close(that.index);
         }, config.time*1000);
     }
     
-    //关闭按钮
+    //關閉按鈕
     if(config.title){
         var end = elem[claname]('layermend')[0], endfn = function(){
             config.cancel && config.cancel();
@@ -141,7 +141,7 @@ Layer.prototype.action = function(config, elem){
         ready.touch(end, endfn);
     }
     
-    //确认取消
+    //確認取消
     var btn = function(){
         var type = this.getAttribute('type');
         if(type == 0){
@@ -158,7 +158,7 @@ Layer.prototype.action = function(config, elem){
         }
     }
     
-    //点遮罩关闭
+    //點遮罩關閉
     if(config.shade && config.shadeClose){
         var shade = elem[claname]('laymshade')[0];
         ready.touch(shade, function(){
@@ -190,7 +190,7 @@ win.layer = {
         delete ready.end[index]; 
     },
     
-    //关闭所有layer层
+    //關閉所有layer層
     closeAll: function(){
         var boxs = doc[claname](classs[0]);
         for(var i = 0, len = boxs.length; i < len; i++){
@@ -206,7 +206,7 @@ win.layer = {
     var js = document.scripts, script = js[js.length - 1], jsPath = script.src;
     var path = jsPath.substring(0, jsPath.lastIndexOf("/") + 1);
     
-    //如果合并方式，则需要单独引入layer.css
+    //如果合併方式，則需要單獨引入layer.css
     if(script.getAttribute('merge')) return; 
     
     document.head.appendChild(function(){

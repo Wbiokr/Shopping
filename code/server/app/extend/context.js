@@ -7,10 +7,10 @@ module.exports = {
         let deviceAgent = this.get("user-agent").toLowerCase();
         let agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
         if(agentID){
-            //手机访问
+            //手機訪問
             return true;
         }else{
-            //电脑访问
+            //電腦訪問
             return false;
         }
     },

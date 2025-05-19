@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-    <title>购物车</title>
+    <title>購物車</title>
 
     <link href="/public/css/cart.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/public/js/icheck/style.css"/>
@@ -19,13 +19,13 @@
             <div class="step-box">
                 <div class="row">
                     <div class="step first active col-3">
-                        <span class="num">1</span><span class="line"></span><span class="label">我的购物车</span>
+                        <span class="num">1</span><span class="line"></span><span class="label">我的購物車</span>
                     </div>
                     <div class="step col-3">
-                        <span class="num">2</span><span class="line"></span><span class="label">确认订单信息</span>
+                        <span class="num">2</span><span class="line"></span><span class="label">確認訂單信息</span>
                     </div>
                     <div class="step col-3">
-                        <span class="num">3</span><span class="line"></span><span class="label">选择支付方式</span>
+                        <span class="num">3</span><span class="line"></span><span class="label">選擇支付方式</span>
                     </div>
                     <div class="step last col-3">
                         <span class="num">4</span><span class="line"></span><span class="label">完成付款</span>
@@ -34,17 +34,17 @@
             </div>
         </div>
 
-    <!--头部-->
+    <!--頭部-->
 
     <div class="wrapper" id="div_cart">
         <table class="cart-table">
             <thead>
                 <tr class="hd">
-                    <th width="30px" class="first"><label class="check"><input id="checkall" type="checkbox" name="all" /><span>全选</span></label></th>
-                    <th width="430px">商品名称</th>
-                    <th width="180px">单价</th>
-                    <th width="190px">数量</th>
-                    <th width="180px">小计</th>
+                    <th width="30px" class="first"><label class="check"><input id="checkall" type="checkbox" name="all" /><span>全選</span></label></th>
+                    <th width="430px">商品名稱</th>
+                    <th width="180px">單價</th>
+                    <th width="190px">數量</th>
+                    <th width="180px">小計</th>
                     <th width="190px">操作</th>
                 </tr>
             </thead>
@@ -54,7 +54,7 @@
                 </tr>
                 <tr class="shop">
                     <td colspan="6" class="first">
-                        <div class="check"><input type="checkbox" name="shop"/><span>主题</span></div>
+                        <div class="check"><input type="checkbox" name="shop"/><span>主題</span></div>
                     </td>
                 </tr>
             </tbody>
@@ -67,7 +67,7 @@
                             <img src="{{goods.imgurl}}" alt="">
                             <div class="info">
                                 <div class="name">{{goods.title}}</div>
-                                <div class="meta"><span>亮丽</span></div>
+                                <div class="meta"><span>亮麗</span></div>
                             </div>
                         </div>
                     </td>
@@ -88,13 +88,13 @@
         <div class="cart-total-box">
             <div class="cart-total">
                 <div class="fl">
-                    <div class="back"><a href="/">继续购物</a></div><div class="count">共 <span class="num" id="totalNum">0</span> 件商品， 已选择 <span class="num" id="selectedNum">0</span> 件</div>
+                    <div class="back"><a href="/">繼續購物</a></div><div class="count">共 <span class="num" id="totalNum">0</span> 件商品， 已選擇 <span class="num" id="selectedNum">0</span> 件</div>
                 </div>
                 <div class="fr">
                     <div class="price">
-                        合计：<span id="totalMoney"></span>元
+                        合計：<span id="totalMoney"></span>元
                     </div>
-                    <a class="go-account ui-btn-theme" href="/shop/confirmOrder">去结算</a>
+                    <a class="go-account ui-btn-theme" href="/shop/confirmOrder">去結算</a>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
         <div class="section">
             <i class="ico iconfont icon-cartempty"></i>
             <div class="cont">
-                <div class="tit">购物车空空的哦~，去看看心仪的商品吧~</div>
+                <div class="tit">購物車空空的哦~，去看看心儀的商品吧~</div>
                 <div>
                     <a href="/" class="ui-btn-theme">去逛逛</a>
                 </div>
@@ -114,14 +114,14 @@
         </div>
     </div>
 </div>
-    <!--脚部-->
+    <!--腳部-->
     <div class="fatfooter">
 
     </div>
-    <!--脚部-->
+    <!--腳部-->
 
 <script>
-    /*商品数量操作*/
+    /*商品數量操作*/
     function goodsCount(o){
             if(!(o instanceof Object)) let o={};
             let inputCell = o.inputCell || ".count-input",
@@ -205,7 +205,7 @@
 <script >
     $(function () {
 
-        $('.mod-numbox').goodsCount(); //数量加减
+        $('.mod-numbox').goodsCount(); //數量加減
         $('.check input').iCheck({
             checkboxClass: 'sty1-checkbox'
         });
@@ -225,7 +225,7 @@
                     unitp=parseFloat($(this).find('.unitprice').text()),
                     num=parseInt($count.val());
                     let price=unitp*num;
-                    $price.text(price.toFixed(2)); //设置单个商品总价
+                    $price.text(price.toFixed(2)); //設置單個商品總價
                     totalNum+=num;
                     if ($check.is(':checked')) {
                         selectNum+=num;
@@ -284,7 +284,7 @@
                     shopcheck(gbox);
              });
              $('#checkall').on('ifClicked',function () {
-                //全选
+                //全選
                 if ($(this).is(':checked')) {
                     $('.check input').iCheck('uncheck');
                 }
@@ -295,7 +295,7 @@
              })
 
              box.find('.shop .check input').on('ifClicked',function () {
-                //店铺全选
+                //店鋪全選
 
                 let curItem=$(this).parents('tbody').next('tbody').find('.goods');
 
@@ -307,7 +307,7 @@
                 }
                 caculate();
              });
-             //删除
+             //刪除
              $('.goods .del').on('click',function () {
                  let self=$(this), shop = self.parents('tbody').prev('tbody'), gbox = self.parents('tbody');
                  InmyjsKit.request.del("/shop/cart/"+self.attr('id'),{},function (res) {
@@ -316,7 +316,7 @@
                          let len = gbox.find('.goods').length;
                          if (len <= 0) {
                              shop.remove();
-                             //多种商店时，此处有bug
+                             //多種商店時，此處有bug
                              $("[name=empty_div]").show();
                              $("#div_cart").hide();
                          }
@@ -337,14 +337,14 @@
              //    shopaccess()
              // });
 
-             box.find('.check input').iCheck('check',true);//初始化全选测试
+             box.find('.check input').iCheck('check',true);//初始化全選測試
 
             caculate();
             shopaccess();
         }();
 
 
-        //结算固定显示
+        //結算固定顯示
         $(window).on('load resize scroll',function () {
             let bar=$('.cart-total'),
             barH=bar.outerHeight(),

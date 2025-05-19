@@ -6,14 +6,14 @@ const fs=require('fs');
 module.exports = {
     schedule: {
         interval: '24h',
-        type: 'worker', // 指定所有的 worker 都需要执行
+        type: 'worker', // 指定所有的 worker 都需要執行
         immediate:true,
         disable:true,
     },
     task: async function (ctx) {
         fs.readdir(ctx.app.root_path+'/app/domain',function (err,files){
             if(err){
-                console.log('读取domain目录失败：',err);
+                console.log('讀取domain目錄失敗：',err);
             }else{
                 for(let i=0;i<files.length;i++){
                     let file=files[i];
@@ -30,7 +30,7 @@ module.exports = app => {
     return ${name_r};
 };`;
                     fs.writeFileSync(path,data);
-                    console.log('写入文件：',path);
+                    console.log('寫入文件：',path);
                 }
             }
 

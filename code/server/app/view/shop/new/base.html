@@ -145,8 +145,9 @@
         <!-- Topbar v3 -->
         <div class="topbar-v3">
             <div class="search-open">
-                <div class="container">
-                    <input type="text" class="form-control" placeholder="Search">
+                <div class="container p-r p-l-45">
+                    <span class="c-fff f-w-600 p-a-xl-yc left-30">¥</span>
+                    <input type="text" class="form-control" placeholder="請輸入要購買商品的價格">
                     <div class="search-close"><i class="icon-close"></i></div>
                 </div>    
             </div>
@@ -182,12 +183,12 @@
                     <div class="col-sm-6">
                         <ul class="list-inline right-topbar pull-right">
                             {% if uid %}
-                            <li class="c-p o-hover-70 ease-300">欢迎您，<a href="/shop/uc">{{nickname}}</a></li>
+                            <li class="c-p o-hover-70 ease-300">歡迎您，<a href="/shop/uc">{{nickname}}</a></li>
                             <li class="c-p o-hover-70 ease-300 m-l-10" onclick="logout()">退出</li>
                              {% else %}
-                            <li><a href="/shop/login">登录</a> | <a href="/shop/signIn">注册</a></li>
+                            <li><a href="/shop/login">登錄</a> | <a href="/shop/signIn">註冊</a></li>
                             {% endif %}
-                            <!-- <li><i class="search fa fa-search search-button"></i></li> -->
+                            <li><i class="search fa fa-search search-button"></i></li>
                         </ul>
                     </div>
                 </div>
@@ -219,10 +220,11 @@
                     <ul class="list-inline shop-badge badge-lists badge-icons pull-right">
                         <li>
                             <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                            <span class="badge badge-sea rounded-x cart-count-span">{{cartCount}}</span>
+                            <!-- <span id="cart-count" class="badge badge-sea rounded-x cart-count-span">{{cartCount}}</span> -->
+                            <span id="cart-count" class="badge badge-sea rounded-x cart-count-span">--</span>
                             <ul id="scrollbar" class="list-unstyled badge-open contentHolder cart-list-container">
-                                <div>
-                                {% for goods in cart %}
+                                <div id="cart-container">
+                                <!-- {% for goods in cart %}
                                 <li>
                                     <a href="/shop/goods/{{goods.goodsID}}" target="_blank">
                                         <img src="{{goods.imgurl}}" alt="{{goods.name}}" class="" />
@@ -233,7 +235,7 @@
                                         <small>{{goods.num}} x ￥{{goods.price}}</small>
                                     </div>    
                                 </li>
-                                {% endfor %}
+                                {% endfor %} -->
                                 </div>
                                 <!-- <li>
                                     <img src="/public/assets/new/img/thumb/02.jpg" alt="">
@@ -254,7 +256,7 @@
                                 
                                 <li class="subtotal">
                                     <!-- <div class="overflow-h margin-bottom-10">
-                                        <span>总价格</span>
+                                        <span>總價格</span>
                                         <span class="pull-right subtotal-cost"></span>
                                     </div> -->
                                     <div class="row f-e-c">    
@@ -263,7 +265,7 @@
                                         </div> -->
                                         <div class="col-xs-6">
                                             <!-- <a href="shop-ui-add-to-cart.html" class="btn-u btn-u-sea-shop btn-block">Checkout</a> -->
-                                            <span class="c-fff ease-300 btn-u btn-u-sea-shop btn-block c-p" style="color: #fff!important" onclick="checkout()">去结算</span>
+                                            <span class="c-fff ease-300 btn-u btn-u-sea-shop btn-block c-p" style="color: #fff!important" onclick="checkout()">去結算</span>
                                         </div>
                                     </div>        
                                 </li>    
@@ -274,10 +276,11 @@
                     <!-- End Badge -->
 
                     <ul class="nav navbar-nav">
-                        <li><a href="/">首页</a></li>
-                        <li><a href="/shop/goods">产品列表</a></li>
-                        <!-- <li><a href="/shop/blog">博客新闻</a></li> -->
-                        <li><a href="/shop/contact">联系我们</a></li>
+                        <li><a href="/">首頁</a></li>
+                        <li><a href="/shop/goods">產品列表</a></li>
+                        <!-- <li><a href="/shop/blog">博客新聞</a></li> -->
+                        <li><a href="/shop/contact">聯繫我們</a></li>
+                        <li><a href="/static/about">關於我們</a></li>
 
                         <!-- Pages -->
                         <!-- <li class="dropdown active">
@@ -340,13 +343,13 @@
                     <!-- About -->
                     <div class="col-md-4 md-margin-bottom-40">
                         <a href="/"><img class="footer-logo" src="/public/assets/new/img/logo-2.png" alt=""></a>
-                        <p>上海市黄浦区静安路15号，普天大厦501号</p>
+                        <p>上海市黃浦區靜安路15號，普天大廈501號</p>
                         <!-- <br> -->
                         <!-- <ul class="list-unstyled address-list margin-bottom-20">
-                            <li><i class="fa fa-angle-right"></i>上海市黄浦区静安路15号，普天大厦501号</li>
-                            <li><i class="fa fa-angle-right"></i>电话: 800 123 3456</li>
-                            <li><i class="fa fa-angle-right"></i>传真: 800 123 3456</li>
-                            <li><i class="fa fa-angle-right"></i>邮箱: info@anybiz.co</li>
+                            <li><i class="fa fa-angle-right"></i>上海市黃浦區靜安路15號，普天大廈501號</li>
+                            <li><i class="fa fa-angle-right"></i>電話: 800 123 3456</li>
+                            <li><i class="fa fa-angle-right"></i>傳真: 800 123 3456</li>
+                            <li><i class="fa fa-angle-right"></i>郵箱: info@anybiz.co</li>
                         </ul> -->
 
                         <!-- <ul class="list-inline shop-social">
@@ -362,11 +365,11 @@
                     <div class="col-md-8 col-sm-3">
                         <div class="row">
                             <div class="col-sm-12 col-xs-6">
-                                <h2 class="thumb-headline">联系方式</h2>
+                                <h2 class="thumb-headline">聯繫方式</h2>
                                 <ul class="list-unstyled simple-list margin-bottom-20">
-                                    <li><a href="#">电话: 800 123 3456</a></li>
-                                    <li><a href="#">传真: 800 123 3456</a></li>
-                                    <li><a href="#">邮箱: info@anybiz.co</a></li>
+                                    <li><a href="#">電話: 800 123 3456</a></li>
+                                    <li><a href="#">傳真: 800 123 3456</a></li>
+                                    <li><a href="#">郵箱: info@anybiz.co</a></li>
                                 </ul>
                             </div>    
 
@@ -466,8 +469,8 @@
                     <div class="col-md-6">                     
                         <p>
                             {{baseConfig.CopyRight}} 
-                            <!-- <a target="_blank" href="https://twitter.com/htmlstream">隐私信息</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> -->
-                            <a target="_blank" href="/shop/privacy">隐私信息</a>
+                            <!-- <a target="_blank" href="https://twitter.com/htmlstream">隱私信息</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> -->
+                            <a target="_blank" href="/static/privacy">隱私信息</a>
                         </p>
                     </div>
                     <div class="col-md-6">  
@@ -487,6 +490,7 @@
 </div>
 
 
+<script src="/public/assets/new/js/base.js"></script>
 <script>
     jQuery(document).ready(function() {
         App.init();
@@ -495,116 +499,6 @@
         RevolutionSlider.initRSfullWidth();
         StyleSwitcher.initStyleSwitcher();      
 });
-</script>
-<script>
-    var cartCount="{{cartCount}}";
-    var collectGoods = [];
-    
-    function checkout() {
-        // if(cartCount<=0)
-        //     Ap.msg.warning("购物车还是空的")
-        // else{
-        window.location="/shop/cart";
-        // }
-    }
-    function logout() {
-        Ap.request.post("/shop/logout",{},function (res) {
-            if(res.success){
-                window.location="/";
-            }
-        })
-    }
-    function delCart(id) {
-        Ap.request.del("/shop/cart/"+id,{},function (res) {
-            if (res.success) {
-                $(".div_cart_"+id).slideUp('fast',function(){
-                    $(".div_cart_"+id).remove();
-                    setAccount();
-                    Ap.msg.success("已从购物车中删除");
-                });
-            }else{
-                Ap.msg.error("删除失败");
-            }
-        });
-    }
-    function delWishList(id) {
-        Ap.request.del("/shop/wishlist/"+id,{},function (res) {
-            if (res.success) {
-                Ap.msg.success("已删除收藏");
-                getWishList()
-                $(".div_wishlist_"+id).remove();
-            }else{
-                Ap.msg.error("取消收藏失败");
-            }
-        });
-    }
-    function addWishList(goodsID) {
-        Ap.request.post("/shop/wishlist",{goodsID},function (res) {
-            if (res.success && res.result && res.result[1]) {
-                Ap.msg.success("已收藏");
-                getWishList()
-            }else{
-                Ap.msg.error("收藏失败");
-            }
-        });
-    }
-    function getWishList() {
-        Ap.request.get("/shop/wishQuery",{},function (res) {
-            collectGoods=res.result.rows
-            window.wishQueryCb && window.wishQueryCb(res.result)
-        })
-    }
-    function addCompare(goodsID) {
-        Ap.msg.success("功能还在开发中，尽请期待！");
-    }
-    function addCart(goodsID,num,price) {
-        Ap.request.post("/shop/cart",{goodsID,num,price},function (res) {
-            if(res.success){
-                Ap.msg.success("已加入购物车");
-                // let goods=res.result[0];
-                // let isNew=res.result[1];
-                // if(isNew) {
-                //     let dom = '<div class="mini-product div_cart_' + goods.id + '">\n' +
-                //         '<div class="product-meta">\n' +
-                //         '<a href="/shop/goods/' + goods.goodsID + '">\n' +
-                //         '<img width="55" height="50" src="' + goods.imgurl + '" alt="placeholder" />\n' +
-                //         '' + goods.name + '\n' +
-                //         '<span>' + goods.num + ' x ￥' + goods.price + '</span>\n' +
-                //         '</a>\n' +
-                //         '<span class="price" data-price="' + goods.num * goods.price + '">￥' + goods.num * goods.price + '</span>\n' +
-                //         '</div>\n' +
-                //         '<div class="action">\n' +
-                //         '<a href="javascript:void(0);" onclick="delCart(\'' + goods.id + '\')" class="top-cart icomoon" aria-hidden="true" data-icon="&#xe004;"></a>\n' +
-                //         '</div>\n' +
-                //         '</div>';
-                //     $('#cart-list').prepend(dom);
-                //     setAccount();
-                // }
-            }else{
-                Ap.msg.error("加入购物车失败");
-            }
-        });
-    }
-    function sum() {
-        let account=new Number(0.00);
-        let nums=0;
-        $('#cart-list .price').each(function () {
-            let price=new Number($(this).data('price'));
-            account+=price;
-            nums++;
-        });
-        return {nums,account:account.toFixed(2)};
-    }
-    function setAccount() {
-        let {nums,account}=sum();
-        $('.cart_xj').text('￥'+account);
-        $('.cart_total').text('￥'+account);
-        $('.cart_num').text(nums);
-        cartCount=nums;
-    }
-    $(function() {
-        setAccount();
-    });
 </script>
 </body>
 </html>

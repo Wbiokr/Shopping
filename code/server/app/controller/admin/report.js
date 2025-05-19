@@ -11,7 +11,7 @@ module.exports = app => {
             report.account = await ctx.model.ReportDay.sum('data', { where:{reportType:'account'}});
             report.order = await ctx.model.ReportDay.sum('data', { where:{reportType:'order'}});
             report.guestBook = await ctx.model.ReportDay.sum('data', { where:{reportType:'guestBook'}});
-            ctx.success("查询成功!",report);
+            ctx.success("查詢成功!",report);
         }
         async detail(ctx){
             let {reportType,range,type}=ctx.query;
@@ -32,7 +32,7 @@ module.exports = app => {
                     }
                     break;
             }
-            ctx.success("查询成功!",report);
+            ctx.success("查詢成功!",report);
         }
 
     };

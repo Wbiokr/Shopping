@@ -11,7 +11,7 @@ module.exports = app => {
             const result=await ctx.model.BlogClass.findAll({
                 where:{blogType,parentId},raw:true
             });
-            ctx.success("查询成功",result);
+            ctx.success("查詢成功",result);
         }
     };
 };

@@ -265,20 +265,20 @@
     }
 }));
 
-/*tab切换*/
+/*tab切換*/
 (function ($) {
   $.fn.zTab=function(options) {
    var dft={
-      tabnav:'.tab-nav',          //导航按钮元素
-      tabcon:'.tab-con',          //被切换元素
-      trigger:'mouseenter', //触发方式，默认点击触发
-      curName:'active', //给高亮设置类名
-      removeMod:null,     //改为触发时移除导航的类名
-      cur:0,                //初始高亮的顺序，默认第一个
-      delay:0,              //触发延时
-      auto:null,           //是否自动改变
-      after: null ,      //回调
-      first:null             //首次加载时执行
+      tabnav:'.tab-nav',          //導航按鈕元素
+      tabcon:'.tab-con',          //被切換元素
+      trigger:'mouseenter', //觸發方式，默認點擊觸發
+      curName:'active', //給高亮設置類名
+      removeMod:null,     //改為觸發時移除導航的類名
+      cur:0,                //初始高亮的順序，默認第一個
+      delay:0,              //觸發延時
+      auto:null,           //是否自動改變
+      after: null ,      //回調
+      first:null             //首次加載時執行
     };
 
     var ops=$.extend(dft,options);
@@ -292,7 +292,7 @@
       timer2=null,
       isInit=false;
 
-      //初始化执行
+      //初始化執行
       init();
 
       navBtn.on(ops.trigger,function () {
@@ -311,7 +311,7 @@
       });
       //
       function init () {
-        ops.trigger=='click'?ops.trigger='click':ops.trigger='mouseenter click'; //导航触发方式判定
+        ops.trigger=='click'?ops.trigger='click':ops.trigger='mouseenter click'; //導航觸發方式判定
         run();
         if (ops.auto) {
           timer2=setInterval(auto,ops.auto.interval);
@@ -551,7 +551,7 @@ $(function() {
 
     });
 
-    //商品店铺搜索切换效果
+    //商品店鋪搜索切換效果
     $('.search-switch').on('click','.active',function () {
         var prev=$(this).prev().addClass('active');
         $(this).removeClass('active');

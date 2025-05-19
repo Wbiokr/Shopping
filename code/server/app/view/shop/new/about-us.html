@@ -1,0 +1,272 @@
+{% extends './base.html' %}
+{% block title %}
+<title>{{page_title}}-登錄</title>
+
+<!-- CSS Page Style -->
+<link rel="stylesheet" href="/public/assets/new/css/pages/log-reg-v3.css">
+<style>
+        /* 公司簡介 */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 核心價值觀 */
+        .values-container {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .value-item {
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .value-item:hover {
+            transform: scale(1.03);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        /* 團隊介紹 */
+        .team-section {
+            background: #f8f9fa;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .team-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 1rem auto;
+            border: 5px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 發展歷程 */
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 2px;
+            height: calc(100% - 20px);
+            background: #3498db;
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 頁腳 */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-widget h3 {
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .about-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timeline-item::before {
+                display: none;
+            }
+        }
+</style>
+
+{% endblock %}
+{% block body %}
+  <!-- <section class="h-100"></section> -->
+    <section class="section">
+        <div class="about-grid">
+            <img src="/public/assets/new/img/company.png" alt="公司環境" class="about-image">
+            <div>
+                <h2>公司簡介</h2>
+                <p>XX商城成立於2010年，是一家專注於跨境電商的綜合性購物平臺。經過十多年的發展，我們已經成為擁有千萬用戶的國際化電商品牌，業務覆蓋全球200多個國家和地區。</p>
+                <p>我們始終堅持“用戶至上、品質第一”的經營理念，通過嚴格的供應商篩選和質量管控，為用戶提供數十萬種高品質商品，涵蓋電子產品、家居生活、時尚服飾、美妝護膚等多個品類。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section values-container">
+        <h2>核心價值觀</h2>
+        <div class="values-grid">
+            <div class="value-item">
+                <i class="value-icon">&#128172;</i> <!-- 地球圖標 -->
+                <h3>用戶至上</h3>
+                <p>始終以用戶需求為核心，提供貼心的服務和極致的購物體驗</p>
+            </div>
+            <div class="value-item">
+                <i class="value-icon">&#128210;</i> <!-- 盾牌圖標 -->
+                <h3>品質保證</h3>
+                <p>嚴格把控商品質量，讓每一件商品都經得起時間的考驗</p>
+            </div>
+            <div class="value-item">
+                <i class="value-icon">&#128190;</i> <!-- 火箭圖標 -->
+                <h3>創新驅動</h3>
+                <p>不斷探索新技術、新模式，引領電商行業發展潮流</p>
+            </div>
+            <div class="value-item">
+                <i class="value-icon">&#128179;</i> <!-- 握手圖標 -->
+                <h3>合作共贏</h3>
+                <p>與供應商、合作伙伴建立長期穩定的合作關係，實現共同發展</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section team-section">
+        <h2>核心團隊</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="/public/assets/new/img/cto.png" alt="創始人" class="team-image">
+                <h3>張三</h3>
+                <p>創始人兼CEO</p>
+                <p>擁有15年電商行業經驗，曾帶領團隊打造多個億級電商平臺</p>
+            </div>
+            <div class="team-member">
+                <img src="/public/assets/new/img/cto.png" alt="CTO" class="team-image">
+                <h3>李四</h3>
+                <p>首席技術官</p>
+                <p>資深技術專家，主導開發了平臺核心技術架構和智能推薦系統</p>
+            </div>
+            <div class="team-member">
+                <img src="/public/assets/new/img/cto.png" alt="CMO" class="team-image">
+                <h3>王五</h3>
+                <p>首席營銷官</p>
+                <p>營銷策劃專家，成功打造多個千萬級曝光的品牌營銷活動</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>發展歷程</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3 class="timeline-year">2010</h3>
+                <p>XX商城正式成立，開啟電商創業之旅</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-year">2015</h3>
+                <p>用戶突破100萬，上線跨境電商業務，開啟國際化進程</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-year">2020</h3>
+                <p>年銷售額突破100億，成為國內領先的跨境電商平臺</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-year">2023</h3>
+                <p>推出智能客服系統和AR商品預覽功能，提升用戶購物體驗</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        jQuery(document).ready(function() {
+          App.init();
+        })
+    </script>
+
+{% endblock %}

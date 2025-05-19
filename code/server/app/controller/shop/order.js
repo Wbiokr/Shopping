@@ -1,5 +1,5 @@
 /**
- *  主页Controller
+ *  主頁Controller
  * @param app
  * @returns {OrderController}
  */
@@ -40,12 +40,12 @@ module.exports = app => {
         async del(ctx){
             const order = await ctx.model.ShopOrder.findById(ctx.params.billNo);
             order.destroy();
-            ctx.success("删除成功!");
+            ctx.success("刪除成功!");
         }
         async cancel(ctx){
             const order = await ctx.model.ShopOrder.findById(ctx.params.billNo);
             order.update({billStatus:'C'});
-            ctx.success("已取消订单!");
+            ctx.success("已取消訂單!");
         }
         async create(ctx) {
             const {billAmount, addrName, addrPhone, addrAddress, addrZip, addrCity}=ctx.request.body;
@@ -76,12 +76,12 @@ module.exports = app => {
             let prefAmount=0;
             let payableAmount=billAmount-prefAmount;
             ctx.model.ShopOrder.create({
-                billNo,billDate,uid,username,billAmount,payCode,payableAmount,prefAmount,paidAmount:0
+                billNo,billDate,uid,username,billAmount,payCode,payableAmount,prefAmount,paidAmount:0,
+                addrName, addrPhone, addrAddress, addrZip, addrCity
             });
             for(let goods of cart){
                 await ctx.model.ShopOrderGoods.create({
                     billNo,goodsID:goods.goodsID,name:goods.name,num:goods.num,price:goods.price,imgurl:goods.imgurl,goodsType:goods.goodsType,
-                    addrName, addrPhone, addrAddress, addrZip, addrCity
 
                 });
                 goods.destroy();
@@ -96,6 +96,7 @@ module.exports = app => {
             limit=Number(limit);
             let offset=(Number(page)-1)*limit;
             let orders,uid=ctx.session.uid;
+            console.log('orddddddddd', uid,)
             if(billStatus=='A')
                 orders=await ctx.model.ShopOrder.findAll({where:{uid},order:[['createTime', 'DESC']], raw: true,offset,limit });
             else
@@ -105,7 +106,7 @@ module.exports = app => {
                 let goods=await ctx.model.ShopOrderGoods.findAll({where:{billNo:order.billNo}, raw: true });
                 order.goods=goods;
             }
-            ctx.success("查询成功!",orders);
+            ctx.success("查詢成功!",orders);
         }
     };
 };

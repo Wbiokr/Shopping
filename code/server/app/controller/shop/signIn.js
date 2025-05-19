@@ -15,7 +15,7 @@ module.exports = app => {
         async create(ctx) {
             let isRegister=ctx.app.locals.baseConfig.isRegister;
             if (isRegister!='1') {
-                ctx.failure("平台已关闭注册，若有需要请联系官方微信!");
+                ctx.failure("平臺已關閉註冊，若有需要請聯繫官方微信!");
                 return;
             }
             const {content,nickname,code} = ctx.request.body;
@@ -24,22 +24,22 @@ module.exports = app => {
             let  _content = jsEncrypt.decrypt(content);
             console.log('_content', content, _content)
             if(!_content){
-                ctx.failure("验证失败!");
+                ctx.failure("驗證失敗!");
                 return;
             }
             let json=JSON.parse(_content);
             const {username,password}=json;
             if(code!=ctx.session.captcha){
-                ctx.failure("验证码错误");
+                ctx.failure("驗證碼錯誤");
                 return;
             }
             let user = await ctx.model.User.findOne({ where:{username}});
             if (user) {
-                ctx.failure("用户名已存在!");
+                ctx.failure("用戶名已存在!");
                 return;
             }
             await ctx.model.User.add(username, password,nickname);
-            ctx.success('注册成功!');
+            ctx.success('註冊成功!');
         }
     };
 };

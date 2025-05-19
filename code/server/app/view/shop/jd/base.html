@@ -41,7 +41,7 @@
     .overtime{
     background-color:#c49f47  !important;
     }
-    /* 红色:#D91E18;绿色:#3CB371 */
+    /* 紅色:#D91E18;綠色:#3CB371 */
     </style>
     <script src="/public/js/jquery/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/public/js/jquery.msgbox/jquery.msgbox.i18n.js"></script>
@@ -64,38 +64,38 @@
     <div class='shCircleLoader' id='shCircleLoader_load_drawing'></div>
 </div>
 {% block header %}
-<!--头部-->
+<!--頭部-->
 <div class="topper">
     <div class="wrapper">
         <div class="left-bar">
-            <!--<div class="change-city"><a class="name">合肥</a><a class="toggle" href="city-select.html">[切换]</a></div>-->
+            <!--<div class="change-city"><a class="name">合肥</a><a class="toggle" href="city-select.html">[切換]</a></div>-->
             <div class="back-home">
-                <em></em><a href="/">首页</a>
+                <em></em><a href="/">首頁</a>
             </div>
-            <!--<div class="item"><a href="">个人中心</a></div>-->
+            <!--<div class="item"><a href="">個人中心</a></div>-->
         </div>
         <div class="right-bar">
             {% if uid %}
             <div class="login-user sub-menu">
                 <a class="menu-hd" href="/shop/uc">{{username}}<em></em></a>
                 <!--<div class="down">
-                    <a href="">内容</a>
-                    <a href="">内容</a>
-                    <a href="">内容</a>
+                    <a href="">內容</a>
+                    <a href="">內容</a>
+                    <a href="">內容</a>
                 </div>-->
             </div>
             <div class="item"><a href="javascript:void(0)">消息（<span class="txt-theme">0</span>）</a></div>
             <div class="logout divider"><a href="javascript:void(0) " onclick="logout()">退出</a></div>
             <span class=""></span>
-            <div class="cart"><em></em><a href="/shop/cart">购物车<span class="txt-theme" id="span_cartNum">{{cartCount}}</span>件</a></div>
+            <div class="cart"><em></em><a href="/shop/cart">購物車<span class="txt-theme" id="span_cartNum">{{cartCount}}</span>件</a></div>
             <span class=""></span>
-            <div class="order"><em></em><a href="/shop/order">我的订单</a></div>
+            <div class="order"><em></em><a href="/shop/order">我的訂單</a></div>
             {% else %}
-            <div class="logout"><a href="/login">登录</a></div>
+            <div class="logout"><a href="/login">登錄</a></div>
             {% endif %}
 
             <!-- <div class="fav"><em></em><a href="">我的收藏</a></div>
-             <div class="help"><em></em><a href="">帮助中心</a></div>-->
+             <div class="help"><em></em><a href="">幫助中心</a></div>-->
         </div>
     </div>
 </div>
@@ -111,7 +111,7 @@
 {% endblock %}
 {% block body %}{% endblock %}
 {% block footer %}
-<div class="footer">天启工作室 版权所有 Copyright © 2016-2018   备案号：</div>
+<div class="footer">天啟工作室 版權所有 Copyright © 2016-2018   備案號：</div>
 {% endblock %}
 </body>
 </html>

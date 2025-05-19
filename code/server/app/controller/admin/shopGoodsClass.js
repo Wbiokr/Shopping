@@ -15,7 +15,7 @@ module.exports = app => {
                 const result = await ctx.model.ShopGoodsClass.findAll({
                     where:{status:'0',parentID:0}
                 });
-                ctx.success("查询成功",result);
+                ctx.success("查詢成功",result);
             // } catch (error) {
             //     console.log(error);
             // }

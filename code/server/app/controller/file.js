@@ -13,9 +13,9 @@ module.exports = app => {
             let docName=path.basename(stream.filename);
             console.log(docName, docType);
             let filePath=await ctx.helper.saveFile(stream,docType).catch(function (error) {
-                console.log('失败啦啦啦啦啦啦啦啦')
+                console.log('失敗啦啦啦啦啦啦啦啦')
                 console.log(error);
-                me.failure("上传失败");
+                me.failure("上傳失敗");
                 return;
             });
             //let docUrl='https://'+ctx.host+filePath;
@@ -25,13 +25,13 @@ module.exports = app => {
                 docType,
                 docName,
             });
-            ctx.success("上传成功!",doc);
+            ctx.success("上傳成功!",doc);
         }
         async download(ctx){
             let id=ctx.params.id;
             let doc=await ctx.model.Document.findById(id);
             if(!doc){
-                ctx.failure("下载失败");
+                ctx.failure("下載失敗");
                 return;
             }
             let filePath=doc.docUrl;

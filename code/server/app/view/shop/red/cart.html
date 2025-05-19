@@ -1,6 +1,6 @@
 {% extends './base.html' %}
 {% block title %}
-<title>{{page_title}}-购物车</title>
+<title>{{page_title}}-購物車</title>
 {% endblock %}
 {% block nav %}
 {% endblock %}
@@ -8,12 +8,12 @@
     <div id="main-container" class="no-header-top">
       <div class="page-top-leader omega">
         <div class="container_12 relatived clearfix">
-          <h1 class="page-title">购物车</h1>
+          <h1 class="page-title">購物車</h1>
           <div class="breadcrumb">
-              <span class="br_before">当前位置:</span>
-              <a href="/">首页</a>
+              <span class="br_before">當前位置:</span>
+              <a href="/">首頁</a>
               <span class="br_sep">/</span>
-              <span class="cur_link">购物车</span>
+              <span class="cur_link">購物車</span>
           </div>
         </div>
       </div><!-- .page-top-leader --> 
@@ -24,7 +24,7 @@
               <div class="section">
                   <i class="ico iconfont icon-cartempty"></i>
                   <div class="cont">
-                      <div class="tit">购物车空空的哦~，去看看心仪的主题吧~</div>
+                      <div class="tit">購物車空空的哦~，去看看心儀的主題吧~</div>
                       <div>
                           <a href="/" class="style-button">去逛逛</a>
                       </div>
@@ -38,11 +38,11 @@
             <thead>
             <tr>
               <td class="image">封面</td>
-              <td class="name">产品名称</td>
-              <td class="model">类型</td>
-              <td class="quantity">数量</td>
-              <td class="price">价格</td>
-              <td class="total">金额</td>
+              <td class="name">產品名稱</td>
+              <td class="model">類型</td>
+              <td class="quantity">數量</td>
+              <td class="price">價格</td>
+              <td class="total">金額</td>
             </tr>
             </thead>
             <tbody>
@@ -51,9 +51,9 @@
                 <td class="image"><a href="/shop/goods/{{goods.goodsID}}" target="_blank" title="{{goods.name}}"><img src="{{goods.imgurl}}" alt="product name"></a></td>
                 <td class="name">{{goods.name}}</td>
                   {% if goods.goodsType=="T" %}
-                <td class="model">主题</td>
+                <td class="model">主題</td>
                   {% elif goods.goodsType=="C" %}
-                  <td class="model">组件</td>
+                  <td class="model">組件</td>
                   {% endif %}
                 <td class="quantity">
                   <div class="plus-min">
@@ -76,15 +76,15 @@
           <table id="total">
               <tbody>
               <tr>
-                  <td><strong>小计:</strong></td>
+                  <td><strong>小計:</strong></td>
                   <td><span class="cart_xj">￥0.00</span></td>
               </tr>
               <tr>
-                  <td><strong>优惠:</strong></td>
+                  <td><strong>優惠:</strong></td>
                   <td>￥0.00</td>
               </tr>
               <tr>
-                    <td><strong>总计:</strong></td>
+                    <td><strong>總計:</strong></td>
                   <td><span class="cart_total">￥0.00</span></td>
               </tr>
               </tbody>
@@ -93,11 +93,11 @@
         <div class="cart-buttons">      
           <a class="checkout-btn" onclick="checkout()" href="javascript:void(0);">
             <i aria-hidden="true" data-icon="&#xe019;" class="icomoon"></i>
-            <span>去结算</span>
+            <span>去結算</span>
           </a>
           <a class="shopping-btn" href="/">
             <i aria-hidden="true" data-icon="&#x25e0;" class="icomoon"></i>
-            <span>继续购物</span>
+            <span>繼續購物</span>
           </a>      
         </div><!-- end .cart-buttons -->   
       </div>
