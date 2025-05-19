@@ -1,10 +1,10 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input @keyup.enter.native="handleFilter" style="width: 400px;" class="filter-item" placeholder="标题" v-model="listQuery.title">
+      <el-input @keyup.enter.native="handleFilter" style="width: 400px;" class="filter-item" placeholder="標題" v-model="listQuery.title">
       </el-input>
 
-      <el-select clearable class="filter-item" style="width: 130px" v-model="listQuery.type" placeholder="类型">
+      <el-select clearable class="filter-item" style="width: 130px" v-model="listQuery.type" placeholder="類型">
         <el-option v-for="item in  calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key">
         </el-option>
       </el-select>
@@ -13,23 +13,23 @@
       <el-button class="filter-item" style="margin-left: 10px;" @click="handleCreate" type="primary" icon="el-icon-edit">添加</el-button>
     </div>
     <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
-      <el-table-column align="center" label="编号" width="80" prop="subjectID">
+      <el-table-column align="center" label="編號" width="80" prop="subjectID">
       </el-table-column>
 
-      <el-table-column width="180px" align="center" label="发布时间">
+      <el-table-column width="180px" align="center" label="發佈時間">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime | parseTime('YYYY-MM-DD HH:mm:ss') }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column min-width="300px" label="标题">
+      <el-table-column min-width="300px" label="標題">
         <template slot-scope="scope">
           <router-link :to="'/subject/edit/'+scope.row.subjectID" class="link-type">
             <span>{{ scope.row.title }}</span>
           </router-link>
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="状态" width="110">
+      <el-table-column class-name="status-col" label="狀態" width="110">
         <template slot-scope="scope">
           <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
         </template>
@@ -37,7 +37,7 @@
 
       <el-table-column align="center" label="操作" width="120">
         <template slot-scope="scope">
-            <el-button type="danger" size="small" icon="el-icon-delete" @click="deleteObj(scope.$index,scope.row)">删除</el-button>
+            <el-button type="danger" size="small" icon="el-icon-delete" @click="deleteObj(scope.$index,scope.row)">刪除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -49,7 +49,7 @@
 
 <script>
 import { fetchList ,delModel} from '@/api/model'
-import waves from '@/directive/waves/index.js' // 水波纹指令
+import waves from '@/directive/waves/index.js' // 水波紋指令
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
 
 export default {
@@ -108,7 +108,7 @@ export default {
       this.getList()
     },
     deleteObj(index,row){
-      this.$confirm("您确定要删除吗？", "提示").then(() => {
+      this.$confirm("您確定要刪除嗎？", "提示").then(() => {
         delModel('subject',row.subjectID).then(data => {
           this.list.splice(index, 1);
         });

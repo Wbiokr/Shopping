@@ -1,6 +1,6 @@
 import { constantRouterMap, asyncRouterMap } from '@/router'
 /**
- * 通过meta.role判断是否与当前用户权限匹配
+ * 通過meta.role判斷是否與當前用戶權限匹配
  * @param roles
  * @param route
  */
@@ -13,7 +13,7 @@ function hasPermission(roles, route) {
 }
 
 /**
- * 递归过滤异步路由表，返回符合用户角色权限的路由表
+ * 遞歸過濾異步路由表，返回符合用戶角色權限的路由表
  * @param routes asyncRouterMap
  * @param roles
  */

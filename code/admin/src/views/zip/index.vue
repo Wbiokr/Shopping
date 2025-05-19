@@ -3,7 +3,7 @@
     <!-- $t is vue-i18n global function to translate lang -->
     <el-input :placeholder="$t('zip.placeholder')" v-model="filename" style="width:300px;" prefix-icon="el-icon-document"/>
     <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="document" @click="handleDownload">{{ $t('zip.export') }} zip</el-button>
-    <el-table v-loading="listLoading" :data="list" element-loading-text="拼命加载中" border fit highlight-current-row>
+    <el-table v-loading="listLoading" :data="list" element-loading-text="拼命加載中" border fit highlight-current-row>
       <el-table-column align="center" label="ID" width="95">
         <template slot-scope="scope">
           {{ scope.$index }}

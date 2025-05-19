@@ -277,7 +277,7 @@ export default {
             this.dialogFormVisible = false
             this.$notify({
               title: '成功',
-              message: '创建成功',
+              message: '創建成功',
               type: 'success',
               duration: 2000
             })
@@ -321,7 +321,7 @@ export default {
     handleDelete(row) {
       this.$notify({
         title: '成功',
-        message: '删除成功',
+        message: '刪除成功',
         type: 'success',
         duration: 2000
       })

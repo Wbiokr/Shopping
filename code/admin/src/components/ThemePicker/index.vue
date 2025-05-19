@@ -58,7 +58,7 @@ export default {
         style.innerText = this.updateStyle(innerText, originalCluster, themeCluster)
       })
       this.$message({
-        message: '换肤成功',
+        message: '換膚成功',
         type: 'success'
       })
     }

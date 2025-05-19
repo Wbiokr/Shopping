@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
+    <!-- <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/> -->
 
     <breadcrumb class="breadcrumb-container"/>
 
@@ -12,9 +12,9 @@
           <screenfull class="screenfull right-menu-item"/>
         </el-tooltip>
 
-        <el-tooltip :content="$t('navbar.size')" effect="dark" placement="bottom">
+        <!-- <el-tooltip :content="$t('navbar.size')" effect="dark" placement="bottom">
           <size-select class="international right-menu-item"/>
-        </el-tooltip>
+        </el-tooltip> -->
 
         <lang-select class="international right-menu-item"/>
 
@@ -29,7 +29,7 @@
           <i class="el-icon-caret-bottom"/>
         </div>
         <el-dropdown-menu slot="dropdown">
-          <router-link to="/">
+          <!-- <router-link to="/">
             <el-dropdown-item>
               {{ $t('navbar.dashboard') }}
             </el-dropdown-item>
@@ -38,7 +38,7 @@
             <el-dropdown-item>
               {{ $t('navbar.github') }}
             </el-dropdown-item>
-          </a>
+          </a> -->
           <el-dropdown-item divided>
             <span style="display:block;" @click="logout">{{ $t('navbar.logOut') }}</span>
           </el-dropdown-item>

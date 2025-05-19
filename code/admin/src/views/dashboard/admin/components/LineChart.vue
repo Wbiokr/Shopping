@@ -54,7 +54,7 @@ export default {
       window.addEventListener('resize', this.__resizeHandler)
     }
 
-    // 监听侧边栏的变化
+    // 監聽側邊欄的變化
     const sidebarElm = document.getElementsByClassName('sidebar-container')[0]
     sidebarElm.addEventListener('transitionend', this.sidebarResizeHandler)
   },

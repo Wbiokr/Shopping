@@ -10,7 +10,7 @@
       v-loading="listLoading"
       ref="multipleTable"
       :data="list"
-      element-loading-text="拼命加载中"
+      element-loading-text="拼命加載中"
       border
       fit
       highlight-current-row

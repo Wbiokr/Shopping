@@ -53,10 +53,10 @@ import BoxCard from './components/BoxCard'
 import { getReportDetail} from '@/api/report'
 
 const lineChartData = {
-  register: '新注册',
+  register: '新註冊',
   guestBook: '留言',
   account: '收益',
-  order: '订单'
+  order: '訂單'
 }
 export default {
   name: 'DashboardAdmin',

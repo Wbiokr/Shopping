@@ -33,11 +33,11 @@ export default {
           value: 'id'
         },
         {
-          text: '时间线',
+          text: '時間線',
           value: 'timeLine'
         },
         {
-          text: '备注',
+          text: '備註',
           value: 'comment'
         }
       ],
@@ -46,49 +46,49 @@ export default {
           id: 0,
           event: '事件1',
           timeLine: 50,
-          comment: '无'
+          comment: '無'
         },
         {
           id: 1,
           event: '事件1',
           timeLine: 100,
-          comment: '无',
+          comment: '無',
           children: [
             {
               id: 2,
               event: '事件2',
               timeLine: 10,
-              comment: '无'
+              comment: '無'
             },
             {
               id: 3,
               event: '事件3',
               timeLine: 90,
-              comment: '无',
+              comment: '無',
               children: [
                 {
                   id: 4,
                   event: '事件4',
                   timeLine: 5,
-                  comment: '无'
+                  comment: '無'
                 },
                 {
                   id: 5,
                   event: '事件5',
                   timeLine: 10,
-                  comment: '无'
+                  comment: '無'
                 },
                 {
                   id: 6,
                   event: '事件6',
                   timeLine: 75,
-                  comment: '无',
+                  comment: '無',
                   children: [
                     {
                       id: 7,
                       event: '事件7',
                       timeLine: 50,
-                      comment: '无',
+                      comment: '無',
                       children: [
                         {
                           id: 71,
@@ -114,7 +114,7 @@ export default {
                       id: 8,
                       event: '事件8',
                       timeLine: 25,
-                      comment: '无'
+                      comment: '無'
                     }
                   ]
                 }

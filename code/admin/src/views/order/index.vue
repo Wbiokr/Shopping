@@ -1,7 +1,7 @@
 <template>
   <div class="app-container calendar-list-container">
     <div class="filter-container">
-      <el-input @keyup.enter.native="handleFilter" style="width: 250px;" class="filter-item" placeholder="订单编号" v-model="listQuery.billNo">
+      <el-input @keyup.enter.native="handleFilter" style="width: 250px;" class="filter-item" placeholder="訂單編號" v-model="listQuery.billNo">
       </el-input>
       <el-date-picker
         style="width: 350px"
@@ -11,69 +11,69 @@
         align="right"
         unlink-panels
         range-separator="至"
-        start-placeholder="开始日期"
-        end-placeholder="结束日期"
+        start-placeholder="開始日期"
+        end-placeholder="結束日期"
         :picker-options="pickerOptions">
       </el-date-picker>
 
-      <el-select clearable class="filter-item" style="width: 130px" v-model="listQuery.billStatus" placeholder="状态">
+      <el-select clearable class="filter-item" style="width: 130px" v-model="listQuery.billStatus" placeholder="狀態">
         <el-option v-for="item in  calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key">
         </el-option>
       </el-select>
 
       <el-button class="filter-item" type="primary" v-waves icon="el-icon-search" @click="handleFilter">搜索</el-button>
-      <el-button class="filter-item" type="primary" v-waves icon="el-icon-export" @click="handleExport">导出</el-button>
+      <el-button class="filter-item" type="primary" v-waves icon="el-icon-export" @click="handleExport">導出</el-button>
     </div>
 
-    <el-table :key='tableKey' :data="list" v-loading="listLoading" element-loading-text="给我一点时间" border fit highlight-current-row style="width: 100%">
+    <el-table :key='tableKey' :data="list" v-loading="listLoading" element-loading-text="給我一點時間" border fit highlight-current-row style="width: 100%">
 
-      <el-table-column align="center" label="订单编号" width="250">
+      <el-table-column align="center" label="訂單編號" width="250">
         <template slot-scope="scope">
           <span>{{scope.row.billNo}}</span>
         </template>
       </el-table-column>
 
-      <el-table-column  align="center" width="150" label="下单时间">
+      <el-table-column  align="center" width="150" label="下單時間">
         <template slot-scope="scope">
           <span>{{scope.row.createTime | timeFilter }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="支付编号">
+      <el-table-column align="center" label="支付編號">
         <template slot-scope="scope">
           <span>{{scope.row.payCode}}</span>
         </template>
       </el-table-column>
-      <el-table-column  align="center" label="客户">
+      <el-table-column  align="center" label="客戶">
         <template slot-scope="scope">
           <span>{{scope.row.username}}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="订单金额">
+      <el-table-column align="center" label="訂單金額">
         <template slot-scope="scope">
           <span>¥{{scope.row.billAmount }}</span>
         </template>
       </el-table-column>
-      <el-table-column  align="center" label="优惠金额">
+      <el-table-column  align="center" label="優惠金額">
         <template slot-scope="scope">
           <span>¥{{scope.row.prefAmount }}</span>
         </template>
       </el-table-column>
-      <el-table-column  align="center" label="应付金额">
+      <el-table-column  align="center" label="應付金額">
         <template slot-scope="scope">
           <span>¥{{scope.row.payableAmount}}</span>
         </template>
       </el-table-column>
-      <el-table-column  align="center" label="实付金额">
+      <el-table-column  align="center" label="實付金額">
         <template slot-scope="scope">
           <span>¥{{scope.row.paidAmount}}</span>
         </template>
       </el-table-column>
-      <el-table-column min-width="150" align="center" label="备注">
+      <el-table-column min-width="150" align="center" label="備註">
         <template slot-scope="scope">
           <span>{{scope.row.note}}</span>
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="状态" width="100">
+      <el-table-column class-name="status-col" label="狀態" width="100">
         <template slot-scope="scope">
           <el-tag :type="scope.row.billStatus | statusFilter">{{ scope.row.billStatus | billStatusFilter }}</el-tag>
         </template>
@@ -101,7 +101,7 @@
 
 <script>
 import { fetchList, fetchOrder ,updateOrderStatus, exportOrders} from '@/api/order'
-import waves from '@/directive/waves/index.js' // 水波纹指令
+import waves from '@/directive/waves/index.js' // 水波紋指令
 import { parseTime } from '@/utils'
 
 const calendarTypeOptions = [
@@ -144,7 +144,7 @@ export default {
       tableKey: 0,
       pickerOptions: {
         shortcuts: [{
-          text: '最近一周',
+          text: '最近一週',
           onClick(picker) {
             const end = new Date();
             const start = new Date();
@@ -152,7 +152,7 @@ export default {
             picker.$emit('pick', [start, end]);
           }
         }, {
-          text: '最近一个月',
+          text: '最近一個月',
           onClick(picker) {
             const end = new Date();
             const start = new Date();
@@ -160,7 +160,7 @@ export default {
             picker.$emit('pick', [start, end]);
           }
         }, {
-          text: '最近三个月',
+          text: '最近三個月',
           onClick(picker) {
             const end = new Date();
             const start = new Date();
@@ -218,7 +218,7 @@ export default {
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement('a');
         link.href = url;
-        link.setAttribute('download', '订单列表.csv');
+        link.setAttribute('download', '訂單列表.csv');
         document.body.appendChild(link);
         link.click();
         
@@ -237,7 +237,7 @@ export default {
       this.getList()
     },
     handleModifyStatus(row, billStatus) {
-      this.$confirm("您确定要操作吗？操作后不可恢复!","提示",{type:'warning'}).then(()=> {
+      this.$confirm("您確定要操作嗎？操作後不可恢復!","提示",{type:'warning'}).then(()=> {
         updateOrderStatus({billNo: row.billNo, billStatus,opBy:this.opBy}).then(data => {
           this.$message({
             message: data.msg,

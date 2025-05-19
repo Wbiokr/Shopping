@@ -30,4 +30,14 @@ export function delCustom(id) {
   })
 }
 
+export function exportCustoms(query) {
+  return request({
+    url: '/customExport',
+    method: 'get',
+    params: query,
+    headers: {
+      responseType: 'blob',
+    },
+  })
+}
 

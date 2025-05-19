@@ -6,7 +6,7 @@
           <svg-icon icon-class="peoples" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">新注册</div>
+          <div class="card-panel-text">新註冊</div>
           <count-to :start-val="0" :end-val="reports.register" :duration="2600" class="card-panel-num"/>
         </div>
       </div>
@@ -39,7 +39,7 @@
           <svg-icon icon-class="shopping" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">订单</div>
+          <div class="card-panel-text">訂單</div>
           <count-to :start-val="0" :end-val="reports.order" :duration="3600" class="card-panel-num"/>
         </div>
       </div>

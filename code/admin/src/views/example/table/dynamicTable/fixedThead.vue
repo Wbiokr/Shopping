@@ -22,7 +22,7 @@
 </template>
 
 <script>
-const defaultFormThead = ['apple', 'banana'] // 默认选中项
+const defaultFormThead = ['apple', 'banana'] // 默認選中項
 
 export default {
   data() {
@@ -42,15 +42,15 @@ export default {
         }
       ],
       key: 1, // table key
-      formTheadOptions: ['apple', 'banana', 'orange'], // 可选择表头
+      formTheadOptions: ['apple', 'banana', 'orange'], // 可選擇表頭
       checkboxVal: defaultFormThead, // checkboxVal
-      formThead: defaultFormThead // 默认表头
+      formThead: defaultFormThead // 默認表頭
     }
   },
   watch: {
     checkboxVal(valArr) {
       this.formThead = this.formTheadOptions.filter(i => valArr.indexOf(i) >= 0)
-      this.key = this.key + 1// 为了保证table 每次都会重渲 （牺牲性能保证效果，当然也可以不用）
+      this.key = this.key + 1// 為了保證table 每次都會重渲 （犧牲性能保證效果，當然也可以不用）
     }
   }
 }

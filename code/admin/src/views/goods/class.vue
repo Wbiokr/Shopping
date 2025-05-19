@@ -1,10 +1,10 @@
 <template>
   <div class="app-container calendar-list-container">
     <div class="filter-container">
-      <el-input @keyup.enter.native="handleFilter" style="width: 400px;" class="filter-item" placeholder="标题" v-model="listQuery.name">
+      <el-input @keyup.enter.native="handleFilter" style="width: 400px;" class="filter-item" placeholder="標題" v-model="listQuery.name">
       </el-input>
 
-      <!-- <el-select clearable class="filter-item" style="width: 130px" v-model="listQuery.type" placeholder="类型">
+      <!-- <el-select clearable class="filter-item" style="width: 130px" v-model="listQuery.type" placeholder="類型">
         <el-option v-for="item in  calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key">
         </el-option>
       </el-select> -->
@@ -13,41 +13,41 @@
       <el-button class="filter-item" style="margin-left: 10px;" @click="handleCreate" type="primary" icon="el-icon-edit">添加</el-button>
     </div>
 
-    <el-table :key='tableKey' :data="list" v-loading="listLoading" element-loading-text="给我一点时间" border fit highlight-current-row style="width: 100%">
+    <el-table :key='tableKey' :data="list" v-loading="listLoading" element-loading-text="給我一點時間" border fit highlight-current-row style="width: 100%">
 
-      <el-table-column align="center" label="分类ID" width="100">
+      <el-table-column align="center" label="分類ID" width="100">
         <template slot-scope="scope">
           <span>{{scope.row.goodsClassID}}</span>
         </template>
       </el-table-column>
 
-      <el-table-column min-width="300px" label="名称">
+      <el-table-column min-width="300px" label="名稱">
         <template slot-scope="scope">
           <span class="link-type" @click="handleUpdate(scope.row)">{{scope.row.name}}</span>
         </template>
       </el-table-column>
 
-      <el-table-column width="110px" align="center" label="状态">
+      <el-table-column width="110px" align="center" label="狀態">
         <template slot-scope="scope">
-          <span>{{scope.row.status ? '启用' : '禁用'}}</span>
+          <span>{{scope.row.status ? '啟用' : '禁用'}}</span>
         </template>
       </el-table-column>
-      <el-table-column width="100px" align="center" label="单价">
+      <el-table-column width="100px" align="center" label="單價">
         <template slot-scope="scope">
           <span>{{scope.row.price}}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="销售量" width="95">
+      <el-table-column align="center" label="銷售量" width="95">
         <template slot-scope="scope">
           <span class="link-type" @click='handleFetchPv(scope.row.numSale)'>{{scope.row.numSale}}</span>
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="是否推荐" width="100">
+      <el-table-column class-name="status-col" label="是否推薦" width="100">
         <template slot-scope="scope">
           <el-tag :type="scope.row.recommendFlag | recommendFilter">{{ scope.row.recommendFlag | goodsRecommendFilter }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="状态" width="100">
+      <el-table-column class-name="status-col" label="狀態" width="100">
         <template slot-scope="scope">
           <el-tag :type="scope.row.goodsStatus | statusFilter">{{ scope.row.goodsStatus | goodsStatusFilter }}</el-tag>
         </template>
@@ -59,13 +59,13 @@
           </el-button>
           <el-button v-if="scope.row.goodsStatus=='U'" size="small" @click="handleModifyStatus(scope.row,'D')">下架
           </el-button>
-          <el-button v-if="scope.row.recommendFlag=='0'" size="small" type="primary" @click="handleRecommendFlag(scope.row,'1')">推荐
+          <el-button v-if="scope.row.recommendFlag=='0'" size="small" type="primary" @click="handleRecommendFlag(scope.row,'1')">推薦
           </el-button>
-          <el-button v-if="scope.row.recommendFlag=='1'" size="small" type="info" @click="handleRecommendFlag(scope.row,'0')">不推荐
+          <el-button v-if="scope.row.recommendFlag=='1'" size="small" type="info" @click="handleRecommendFlag(scope.row,'0')">不推薦
           </el-button>
-          <el-button v-if="scope.row.goodsStatus!='C'" size="small" type="danger" @click="handleModifyStatus(scope.row,'C')">删除
+          <el-button v-if="scope.row.goodsStatus!='C'" size="small" type="danger" @click="handleModifyStatus(scope.row,'C')">刪除
           </el-button>
-          <el-button v-if="scope.row.goodsStatus=='C'" size="small" type="primary" @click="handleModifyStatus(scope.row,'0')">恢复
+          <el-button v-if="scope.row.goodsStatus=='C'" size="small" type="primary" @click="handleModifyStatus(scope.row,'0')">恢復
           </el-button>
         </template>
       </el-table-column>
@@ -78,13 +78,13 @@
       </el-pagination>
     </div>
 
-    <el-dialog title="阅读数统计" :visible.sync="dialogPvVisible">
+    <el-dialog title="閱讀數統計" :visible.sync="dialogPvVisible">
       <el-table :data="pvData" border fit highlight-current-row style="width: 100%">
         <el-table-column prop="key" label="渠道"> </el-table-column>
         <el-table-column prop="pv" label="pv"> </el-table-column>
       </el-table>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="dialogPvVisible = false">确 定</el-button>
+        <el-button type="primary" @click="dialogPvVisible = false">確 定</el-button>
       </span>
     </el-dialog>
 
@@ -93,12 +93,12 @@
 
 <script>
 import { fetchList, fetchPv ,updateGoodsStatus,updateRecommendFlag} from '@/api/goods'
-import waves from '@/directive/waves/index.js' // 水波纹指令
+import waves from '@/directive/waves/index.js' // 水波紋指令
 import { parseTime } from '@/utils'
 
 const calendarTypeOptions = [
-  { key: 'E', display_name: '实物' },
-  { key: 'V', display_name: '虚拟商品' }
+  { key: 'E', display_name: '實物' },
+  { key: 'V', display_name: '虛擬商品' }
 ]
 
 // arr to obj
@@ -147,7 +147,7 @@ export default {
       const statusMap = {
         D: '下架',
         U: '上架',
-        C: '删除',
+        C: '刪除',
         0: '新建',
       }
       return statusMap[status]
@@ -161,8 +161,8 @@ export default {
     },
     goodsRecommendFilter(status) {
       const statusMap = {
-        0: '不推荐',
-        1: '推荐',
+        0: '不推薦',
+        1: '推薦',
       }
       return statusMap[status]
     },

@@ -1,40 +1,40 @@
 <template>
   <div class="tab-container">
     <el-tabs v-model="activeName" style="margin-top:15px;" type="border-card">
-      <el-tab-pane  label="基本设置" name="1">
+      <el-tab-pane  label="基本設置" name="1">
         <keep-alive>
           <el-form ref="baseConfig" :model="baseConfig" label-width="160px" style="width: 600px;">
-          <el-form-item label="关闭网站">
+          <el-form-item label="關閉網站">
             <el-switch v-model="baseConfig.isClose"></el-switch>
           </el-form-item>
-          <el-form-item label="关闭原因">
+          <el-form-item label="關閉原因">
             <el-input type="textarea" v-model="baseConfig.closeReason"></el-input>
           </el-form-item>
-            <el-form-item label="关闭注册">
+            <el-form-item label="關閉註冊">
               <el-switch v-model="baseConfig.isRegister"></el-switch>
             </el-form-item>
-            <el-form-item label="ICP备案证书号">
+            <el-form-item label="ICP備案證書號">
               <el-input v-model="baseConfig.ICPNO"></el-input>
             </el-form-item>
-            <el-form-item label="市场价格比例">
+            <el-form-item label="市場價格比例">
               <el-input v-model="baseConfig.marketPriceRatio"></el-input>
             </el-form-item>
-            <el-form-item label="消费积分名称">
+            <el-form-item label="消費積分名稱">
               <el-input v-model="baseConfig.consumptionPointsName"></el-input>
             </el-form-item>
-            <el-form-item label="积分换算比例">
+            <el-form-item label="積分換算比例">
               <el-input v-model="baseConfig.integralConversionRatio"></el-input>
             </el-form-item>
-            <el-form-item label="积分支付比例">
+            <el-form-item label="積分支付比例">
               <el-input v-model="baseConfig.integralPaymentRatio"></el-input>
             </el-form-item>
-            <el-form-item label="商品货号前缀">
+            <el-form-item label="商品貨號前綴">
               <el-input v-model="baseConfig.shopNumberPrefix"></el-input>
             </el-form-item>
-            <el-form-item label="用户评论是否需要审核">
+            <el-form-item label="用戶評論是否需要審核">
               <el-switch v-model="baseConfig.isCommentReviewed"></el-switch>
             </el-form-item>
-            <el-form-item label="会员注册赠送积分">
+            <el-form-item label="會員註冊贈送積分">
               <el-input v-model="baseConfig.registerPresentExp"></el-input>
             </el-form-item>
             <el-form-item>
@@ -49,19 +49,19 @@
             <el-form-item label="寄件人姓名">
               <el-input v-model="shop.sender"></el-input>
             </el-form-item>
-            <el-form-item label="商店名称">
+            <el-form-item label="商店名稱">
               <el-input v-model="shop.shopName"></el-input>
             </el-form-item>
-            <el-form-item label="商店标题">
-              <el-input v-model="shop.shopTitle" placeholder="商店的标题将显示在浏览器的标题栏"></el-input>
+            <el-form-item label="商店標題">
+              <el-input v-model="shop.shopTitle" placeholder="商店的標題將顯示在瀏覽器的標題欄"></el-input>
             </el-form-item>
             <el-form-item label="商店描述">
               <el-input v-model="shop.shopDescribe"></el-input>
             </el-form-item>
-            <el-form-item label="商店关键字">
+            <el-form-item label="商店關鍵字">
               <el-input v-model="shop.shopKeyWord"></el-input>
             </el-form-item>
-            <el-form-item label="所在省市区">
+            <el-form-item label="所在省市區">
               <el-cascader
                 :options="region"
                 v-model="shop._region"
@@ -69,20 +69,20 @@
                 :props="regionProps"
               ></el-cascader>
             </el-form-item>
-            <el-form-item label="详细地址">
+            <el-form-item label="詳細地址">
               <el-input v-model="shop.completeAddress"></el-input>
             </el-form-item>
             <el-form-item label="客服QQ">
               <el-input v-model="shop.serviceQQ"></el-input>
             </el-form-item>
-            <el-form-item label="邮件地址">
+            <el-form-item label="郵件地址">
               <el-input v-model="shop.serviceEmail"></el-input>
             </el-form-item>
-            <el-form-item label="客服电话">
+            <el-form-item label="客服電話">
               <el-input v-model="shop.serviceCall"></el-input>
             </el-form-item>
 
-            <el-form-item label="商店 Logo(推荐分辨率180x90)">
+            <el-form-item label="商店 Logo(推薦分辨率180x90)">
               <Croppa ref="shopLogo" v-model="shop.shopLogo" :width="180" :height="90"></Croppa>
             </el-form-item>
 
@@ -108,10 +108,10 @@ export default {
       uploadURL: process.env.VUE_APP_BASE_API+'/upload/image',
       activeName: '1',
       region: [{
-        region_name: '中国',
+        region_name: '中國',
         region_id: 1,
         all:{
-          region_name: '中国',
+          region_name: '中國',
           region_id: 1,
         },
         cities: []
@@ -232,10 +232,10 @@ export default {
       const isLt2M = file.size / 1024 / 1024 < 2;
 
       if(!isJPG){
-        this.$message.error('上传图片只能是JPG/PNG/GIF格式!');
+        this.$message.error('上傳圖片只能是JPG/PNG/GIF格式!');
       }
       if (!isLt2M) {
-        this.$message.error('上传图片大小不能超过 2MB!');
+        this.$message.error('上傳圖片大小不能超過 2MB!');
       }
       return isJPG && isLt2M;
     },

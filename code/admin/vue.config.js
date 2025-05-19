@@ -5,8 +5,8 @@ const webpack = require('webpack');
 module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: false, // 关闭保存时的 ESLint 检查
-  outputDir: '../app/public/admin',
-  indexPath: path.resolve('../app/view/admin/index.html'),
+  outputDir: '../server/app/public/admin',
+  indexPath: path.resolve('../server/app/view/admin/index.html'),
   publicPath: process.env.NODE_ENV === 'production'
     ? '/public/admin'
     : '/public',

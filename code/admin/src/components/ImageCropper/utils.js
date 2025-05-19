@@ -8,9 +8,9 @@
  */
 export function effectRipple(e, arg_opts) {
     let opts = Object.assign({
-            ele: e.target, // 波纹作用元素
-            type: 'hit', // hit点击位置扩散　center中心点扩展
-            bgc: 'rgba(0, 0, 0, 0.15)' // 波纹颜色
+            ele: e.target, // 波紋作用元素
+            type: 'hit', // hit點擊位置擴散　center中心點擴展
+            bgc: 'rgba(0, 0, 0, 0.15)' // 波紋顏色
         }, arg_opts),
         target = opts.ele;
     if (target) {
@@ -38,7 +38,7 @@ export function effectRipple(e, arg_opts) {
         return false;
     }
 }
-// database64文件格式转换为2进制
+// database64文件格式轉換為2進制
 /**
  *
  * @param data
@@ -46,13 +46,13 @@ export function effectRipple(e, arg_opts) {
  * @returns {*}
  */
 export function data2blob(data, mime) {
-    // dataURL 的格式为 “data:image/png;base64,****”,逗号之前都是一些说明性的文字，我们只需要逗号之后的就行了
+    // dataURL 的格式為 “data:image/png;base64,****”,逗號之前都是一些說明性的文字，我們只需要逗號之後的就行了
     data = data.split(',')[1];
     data = window.atob(data);
     var ia = new Uint8Array(data.length);
     for (var i = 0; i < data.length; i++) {
         ia[i] = data.charCodeAt(i);
     }
-    // canvas.toDataURL 返回的默认格式就是 image/png
+    // canvas.toDataURL 返回的默認格式就是 image/png
     return new Blob([ia], {type: mime});
 };

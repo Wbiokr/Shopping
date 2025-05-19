@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import permission from '@/directive/permission/index.js' // 权限判断指令
-import checkPermission from '@/utils/permission' // 权限判断函数
+import permission from '@/directive/permission/index.js' // 權限判斷指令
+import checkPermission from '@/utils/permission' // 權限判斷函數
 import SwitchRoles from './components/SwitchRoles'
 
 export default{
@@ -41,7 +41,7 @@ export default{
   directives: { permission },
   data() {
     return {
-      key: 1 // 为了能每次切换权限的时候重新初始化指令
+      key: 1 // 為了能每次切換權限的時候重新初始化指令
     }
   },
   methods: {

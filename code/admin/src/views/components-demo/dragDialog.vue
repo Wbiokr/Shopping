@@ -2,7 +2,7 @@
   <div class="components-container">
     <el-button type="primary" @click="dialogTableVisible = true">open a Drag Dialog</el-button>
     <el-dialog v-el-drag-dialog :visible.sync="dialogTableVisible" title="Shipping address" @dragDialog="handleDrag">
-      <el-select ref="select" v-model="value" placeholder="请选择">
+      <el-select ref="select" v-model="value" placeholder="請選擇">
         <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"/>
       </el-select>
       <el-table :data="gridData">
@@ -24,10 +24,10 @@ export default {
     return {
       dialogTableVisible: false,
       options: [
-        { value: '选项1', label: '黄金糕' },
-        { value: '选项2', label: '双皮奶' },
-        { value: '选项3', label: '蚵仔煎' },
-        { value: '选项4', label: '龙须面' }
+        { value: '選項1', label: '黃金糕' },
+        { value: '選項2', label: '雙皮奶' },
+        { value: '選項3', label: '蚵仔煎' },
+        { value: '選項4', label: '龍鬚麵' }
       ],
       value: '',
       gridData: [{

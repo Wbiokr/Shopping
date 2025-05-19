@@ -1,20 +1,20 @@
 <template>
   <el-table :data="list"border fit highlight-current-row style="width: 100%">
 
-    <el-table-column align="center" label="序号" width="65"  v-loading="loading"
-    element-loading-text="请给我点时间！">
+    <el-table-column align="center" label="序號" width="65"  v-loading="loading"
+    element-loading-text="請給我點時間！">
       <template slot-scope="scope">
         <span>{{scope.row.id}}</span>
       </template>
     </el-table-column>
 
-    <el-table-column width="180px" align="center" label="时间">
+    <el-table-column width="180px" align="center" label="時間">
       <template slot-scope="scope">
         <span>{{scope.row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}')}}</span>
       </template>
     </el-table-column>
 
-    <el-table-column min-width="300px" label="标题">
+    <el-table-column min-width="300px" label="標題">
       <template slot-scope="scope">
         <span>{{scope.row.title}}</span>
         <el-tag>{{scope.row.type}}</el-tag>
@@ -33,13 +33,13 @@
       </template>
     </el-table-column>
 
-    <el-table-column align="center" label="阅读数" width="95">
+    <el-table-column align="center" label="閱讀數" width="95">
       <template slot-scope="scope">
         <span>{{scope.row.pageviews}}</span>
       </template>
     </el-table-column>
 
-    <el-table-column class-name="status-col" label="状态" width="110">
+    <el-table-column class-name="status-col" label="狀態" width="110">
       <template slot-scope="scope">
         <el-tag :type="scope.row.status | statusFilter">{{scope.row.status}}</el-tag>
       </template>

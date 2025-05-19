@@ -3,19 +3,19 @@
 
     <el-table :data="list" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 
-      <el-table-column align="center" label="序号" width="65">
+      <el-table-column align="center" label="序號" width="65">
         <template slot-scope="scope">
           <span>{{scope.row.id}}</span>
         </template>
       </el-table-column>
 
-      <el-table-column width="180px" align="center" label="时间">
+      <el-table-column width="180px" align="center" label="時間">
         <template slot-scope="scope">
           <span>{{scope.row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}')}}</span>
         </template>
       </el-table-column>
 
-      <el-table-column min-width="300px" label="标题">
+      <el-table-column min-width="300px" label="標題">
         <template slot-scope="scope">
           <span>{{scope.row.title}}</span>
         </template>
@@ -33,13 +33,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="阅读数" width="95">
+      <el-table-column align="center" label="閱讀數" width="95">
         <template slot-scope="scope">
           <span>{{scope.row.pageviews}}</span>
         </template>
       </el-table-column>
 
-      <el-table-column class-name="status-col" label="状态" width="110">
+      <el-table-column class-name="status-col" label="狀態" width="110">
         <template slot-scope="scope">
           <el-tag :type="scope.row.status | statusFilter">{{scope.row.status}}</el-tag>
         </template>
@@ -53,8 +53,8 @@
 
     </el-table>
 
-    <div class='show-d'>默认顺序 &nbsp; {{ olderList}}</div>
-    <div class='show-d'>拖拽后顺序{{newList}}</div>
+    <div class='show-d'>默認順序 &nbsp; {{ olderList}}</div>
+    <div class='show-d'>拖拽後順序{{newList}}</div>
 
   </div>
 </template>

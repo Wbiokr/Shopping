@@ -1,5 +1,5 @@
 /**
- * 点击波纹效果
+ * 點擊波紋效果
  *
  * @param  {[event]} e        [description]
  * @param  {[Object]} arg_opts [description]
@@ -7,9 +7,9 @@
  */
 export default function(e, arg_opts) {
   var opts = Object.assign({
-    ele: e.target, // 波纹作用元素
-    type: 'hit', // hit点击位置扩散center中心点扩展
-    bgc: 'rgba(0, 0, 0, 0.15)' // 波纹颜色
+    ele: e.target, // 波紋作用元素
+    type: 'hit', // hit點擊位置擴散center中心點擴展
+    bgc: 'rgba(0, 0, 0, 0.15)' // 波紋顏色
   }, arg_opts)
   var target = opts.ele
   if (target) {

@@ -1,6 +1,6 @@
 // const iconContext = require.context(
-//   './svg',        // 当前目录
-//   false,       // 不包括子目录
+//   './svg',        // 當前目錄
+//   false,       // 不包括子目錄
 //   /\.svg$/     // 匹配 .svg 文件
 // );
 

@@ -138,7 +138,7 @@ import { getServerToken } from '@/utils/auth'
           let blob = await this.myCroppa.promisedBlob('image/jpeg', 1)
           if (!blob) {
             this.$message({
-              message: '请选择1张图片',
+              message: '請選擇1張圖片',
               type: 'error'
             })
             return false;
@@ -152,7 +152,7 @@ import { getServerToken } from '@/utils/auth'
           // this.$emit('onUpload',{name:this.myCroppa.chosenFile.name,url:data.result.docUrl});
           this.$emit('onUpload',{name:this.myCroppa.chosenFile.name,url:data.url});
           this.$notify({
-            message: '图片上传成功',
+            message: '圖片上傳成功',
             type: 'success'
           })
         }

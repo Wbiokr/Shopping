@@ -48,7 +48,7 @@ const user = {
   },
 
   actions: {
-    // 用户名登录
+    // 用戶名登錄
     LoginByUsername({ commit }, userInfo) {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
@@ -62,13 +62,13 @@ const user = {
       })
     },
 
-    // 获取用户信息
+    // 獲取用戶信息
     GetUserInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getUserInfo(state.token).then(res => {
           const data = res.result
 
-          if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
+          if (data.roles && data.roles.length > 0) { // 驗證返回的roles是否是一個非空數組
             commit('SET_ROLES', data.roles)
           } else {
             reject('getInfo: roles must be a non-null array !')
@@ -85,7 +85,7 @@ const user = {
       })
     },
 
-    // 第三方验证登录
+    // 第三方驗證登錄
     // LoginByThirdparty({ commit, state }, code) {
     //   return new Promise((resolve, reject) => {
     //     commit('SET_CODE', code)
@@ -122,7 +122,7 @@ const user = {
       })
     },
 
-    // 动态修改权限
+    // 動態修改權限
     ChangeRoles({ commit, dispatch }, role) {
       return new Promise(resolve => {
         commit('SET_TOKEN', role)
@@ -133,7 +133,7 @@ const user = {
           commit('SET_NAME', data.name)
           commit('SET_AVATAR', data.avatar)
           commit('SET_INTRODUCTION', data.introduction)
-          dispatch('GenerateRoutes', data) // 动态修改权限后 重绘侧边菜单
+          dispatch('GenerateRoutes', data) // 動態修改權限後 重繪側邊菜單
           resolve()
         })
       })

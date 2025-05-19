@@ -6,7 +6,7 @@
         <CommentDropdown v-model="postForm.comment_disabled" />
         <PlatformDropdown v-model="postForm.platforms" />
         <SourceUrlDropdown v-model="postForm.source_uri" />
-        <el-button v-loading="loading" style="margin-left: 10px;" type="success" @click="submitForm">发布
+        <el-button v-loading="loading" style="margin-left: 10px;" type="success" @click="submitForm">發佈
         </el-button>
         <el-button v-loading="loading" type="warning" @click="draftForm">草稿</el-button>
       </sticky>
@@ -20,12 +20,12 @@
             </el-form-item>
             <el-form-item  prop="title">
               <MDinput v-model="postForm.title" :maxlength="64" name="name" required>
-                标题
+                標題
               </MDinput>
             </el-form-item>
             <el-form-item style="margin-bottom: 40px;" prop="subTitle">
               <MDinput v-model="postForm.subTitle" :maxlength="100" name="name">
-                副标题
+                副標題
               </MDinput>
             </el-form-item>
 
@@ -38,14 +38,14 @@
                 </el-col>
 
                 <el-col :span="10">
-                  <el-form-item label-width="80px" label="发布时间:" class="postInfo-container-item">
-                    <el-date-picker v-model="postForm.createTime" type="datetime" format="yyyy-MM-dd HH:mm:ss" placeholder="选择日期时间"/>
+                  <el-form-item label-width="80px" label="發佈時間:" class="postInfo-container-item">
+                    <el-date-picker v-model="postForm.createTime" type="datetime" format="yyyy-MM-dd HH:mm:ss" placeholder="選擇日期時間"/>
                   </el-form-item>
                 </el-col>
 
                 <!-- <el-col :span="6">
-                  <el-form-item  label-width="80px" label="分类:" class="postInfo-container-item" prop="blogClassID">
-                    <el-select v-model="postForm.blogClassID"  placeholder="分类" clearable>
+                  <el-form-item  label-width="80px" label="分類:" class="postInfo-container-item" prop="blogClassID">
+                    <el-select v-model="postForm.blogClassID"  placeholder="分類" clearable>
                       <el-option
                         v-for="item in blogClass_options"
                         :key="item.blogClassID"
@@ -61,7 +61,7 @@
         </el-row>
 
         <el-form-item style="margin-bottom: 40px;" label-width="45px" label="摘要:" prop="about">
-          <el-input :rows="1" v-model="postForm.about" type="textarea" class="article-textarea" autosize placeholder="请输入内容"/>
+          <el-input :rows="1" v-model="postForm.about" type="textarea" class="article-textarea" autosize placeholder="請輸入內容"/>
           <span v-show="contentShortLength" class="word-counter">{{ contentShortLength }}字</span>
         </el-form-item>
 
@@ -78,19 +78,19 @@
 <script>
   import Ueditor from '@/components/Ueditor'
 import MDinput from '@/components/MDinput'
-import Sticky from '@/components/Sticky' // 粘性header组件
+import Sticky from '@/components/Sticky' // 粘性header組件
 import { validateURL } from '@/utils/validate'
 import { createModel,fetchModel ,updateModel} from '@/api/model'
 import { CommentDropdown, PlatformDropdown, SourceUrlDropdown } from './Dropdown'
 import Croppa from '@/components/Croppa'
 const defaultForm = {
-  title: '', // 文章题目
-  subTitle: '', // 文章题目
-  content: '', // 文章内容
+  title: '', // 文章題目
+  subTitle: '', // 文章題目
+  content: '', // 文章內容
   about: '', // 文章摘要
-  source_uri: '', // 文章外链
-  coverImg: '', // 文章图片
-  createTime: undefined, // 前台展示时间
+  source_uri: '', // 文章外鏈
+  coverImg: '', // 文章圖片
+  createTime: undefined, // 前臺展示時間
   blogID: undefined,
   blogClassID: '1',
   platforms: ['a-platform'],
@@ -111,10 +111,10 @@ export default {
     const validateRequire = (rule, value, callback) => {
       if (value === '') {
         this.$message({
-          message: rule.field + '为必传项',
+          message: rule.field + '為必傳項',
           type: 'error'
         })
-        callback(new Error(rule.field + '为必传项'))
+        callback(new Error(rule.field + '為必傳項'))
       } else {
         callback()
       }
@@ -125,10 +125,10 @@ export default {
           callback()
         } else {
           this.$message({
-            message: '外链url填写不正确',
+            message: '外鏈url填寫不正確',
             type: 'error'
           })
-          callback(new Error('外链url填写不正确'))
+          callback(new Error('外鏈url填寫不正確'))
         }
       } else {
         callback()
@@ -183,7 +183,7 @@ export default {
       })
     },
     setTagsViewTitle() {
-      const title = this.lang === 'zh' ? '编辑文章' : 'Edit Article'
+      const title = this.lang === 'zh' ? '編輯文章' : 'Edit Article'
       const route = Object.assign({}, this.tempRoute, { title: `${title}-${this.postForm.id}` })
       this.$store.dispatch('updateVisitedView', route)
     },
@@ -239,7 +239,7 @@ export default {
     draftForm() {
       if (this.postForm.content.length === 0 || this.postForm.title.length === 0) {
         this.$message({
-          message: '请填写必要的标题和内容',
+          message: '請填寫必要的標題和內容',
           type: 'warning'
         })
         return

@@ -58,3 +58,13 @@ export function goodsClass(params) {
   })
 }
 
+export function exportGoods(query) {
+  return request({
+    url: '/goodsExport',
+    method: 'get',
+    params: query,
+    headers: {
+      responseType: 'blob',
+    },
+  })
+}

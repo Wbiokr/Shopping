@@ -12,7 +12,7 @@
           <el-tag>{{ scope.row.timeLine+'ms' }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="时间线">
+      <el-table-column label="時間線">
         <template slot-scope="scope">
           <el-tooltip :content="scope.row.timeLine+'ms'" effect="dark" placement="left">
             <div class="processContainer">
@@ -29,7 +29,7 @@
       </el-table-column>
       <el-table-column label="操作" width="200">
         <template slot-scope="scope">
-          <el-button type="text" @click="message(scope.row)">点击</el-button>
+          <el-button type="text" @click="message(scope.row)">點擊</el-button>
         </template>
       </el-table-column>
     </tree-table>
@@ -56,43 +56,43 @@ export default {
           id: 1,
           event: '事件1',
           timeLine: 100,
-          comment: '无',
+          comment: '無',
           children: [
             {
               id: 2,
               event: '事件2',
               timeLine: 10,
-              comment: '无'
+              comment: '無'
             },
             {
               id: 3,
               event: '事件3',
               timeLine: 90,
-              comment: '无',
+              comment: '無',
               children: [
                 {
                   id: 4,
                   event: '事件4',
                   timeLine: 5,
-                  comment: '无'
+                  comment: '無'
                 },
                 {
                   id: 5,
                   event: '事件5',
                   timeLine: 10,
-                  comment: '无'
+                  comment: '無'
                 },
                 {
                   id: 6,
                   event: '事件6',
                   timeLine: 75,
-                  comment: '无',
+                  comment: '無',
                   children: [
                     {
                       id: 7,
                       event: '事件7',
                       timeLine: 50,
-                      comment: '无',
+                      comment: '無',
                       children: [
                         {
                           id: 71,
@@ -118,7 +118,7 @@ export default {
                       id: 8,
                       event: '事件8',
                       timeLine: 25,
-                      comment: '无'
+                      comment: '無'
                     }
                   ]
                 }

@@ -9,7 +9,7 @@
 				</svg>
 			</el-button>
 		</el-badge>
-		<el-dialog title="bug日志" :visible.sync="dialogTableVisible">
+		<el-dialog title="bug日誌" :visible.sync="dialogTableVisible">
 			<el-table :data="logsList">
 				<el-table-column label="message">
 					<template slot-scope="scope">

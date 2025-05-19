@@ -197,37 +197,37 @@ export const constantRouterMap = [
         }
       }]
   },
-  {
-    path: '/article',
-    component: Layout,
-    redirect: '/article/list',
-    name: 'Article',
-    meta: {
-      title: 'article',
-      icon: 'example'
-    },
-    children: [
-      {
-        path: 'create',
-        component: () => import('@/views/article/create'),
-        name: 'CreateArticle',
-        meta: { title: 'createArticle', icon: 'edit' }
-      },
-      {
-        path: 'edit/:id(\\d+)',
-        component: () => import('@/views/article/edit'),
-        name: 'EditArticle',
-        meta: { title: 'editArticle', noCache: true },
-        hidden: true
-      },
-      {
-        path: 'list',
-        component: () => import('@/views/article/list'),
-        name: 'ArticleList',
-        meta: { title: 'articleList', icon: 'list' }
-      }
-    ]
-  },
+  // {
+  //   path: '/article',
+  //   component: Layout,
+  //   redirect: '/article/list',
+  //   name: 'Article',
+  //   meta: {
+  //     title: 'article',
+  //     icon: 'example'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'create',
+  //       component: () => import('@/views/article/create'),
+  //       name: 'CreateArticle',
+  //       meta: { title: 'createArticle', icon: 'edit' }
+  //     },
+  //     {
+  //       path: 'edit/:id(\\d+)',
+  //       component: () => import('@/views/article/edit'),
+  //       name: 'EditArticle',
+  //       meta: { title: 'editArticle', noCache: true },
+  //       hidden: true
+  //     },
+  //     {
+  //       path: 'list',
+  //       component: () => import('@/views/article/list'),
+  //       name: 'ArticleList',
+  //       meta: { title: 'articleList', icon: 'list' }
+  //     }
+  //   ]
+  // },
   // {
   //   path: '/subject',
   //   component: Layout,
@@ -313,18 +313,18 @@ export const asyncRouterMap = [
   //   ]
   // },
 
-  {
-    path: '/icon',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/svg-icons/index'),
-        name: 'Icons',
-        meta: { title: 'icons', icon: 'icon', noCache: true }
-      }
-    ]
-  },
+  // {
+  //   path: '/icon',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/svg-icons/index'),
+  //       name: 'Icons',
+  //       meta: { title: 'icons', icon: 'icon', noCache: true }
+  //     }
+  //   ]
+  // },
 
   /** When your routing table is too long, you can split it into small modules**/
   // componentsRouter,

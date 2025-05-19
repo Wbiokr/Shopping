@@ -29,15 +29,14 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => // response,
     /**
-     * 下面的注释为通过response自定义code来标示请求状态，当code返回如下情况为权限有问题，登出并返回到登录页
-     * 如通过xmlhttprequest 状态码标识 逻辑可写在下面error中
+     * 下面的註釋為通過response自定義code來標示請求狀態，當code返回如下情況為權限有問題，登出並返回到登錄頁
+     * 如通過xmlhttprequest 狀態碼標識 邏輯可寫在下面error中
      */
     {
-      // console.log(response)
     const res = response.data;
     if (!res) {
       return Promise.reject('error');
-    } else if (response.config.url.includes('export')) {
+    } else if (response.config.headers.responseType ==="blob") {
       return response
     } else if (!res.success && res.state !== 'SUCCESS') {
       Message({
@@ -49,13 +48,13 @@ service.interceptors.response.use(
       return response;
     } else {
       if (response.data=='AccessDenied') {
-        MessageBox.confirm('你已被登出，可以取消继续留在该页面，或者重新登录', '确定登出', {
-          confirmButtonText: '重新登录',
+        MessageBox.confirm('你已被登出，可以取消繼續留在該頁面，或者重新登錄', '確定登出', {
+          confirmButtonText: '重新登錄',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
           store.dispatch('FedLogOut').then(() => {
-            location.reload();// 为了重新实例化vue-router对象 避免bug
+            location.reload();// 為了重新實例化vue-router對象 避免bug
           });
         })
       }else

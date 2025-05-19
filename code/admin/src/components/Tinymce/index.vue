@@ -121,7 +121,7 @@ export default {
             _this.fullscreen = e.state
           })
         }
-        // 整合七牛上传
+        // 整合七牛上傳
         // images_dataimg_filter(img) {
         //   setTimeout(() => {
         //     const $image = $(img);
@@ -150,7 +150,7 @@ export default {
         //       progress(100);
         //     })
         //   }).catch(err => {
-        //     failure('出现未知问题，刷新页面，或者联系程序员')
+        //     failure('出現未知問題，刷新頁面，或者聯繫程序員')
         //     console.log(err);
         //   });
         // },

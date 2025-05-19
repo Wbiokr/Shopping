@@ -24,8 +24,8 @@
       <label class="label" for="durationInput">duration:
         <input v-model.number="setDuration" type="number" name="durationInput" >
       </label>
-      <div class="startBtn example-btn" @click="start">开始</div>
-      <div class="pause-resume-btn example-btn" @click="pauseResume">暂停/恢复</div>
+      <div class="startBtn example-btn" @click="start">開始</div>
+      <div class="pause-resume-btn example-btn" @click="pauseResume">暫停/恢復</div>
       <br>
       <label class="label" for="decimalsInput">decimals:
         <input v-model.number="setDecimals" type="number" name="decimalsInput" >
