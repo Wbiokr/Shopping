@@ -7,7 +7,8 @@
 */
 
 var App = function () {
-
+    var loadingFilter = false
+    var clearing = false
     function handleBootstrap() {
         /*Bootstrap Carousel*/
         jQuery('.carousel').carousel({
@@ -43,6 +44,69 @@ var App = function () {
           if(jQuery(this).scrollTop() > 1) jQuery('.search-open').fadeOut('fast');
         });
 
+        $(document).on('click', '.filter-buy-btn', function() {
+            if (clearing) return
+            clearing = true
+            var id = $(this).attr('data-id')
+            var price = $(this).attr('data-price')
+            Ap.request.get('/shop/cartClear', {}, function(res) {
+                clearing = false
+                console.log(32, res)
+                if (res.success) {
+                    addCart(id, 1, price, true, true, function() {
+                        window.location.href = '/shop/cart'
+                    })
+                }
+            })
+        })
+
+        $('#price-filter-input').on('input', function() {
+            this.value = Math.abs(parseFloat(this.value)) || ""
+        })
+        $('#price-filter-input').on('keyup', function() {
+            // console.log(window.event)
+            if (window.event.key === 'Enter' && !loadingFilter) {
+                loadingFilter = true
+                Ap.request.get('/shop/goodsPrice', {
+                        price: $('#price-filter-input').val(),
+                }, function(res) {
+                    loadingFilter = false
+                    if (res.success) {
+                        if (res.result.length === 0) {
+                            Ap.msg.error('未找到當前價格的商品')
+                            return
+                        }
+                        var html = ''
+                        res.result.forEach(o => {
+                            html += `
+                                <section class="w-per-100 f-s-c o-h">
+                                    <img src="${o.imgurl}" class="w-60 h-60 b-r-6 o-h" />
+                                    <div class="f-1 h-60 f-column justify-b p-lr-20">
+                                        <div class="w-per-100 white-1 o-h">
+                                            <a href="/shop/goods/${o.goodsID}" target="__blank" class="f-s-14 white-1">${o.name}</a>
+                                        </div>
+                                        <div class="f-b-c w-per-100 b-eee b-no-lr b-s-dashed p-tb-5">
+                                            <h3 class="f-s-c m-no f-s-14">原價：<span class="c-red f-w-600 t-d-t">￥${o.priceMarket}</span> &nbsp;&nbsp; 現價：<span class="c-sus f-w-600">￥${o.price}</span></h3>
+                                            <a href="javascript:void(0)" data-id=${o.goodsID} data-price=${o.price} class="filter-buy-btn">立即購買</a>
+                                        </div>
+                                    </div>
+                                </section>
+                            `
+                        })
+                        html += `
+                            <svg t="1747650184371" class="icon p-a-xr-yt top-20 right-5 o-hover-70 ease-400 c-p" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1657" width="20" height="20"><path d="M512 0C229.376 0 0 229.376 0 512s229.376 512 512 512 512-229.376 512-512S794.624 0 512 0z m234.496 679.424c18.432 18.432 18.432 48.64 0 67.072-18.432 18.432-48.64 18.432-67.072 0L512 579.072l-167.424 167.424c-18.432 18.432-48.64 18.432-67.072 0-18.432-18.432-18.432-48.64 0-67.072L444.928 512 277.504 344.576c-18.432-18.432-18.432-48.64 0-67.072 18.432-18.432 48.64-18.432 67.072 0L512 444.928l167.424-167.424c18.432-18.432 48.64-18.432 67.072 0 18.432 18.432 18.432 48.64 0 67.072L579.072 512l167.424 167.424z" fill="#f00"></path></svg>
+                        `
+                        $('.search-open .search-result').show()
+                        $('.search-open .search-result').html(html)
+                        document.querySelector('.search-open .search-result .icon').onclick = function() {
+                            $('.search-open .search-result').hide()
+                        }
+                    } else {
+                        Ap.msg.error(res.msg || '查詢失敗')
+                    }
+                })   
+            }
+        })
     }
 
     function handleToggle() {

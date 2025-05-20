@@ -286,15 +286,15 @@
               html += '</div>'
               html += '<div class="product-description product-description-brd margin-bottom-30">'
               html += '<div class="overflow-h margin-bottom-5">'
-              html += '<div class="pull-left">'
-              html += '<h4 class="title-price"><a href="/shop/goods/'+ item.goodsID +'">'+item.title+'</a></h4>'
+              html += '<div class="w-per-100">'
+              html += '<h4 class="title-price white-1 w-per-100" title='+ item.title +'><a class="white-1" href="/shop/goods/'+ item.goodsID +'">'+item.title+'</a></h4>'
                 // <span class="gender text-uppercase">Men</span>
                                         // <span class="gender">Suits - Blazers</span>
               html += '</div>'
-              html += '<div class="product-price">'
-              html += '<span class="title-price">' + item.price + '元</span>'
-              html += '<span class="title-price line-through">'+ item.priceMarket +'元</span>'
-              html += '</div></div>'
+              html += '<div class=" f-b-c">'
+              html += '<section class="f-s-c"><span class="title-price m-r-10">' + item.price + '元</span>'
+              html += '<span class="title-price line-through">'+ item.priceMarket +'元</span></section>'
+              html += ''
                                     
               html += '<ul class="list-inline product-ratings">'
                                     // <li><i class="rating-selected fa fa-star"></i></li>
@@ -303,7 +303,7 @@
                                     // <li><i class="rating fa fa-star"></i></li>
                                     // <li><i class="rating fa fa-star"></i></li>
               html += '<li class="like-icon"><a data-toggle="tooltip" data-placement="left" class="tooltips c-p collect-btn" data-id="'+ item.goodsID +'" data-price="'+ item.price + 'href="#"><i class="fa fa-heart"></i><span>收藏</span></a></li>'
-              html += '</ul></div></div>'
+              html += '</ul></div></div></div></div>'
               
               if ((index + 1) % res.result.pagination.pageSize == 0) {
                 html += '</div>'

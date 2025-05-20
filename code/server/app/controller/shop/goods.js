@@ -79,6 +79,23 @@ module.exports = app => {
                     }
             });
         }
+        async price(ctx) {
+            const {
+                price
+            } = ctx.query || {};
+
+            // 構建查詢條件
+            const where = {goodsStatus:'U', price: { [ctx.app.Sequelize.Op.eq]: parseFloat(price) }};
+            const result = await ctx.model.ShopGoods.findAndCountAll({
+                where,
+                offset: 0,
+                limit: 5,
+            });
+
+            console.log('rrrrrr', result)
+
+            ctx.success('查詢成功', result.rows);
+        }
         async show(ctx){
             let data=await ctx.getUserInfo();
             const goods = await ctx.model.ShopGoods.findById(ctx.params.id);

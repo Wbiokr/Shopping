@@ -96,13 +96,14 @@ function getWishList() {
 function addCompare(goodsID) {
     Ap.msg.success("功能還在開發中，盡請期待！");
 }
-function addCart(goodsID,num,price,isForce) {
+function addCart(goodsID,num,price,isForce, isDisMsg, cb) {
     Ap.request.post("/shop/cart",{goodsID,num,price,isForce: Boolean(isForce)},function (res) {
         if(res.success){
-            Ap.msg.success("已加入購物車");
+            !isDisMsg && Ap.msg.success("已加入購物車");
             cartInfo()
+            cb && cb()
         }else{
-            Ap.msg.error("加入購物車失敗");
+            !isDisMsg && Ap.msg.error("加入購物車失敗");
         }
     });
 }

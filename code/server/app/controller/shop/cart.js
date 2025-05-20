@@ -13,6 +13,13 @@ module.exports = app => {
             let data= await ctx.getUserInfo();
             ctx.success('查詢成功', data)
         }
+        async clear(ctx) {
+            const data= await ctx.getUserInfo();
+            data.cart.forEach(async o => {
+                o.destroy()
+            })
+            ctx.success('清空成功')
+        }
         async del(ctx){
             const cart = await ctx.model.ShopCart.findById(ctx.params.id);
             cart.destroy();
@@ -24,7 +31,6 @@ module.exports = app => {
             const goods=await ctx.model.ShopGoods.findById(goodsID);
             const data= await ctx.getUserInfo();
             const currentGoodsCart=data.cart.find(item=>item.goodsID==goodsID);
-            console.log('---------', currentGoodsCart)
             if (currentGoodsCart && !isForce) {
                 num = parseInt(num) + parseInt(currentGoodsCart.num);
             } else {
@@ -39,7 +45,6 @@ module.exports = app => {
                 instance.price = price;
                 await instance.save();
             }
-            console.log('cccccccc', created, instance)
             return ctx.success("添加成功!", instance);
         }
     };

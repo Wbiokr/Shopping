@@ -37,9 +37,11 @@ module.exports = app => {
     //商品
     app.get('/shop/goods', app.controller.shop.goods.index);
     app.get('/shop/goodsQuery', app.controller.shop.goods.query);
+    app.get('/shop/goodsPrice', app.controller.shop.goods.price);
     app.get('/shop/goods/:id', app.controller.shop.goods.show);
     app.get('/shop/cart', isLoginUser,app.controller.shop.cart.show);
     app.get('/shop/cartList', isLoginUser,app.controller.shop.cart.list);
+    app.get('/shop/cartClear', isLoginUser,app.controller.shop.cart.clear);
     app.del('/shop/cart/:id',isLoginUser, app.controller.shop.cart.del);
     app.post('/shop/cart',isLoginUser, app.controller.shop.cart.create);
     app.get('/shop/checkout',isLoginUser, app.controller.shop.order.checkout);

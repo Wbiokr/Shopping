@@ -28,6 +28,11 @@ MMo/LL547X7hbw==
 `
 
 var csrfToken = $.cookies.get('csrfToken');
+var loadedPage = false;
+
+setTimeout(function() {
+    loadedPage = true
+}, 2000)
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -62,7 +67,11 @@ Ap.request={
             },
             error: function (XMLHttpRequest,msg,exception) {
                 Ap.loading.end();
-                if(XMLHttpRequest.responseText=="AccessDenied"){
+                 if(XMLHttpRequest.responseText=="AccessDenied"){
+                    if (!loadedPage || window.location.href.includes('login') || window.location.href.includes('signIn') || window.location.href.includes('reset') || window.location.href.includes('/static/')) {
+                        console.log('不進行攔截');
+                        return
+                    }
                     Ap.msg.confirm("登錄方可操作，快去登錄吧！",function (res) {
                         if(res)window.location="/shop/login";
                     });
