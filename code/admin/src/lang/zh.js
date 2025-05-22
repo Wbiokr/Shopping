@@ -95,7 +95,7 @@ export default {
   login: {
     title: '系統登錄',
     logIn: '登錄',
-    username: '賬號',
+    username: '帳號',
     password: '密碼',
     any: '隨便填',
     thirdparty: '第三方登錄',

@@ -32,7 +32,7 @@
           <span>{{scope.row.nickname}}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="賬號" width="250">
+      <el-table-column align="center" label="帳號" width="250">
         <template slot-scope="scope">
           <span>{{scope.row.username}}</span>
         </template>
@@ -53,7 +53,7 @@
           <span>{{scope.row.lastLoginTime | timeFilter}}</span>
         </template>
       </el-table-column>
-      <el-table-column  align="center" label="手機號">
+      <el-table-column  align="center" label="手機號碼">
         <template slot-scope="scope">
           <span>{{scope.row.cell}}</span>
         </template>

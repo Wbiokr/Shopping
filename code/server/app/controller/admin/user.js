@@ -30,7 +30,7 @@ module.exports = app => {
                 const data = result.rows
                 const columns = [
                     { header: '用戶暱稱', key: 'nickname', width: 10 },
-                    { header: '賬號', key: 'username', width: 20 },
+                    { header: '帳號', key: 'username', width: 20 },
                     { header: '註冊時間', key: 'createTime', width: 10 },
                     // { header: '登錄次數', key: 'loginNum', width: 30 },
                     { header: '狀態', key: 'status', width: 20 },

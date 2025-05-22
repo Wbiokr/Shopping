@@ -42,23 +42,23 @@
                     <td>組件</td>
                     {% endif %}
                   <td>{{goods.num}}</td>
-                  <td>￥{{goods.price}}</td>
-                  <td>￥{{goods.price*goods.num}}</td>
+                  <td>NTD${{goods.price}}</td>
+                  <td>NTD${{goods.price*goods.num}}</td>
                 </tr>
               {% endfor %}
               </tbody>
               <tfoot>
                 <tr>
                   <td colspan="4">小計:</td>
-                  <td><span class="cart_xj">￥{{sumPrice}}</span></td>
+                  <td><span class="cart_xj">NTD${{sumPrice}}</span></td>
                 </tr>
                 <tr>
                   <td colspan="4">優惠:</td>
-                  <td>￥0,00</td>
+                  <td>NTD$0,00</td>
                 </tr>
                 <tr>
                   <td colspan="4">總計</td>
-                  <td><span class="cart_total">￥{{sumPrice}}</span></td>
+                  <td><span class="cart_total">NTD${{sumPrice}}</span></td>
                 </tr>
               </tfoot>
             </table>
@@ -68,11 +68,11 @@
       </div>
       <div id="column-left" class="grid_3 aside omega">        
         <div class="box">
-          <div class="box-heading">賬戶管理</div>
+          <div class="box-heading">帳戶管理</div>
           <div class="box-content">
             <div class="box-category">
               <ul>
-                <li><a href="/shop/uc">我的賬戶</a></li>
+                <li><a href="/shop/uc">我的帳戶</a></li>
                 <li><a href="/shop/wishlist">收藏夾</a></li>
                 <li><a href="/shop/myProduct">我的倉庫</a></li>
                 <li><a href="/shop/order">我的訂單</a></li>

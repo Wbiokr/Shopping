@@ -29,7 +29,7 @@ Mock.mock(/\/article\/update/, 'post', articleAPI.updateArticle)
 // 搜索相關
 Mock.mock(/\/search\/user/, 'get', remoteSearchAPI.searchUser)
 
-// 賬單相關
+// 帳單相關
 Mock.mock(/\/transaction\/list/, 'get', transactionAPI.getList)
 
 export default Mock

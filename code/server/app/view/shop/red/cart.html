@@ -63,8 +63,8 @@
                   <input type="text" name="quantity[48]" value="{{goods.num}}" data-max="1">
                   <a aria-hidden="true" data-icon="&#xe004;" class="remove_cart icomoon" href="javascript:void(0);" onclick="delCart('{{goods.id}}')"></a>
                 </td>
-                <td class="price">￥{{goods.price}}</td>
-                <td class="total">￥{{goods.price*goods.num}}</td>
+                <td class="price">NTD${{goods.price}}</td>
+                <td class="total">NTD${{goods.price*goods.num}}</td>
               </tr>
             {% endfor %}
             </tbody>
@@ -77,15 +77,15 @@
               <tbody>
               <tr>
                   <td><strong>小計:</strong></td>
-                  <td><span class="cart_xj">￥0.00</span></td>
+                  <td><span class="cart_xj">NTD$0.00</span></td>
               </tr>
               <tr>
                   <td><strong>優惠:</strong></td>
-                  <td>￥0.00</td>
+                  <td>NTD$0.00</td>
               </tr>
               <tr>
                     <td><strong>總計:</strong></td>
-                  <td><span class="cart_total">￥0.00</span></td>
+                  <td><span class="cart_total">NTD$0.00</span></td>
               </tr>
               </tbody>
           </table>

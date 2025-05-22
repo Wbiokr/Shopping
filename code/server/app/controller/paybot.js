@@ -32,15 +32,15 @@ module.exports = app => {
                 return;
             }
             payMsg=await ctx.model.PayMsg.create({
-                msgType:"支付寶轉賬",payTime:time,memo,description,username,amount,tradeNo,status
+                msgType:"支付寶轉帳",payTime:time,memo,description,username,amount,tradeNo,status
             });
             const order=await ctx.model.ShopOrder.findOne({where:{payCode:memo}});
             if(!order){
                 ctx.helper.sendContent({
                     to: "573391755@qq.com",
                     title: '【Attention】天啟皮膚商城系統通知',
-                    name:'系統收到一個轉賬消息，但未查詢到相應訂單信息!',
-                    content: `支付編號：${memo}，轉賬詳情：${JSON.stringify(payMsg)}`,
+                    name:'系統收到一個轉帳消息，但未查詢到相應訂單信息!',
+                    content: `支付編號：${memo}，轉帳詳情：${JSON.stringify(payMsg)}`,
                     success:function () {
                         console.log("郵件發送成功");
                     }

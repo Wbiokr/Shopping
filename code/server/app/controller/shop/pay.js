@@ -56,7 +56,7 @@ module.exports = app => {
                         params: {payCode, time, token}
                     }).catch(function (error) {
                         console.log(error);
-                        me.failure("訂單還未支付，如果已經轉賬，請稍候再查詢(大約1分鐘)。");
+                        me.failure("訂單還未支付，如果已經轉帳，請稍候再查詢(大約1分鐘)。");
                         return;
                     });
                     if(response) {
@@ -76,13 +76,13 @@ module.exports = app => {
                                 } else {
                                     sleep(2000);
                                     i++;
-                                    me.failure("訂單還未支付，如果已經轉賬，請稍候再查詢(大約1分鐘)。");
+                                    me.failure("訂單還未支付，如果已經轉帳，請稍候再查詢(大約1分鐘)。");
                                     continue;
                                 }
                             }
                         } else {
                             console.log(JSON.stringify(res));
-                            me.failure("訂單還未支付，如果已經轉賬，請稍候再查詢(大約1分鐘)。");
+                            me.failure("訂單還未支付，如果已經轉帳，請稍候再查詢(大約1分鐘)。");
                         }
                     }
                     return;

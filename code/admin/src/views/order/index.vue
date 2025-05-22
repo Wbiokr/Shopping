@@ -50,22 +50,22 @@
       </el-table-column>
       <el-table-column align="center" label="訂單金額">
         <template slot-scope="scope">
-          <span>¥{{scope.row.billAmount }}</span>
+          <span>NTD${{scope.row.billAmount }}</span>
         </template>
       </el-table-column>
       <el-table-column  align="center" label="優惠金額">
         <template slot-scope="scope">
-          <span>¥{{scope.row.prefAmount }}</span>
+          <span>NTD${{scope.row.prefAmount }}</span>
         </template>
       </el-table-column>
       <el-table-column  align="center" label="應付金額">
         <template slot-scope="scope">
-          <span>¥{{scope.row.payableAmount}}</span>
+          <span>NTD${{scope.row.payableAmount}}</span>
         </template>
       </el-table-column>
       <el-table-column  align="center" label="實付金額">
         <template slot-scope="scope">
-          <span>¥{{scope.row.paidAmount}}</span>
+          <span>NTD${{scope.row.paidAmount}}</span>
         </template>
       </el-table-column>
       <el-table-column min-width="150" align="center" label="備註">

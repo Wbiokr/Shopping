@@ -7,12 +7,12 @@
     </el-table-column>
     <el-table-column label="應付金額" min-width="200" align="center">
       <template slot-scope="scope">
-        ¥{{scope.row.payableAmount | toThousandslsFilter}}
+        NTD${{scope.row.payableAmount | toThousandslsFilter}}
       </template>
     </el-table-column>
     <el-table-column label="實付金額" min-width="200" align="center">
       <template slot-scope="scope">
-        ¥{{scope.row.paidAmount | toThousandslsFilter}}
+        NTD${{scope.row.paidAmount | toThousandslsFilter}}
       </template>
     </el-table-column>
     <el-table-column label="狀態"  width="100" align="center">

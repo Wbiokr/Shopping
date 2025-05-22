@@ -75,13 +75,32 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="left" label="操作" width="250">
+      <el-table-column align="left" label="操作" width="170" fixed="right">
         <template slot-scope="scope">
           <el-button v-if="scope.row.goodsStatus!='U'" size="mini" type="success" @click="handleModifyStatus(scope.row,'U')">上架
           </el-button>
           <el-button v-if="scope.row.goodsStatus=='U'" size="mini" @click="handleModifyStatus(scope.row,'D')">下架
           </el-button>
-          <el-button v-if="scope.row.recommendFlag=='1'" size="mini" type="info" @click="handleRecommendFlag(scope.row, 'recommendFlag', '0')">不推薦
+          <el-dropdown @command="e=>handleCommand(e,scope.row)">
+            <!-- <span class="el-dropdown-link">
+              更多<i class="el-icon-arrow-down el-icon--right"></i>
+            </span> -->
+            <el-button size="mini" class="m-l-10">更多<i class="el-icon-arrow-down el-icon--right"></i></el-button>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item v-if="scope.row.recommendFlag=='1'" command="recommend-false">不推薦</el-dropdown-item>
+              <el-dropdown-item v-else command="recommend-true">推薦</el-dropdown-item>
+              <el-dropdown-item v-if="scope.row.bannerFlag=='1'" command="banner-false">下banner</el-dropdown-item>
+              <el-dropdown-item v-else command="banner-true">上banner</el-dropdown-item>
+              <el-dropdown-item v-if="scope.row.newFlag=='1'" command="new-false">非新品</el-dropdown-item>
+              <el-dropdown-item v-else command="new-true">是新品</el-dropdown-item>
+              <el-dropdown-item v-if="scope.row.hotFlag=='1'" command="hot-false">非熱銷</el-dropdown-item>
+              <el-dropdown-item v-else command="hot-true">是熱銷</el-dropdown-item>
+              <el-dropdown-item command="copy">複製</el-dropdown-item>
+              <el-dropdown-item v-if="scope.row.goodsStatus!='C'" command="del">刪除</el-dropdown-item>
+              <el-dropdown-item v-else command="recover">恢復</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <!-- <el-button v-if="scope.row.recommendFlag=='1'" size="mini" type="info" @click="handleRecommendFlag(scope.row, 'recommendFlag', '0')">不推薦
           </el-button>
           <el-button v-else size="mini" type="primary" @click="handleRecommendFlag(scope.row, 'recommendFlag', '1')">推薦
           </el-button>
@@ -104,7 +123,7 @@
           <el-button v-if="scope.row.goodsStatus!='C'" size="mini" type="danger" @click="handleModifyStatus(scope.row,'C')">刪除
           </el-button>
           <el-button v-if="scope.row.goodsStatus=='C'" size="mini" type="primary" @click="handleModifyStatus(scope.row,'0')">恢復
-          </el-button>
+          </el-button> -->
         </template>
       </el-table-column>
 
@@ -215,6 +234,43 @@ export default {
     this.getList()
   },
   methods: {
+    handleCommand(command,row) {
+      switch(command) {
+        case 'recommend-false':
+          this.handleRecommendFlag(row, 'recommendFlag', '0');
+          break;
+        case 'recommend-true':
+          this.handleRecommendFlag(row, 'recommendFlag', '1');
+          break;
+        case 'banner-false':
+          this.handleRecommendFlag(row, 'bannerFlag', '0');
+          break;
+        case 'banner-true':
+          this.handleRecommendFlag(row, 'bannerFlag', '1');
+          break;
+        case 'new-false':
+          this.handleRecommendFlag(row, 'newFlag', '0');
+          break;
+        case 'new-true':
+          this.handleRecommendFlag(row, 'newFlag', '1');
+          break;
+        case 'hot-false':
+          this.handleRecommendFlag(row, 'hotFlag', '0');
+          break;
+        case 'hot-true':
+          this.handleRecommendFlag(row, 'hotFlag', '0');
+          break;
+        case 'copy':
+          this.copyGoods(row);
+          break;
+        case 'del':
+          this.handleModifyStatus(row, 'C');
+          break;
+        case 'recover':
+          this.handleModifyStatus(row, '0');
+          break;
+      }
+    },
     async handleExport() {
       this.exporting = true
       try {

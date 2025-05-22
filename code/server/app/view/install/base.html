@@ -155,7 +155,7 @@
                    <!-- <form action="#" method="get">
                         <div class="top-select-menu">
                             <div>
-                                <a class="active_option" title="人民幣">￥</a>
+                                <a class="active_option" title="人民幣">NTD$</a>
                             </div>
                             <i class="icomoon" aria-hidden="true" data-icon="&#xe00f;"></i>
                         </div>
@@ -187,9 +187,9 @@
                                     <a href="/shop/goods/{{goods.goodsID}}" target="_blank">
                                         <img width="55" height="50" src="{{goods.imgurl}}" alt="placeholder" />
                                         {{goods.name}}
-                                        <span>{{goods.num}} x ￥{{goods.price}}</span>
+                                        <span>{{goods.num}} x NTD${{goods.price}}</span>
                                     </a>
-                                    <span class="price" data-price="{{goods.num*goods.price}}">￥{{goods.num*goods.price}}</span>
+                                    <span class="price" data-price="{{goods.num*goods.price}}">NTD${{goods.num*goods.price}}</span>
                                 </div>
                                 <div class="action">
                                     <a href="javascript:void(0);" onclick="delCart('{{goods.id}}')" class="top-cart icomoon" aria-hidden="true" data-icon="&#xe004;"></a>
@@ -200,15 +200,15 @@
                                 <tbody>
                                 <tr>
                                     <td class="left"><span>小計: </span></td>
-                                    <td class="right"><span class="cart_xj">￥0.00</span></td>
+                                    <td class="right"><span class="cart_xj">NTD$0.00</span></td>
                                 </tr>
                                 <tr>
                                     <td class="left"><span>優惠: </span></td>
-                                    <td class="right"><span>￥0.00</span></td>
+                                    <td class="right"><span>NTD$0.00</span></td>
                                 </tr>
                                 <tr>
                                     <td class="left"><span>總計: </span></td>
-                                    <td class="right"><span class="total cart_total">￥0.00</span></td>
+                                    <td class="right"><span class="total cart_total">NTD$0.00</span></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -379,9 +379,9 @@
                         '<a href="/shop/goods/' + goods.goodsID + '">\n' +
                         '<img width="55" height="50" src="' + goods.imgurl + '" alt="placeholder" />\n' +
                         '' + goods.name + '\n' +
-                        '<span>' + goods.num + ' x ￥' + goods.price + '</span>\n' +
+                        '<span>' + goods.num + ' x NTD$' + goods.price + '</span>\n' +
                         '</a>\n' +
-                        '<span class="price" data-price="' + goods.num * goods.price + '">￥' + goods.num * goods.price + '</span>\n' +
+                        '<span class="price" data-price="' + goods.num * goods.price + '">NTD$' + goods.num * goods.price + '</span>\n' +
                         '</div>\n' +
                         '<div class="action">\n' +
                         '<a href="javascript:void(0);" onclick="delCart(\'' + goods.id + '\')" class="top-cart icomoon" aria-hidden="true" data-icon="&#xe004;"></a>\n' +
@@ -407,8 +407,8 @@
     }
     function setAccount() {
         let {nums,account}=sum();
-        $('.cart_xj').text('￥'+account);
-        $('.cart_total').text('￥'+account);
+        $('.cart_xj').text('NTD$'+account);
+        $('.cart_total').text('NTD$'+account);
         $('.cart_num').text(nums);
         cartCount=nums;
     }
