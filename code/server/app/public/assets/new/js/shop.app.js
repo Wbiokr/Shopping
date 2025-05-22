@@ -86,7 +86,7 @@ var App = function () {
                                             <a href="/shop/goods/${o.goodsID}" target="__blank" class="f-s-14 white-1">${o.name}</a>
                                         </div>
                                         <div class="f-b-c w-per-100 b-eee b-no-lr b-s-dashed p-tb-5">
-                                            <h3 class="f-s-c m-no f-s-14">原價：<span class="c-red f-w-600 t-d-t">￥${o.priceMarket}</span> &nbsp;&nbsp; 現價：<span class="c-sus f-w-600">￥${o.price}</span></h3>
+                                            <h3 class="f-s-c m-no f-s-14">原價：<span class="c-red f-w-600 t-d-t">NTD$${o.priceMarket}</span> &nbsp;&nbsp; 現價：<span class="c-sus f-w-600">NTD$${o.price}</span></h3>
                                             <a href="javascript:void(0)" data-id=${o.goodsID} data-price=${o.price} class="filter-buy-btn">立即購買</a>
                                         </div>
                                     </div>

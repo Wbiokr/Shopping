@@ -5,7 +5,6 @@ window.cartList=0;
 jQuery(document).ready(function() {
   getWishList()
   $(document).on('click', '.del-cart-btn', function () {
-    console.log(1212)
     delCart($(this).data('id'))
   })
   cartInfo()
@@ -36,7 +35,7 @@ function updateCartDom() {
     html += '<button type="button" class="del-cart-btn close" data-id='+ goods.id +'>×</button>'
     html += '<div class="overflow-h">'
     html += '<span>' + goods.name + '</span>'
-    html += '<small>' + goods.num +' x ￥' + goods.price +'</small>'
+    html += '<small>' + goods.num +' x NTD$' + goods.price +'</small>'
     html += '</div></li>'
   });
   $('#cart-container').html(html)
@@ -119,8 +118,8 @@ function sum() {
 }
 function setAccount() {
     let {nums,account}=sum();
-    $('.cart_xj').text('￥'+account);
-    $('.cart_total').text('￥'+account);
+    $('.cart_xj').text('NTD$'+account);
+    $('.cart_total').text('NTD$'+account);
     $('.cart_num').text(nums);
 }
 $(function() {

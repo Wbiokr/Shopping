@@ -217,7 +217,6 @@
           // console.log(1212, id, this)
           if ($(this).hasClass('active')) {
             const collectInfo = collectGoods.find(o => o.goodsID == id)
-            console.log(id, collectInfo, collectGoods)
             if (!collectInfo) {
               Ap.msg.error('操作失敗')
               return
@@ -292,8 +291,8 @@
                                         // <span class="gender">Suits - Blazers</span>
               html += '</div>'
               html += '<div class=" f-b-c">'
-              html += '<section class="f-s-c"><span class="title-price m-r-10">' + item.price + '元</span>'
-              html += '<span class="title-price line-through">'+ item.priceMarket +'元</span></section>'
+              html += '<section class="f-s-c"><span class="title-price m-r-10">NTD$' + item.price + '</span>'
+              html += '<span class="title-price line-through">NTD$'+ item.priceMarket +'</span></section>'
               html += ''
                                     
               html += '<ul class="list-inline product-ratings">'

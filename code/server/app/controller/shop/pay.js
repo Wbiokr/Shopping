@@ -38,7 +38,7 @@ module.exports = app => {
                 case "L":
                     let acc=order.payableAmount-order.paidAmount;
                     if(acc>0){
-                        ctx.failure("您還需要再支付:" + acc + "元，如果已經付清，請稍候再查詢(大約1分鐘)。");
+                        ctx.failure("您還需要再支付:NTD$" + acc + "，如果已經付清，請稍候再查詢(大約1分鐘)。");
                     }
                     return;
                 case "P":
@@ -71,7 +71,7 @@ module.exports = app => {
                                     return;
                                 } else if (order2.billStatus == "L") {
                                     let acc = order.payableAmount - order.paidAmount;
-                                    me.failure("您還需要再支付:" + acc + "元，如果已經付清，請稍候再查詢(大約1分鐘)。");
+                                    me.failure("您還需要再支付:NTD$" + acc + "，如果已經付清，請稍候再查詢(大約1分鐘)。");
                                     return;
                                 } else {
                                     sleep(2000);

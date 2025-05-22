@@ -10,25 +10,24 @@ function subtractQty(goodsID) {
     else
         trParent.find('.quantity-field').val(qty-1);
 
-    var price = parseFloat(trParent.find('.g-price').text())
+    var price = parseFloat(trParent.find('.g-price').text().replace('NTD$', ''))
     var qty = parseFloat(trParent.find('.quantity-field').val())
-    trParent.find('.shop-red').text(price * qty + '元')
+    trParent.find('.shop-red').text('NTD$' + price * qty)
 
     calcTotal();
     !!goodsID && addCart(goodsID, qty, price, false)
 }
 
 function plusQty(goodsID) {
-    // console.log('plusQty', goodsID)
     var trParent = $(event.target).closest('tr')
     var qty = parseInt(trParent.find('.quantity-field').val())
 
         trParent.find('.quantity-field').val(qty+1);
 
-    var price = parseFloat(trParent.find('.g-price').text())
+    var price = parseFloat(trParent.find('.g-price').text().replace('NTD$', ''))
     var qty = parseFloat(trParent.find('.quantity-field').val())
 
-    trParent.find('.shop-red').text(price * qty + '元')
+    trParent.find('.shop-red').text('NTD$' + price * qty)
 
     calcTotal()
     addCart(goodsID,qty,price,true)
@@ -38,8 +37,8 @@ function calcTotal() {
     var allTotal = 0
     $('.cart-item .shop-red').each(function(index, element) {
         var trTotal= $(this)
-        var total = parseFloat(trTotal.text())
+        var total = parseFloat(trTotal.text().replace('NTD$', ''))
         allTotal += total
     })
-    $('#cart-total-price').text(allTotal + '元')
+    $('#cart-total-price').text('NTD$' + allTotal)
 }

@@ -1,0 +1,158 @@
+    {% extends './base.html' %}
+    {% block title %}
+        <title>會員制度法律條款</title>
+    {% endblock %}
+
+    {% block body %}
+   <style>
+        /* 容器樣式 */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* 條款列表樣式 */
+        .terms-list {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .terms-item {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .terms-item:last-child {
+            border-bottom: none;
+        }
+
+        .terms-item h3 {
+            color: #0056b3;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .terms-item p {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .terms-item h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .terms-item {
+                padding: 1.2rem 1.5rem;
+            }
+        }
+
+        /* 強調樣式 */
+        .important {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+    <main class="container">
+        <section class="terms-list">
+            <article class="terms-item">
+                <h3>1. 定義</h3>
+                <ul>
+                  <li>用戶：指註冊、登錄、使用本服務的自然人、法人或其他組織。</li>
+                  <li>本服務：指我們通過官網、客戶端、小程序等平臺向用戶提供的 [具體服務內容，如信息發佈、數據存儲、在線交易等] 及相關技術支持。</li>
+                  <li>平臺規則：包括但不限於隱私政策、用戶協議補充條款、操作指引等我們不時發佈的規則性文件。</li>
+                </ul>
+            </article>
+
+            <article class="terms-item">
+                <h3>2. 用戶義務</h3>
+                <p>賬號註冊：</p>
+                <ul>
+                    <li>用戶需提供真實、準確的註冊信息，並及時更新個人資料。</li>
+                    <li>賬號所有權歸我們所有，用戶僅獲得有限的使用權，不得轉讓、出租、出借賬號。</li>
+                </ul>
+                <p>合法使用：</p>
+                <ul>
+                  <li>不得利用本服務從事違法犯罪活動（如詐騙、傳播淫穢信息、侵犯知識產權等）。</li>
+                  <li>不得干擾、破壞平臺正常運營（如惡意刷量、攻擊服務器、濫用漏洞等）。</li>
+                  <li>遵守平臺發佈的各類規則，不得發佈虛假、誤導性或違反公序良俗的內容。</li>
+                </ul>
+                <p>保密義務：</p>
+                <ul>
+                  <li>妥善保管賬號密碼，因用戶保管不善導致的損失，我們不承擔責任。</li>
+                  <li>不得洩露平臺未公開的技術信息、商業信息等。</li>
+                </ul>
+            </article>
+
+            <article class="terms-item">
+                <h3>3. 知識產權與內容授權</h3>
+                <!-- <p>我們在本服務中提供的內容（如軟件、商標、設計、數據等）知識產權歸我們或相關權利人所有。</p> -->
+                <ul>
+                    <li>我們在本服務中提供的內容（如軟件、商標、設計、數據等）知識產權歸我們或相關權利人所有。</li>
+                    <li>用戶在使用服務過程中發佈的內容（如文字、圖片、視頻等），視為授予我們全球範圍內、免費、非獨家、可再許可的使用權，用於平臺運營、推廣及服務優化。</li>
+                    <li>用戶需保證其發佈的內容不侵犯第三方知識產權或其他合法權益，否則需承擔全部法律責任。</li>
+                    <li>妥善保管個人賬號及密碼，因個人保管不善導致的賬號安全問題由會員自行承擔</li>
+                </ul>
+            </article>
+            <article class="terms-item">
+                <h3>4. 隱私保護</h3>
+                <p>我們將按照《隱私政策》收集、使用和保護用戶個人信息，請您務必仔細閱讀並同意該政策。如您不同意，請勿使用本服務。</p>
+            </article>
+
+            <article class="terms-item">
+                <h3>5. <span class="important">免責與責任限制</span></h3>
+                <p>服務免責：</p>
+                <ul>
+                  <li>本服務按 “現狀” 提供，我們不保證服務絕對安全、無故障或無瑕疵。</li>
+                  <li>因不可抗力（如地震、黑客攻擊、政府政策調整等）或第三方原因導致服務中斷或數據丟失，我們不承擔賠償責任。</li>
+                </ul>
+                <p>責任限制：</p>
+                <ul>
+                  <li>除法律另有規定外，我們對用戶因使用本服務產生的間接損失、附帶損失、可得利益損失等不承擔責任。</li>
+                  <li>若我們需承擔賠償責任，賠償總額不超過用戶因使用本服務而實際支付的費用（如有）。</li>
+                </ul>
+            </article>
+
+            <article class="terms-item">
+                <h3>6. 服務終止</h3>
+                <p>
+                  用戶可隨時自行註銷賬號，但需提前 [X] 個工作日通過平臺申請。賬號註銷後，其數據將按《隱私政策》處理。
+                </p>
+                <p>
+                  若用戶存在以下情形，我們有權立即暫停或終止服務，且不承擔任何責任：
+                </p>
+                <ul>
+                  <li>違反本條款或平臺規則；
+                  </li>
+                  <li>
+濫用服務功能或損害其他用戶權益；
+                  </li>
+                  <li>
+                    法律、法規規定的其他情形。
+                  </li>
+                </ul>
+            </article>
+
+            <article class="terms-item">
+                <h3>7. 法律適用與爭議解決</h3>
+                <ul>
+                  <li>本條款適用中華人民共和國法律（不包括港澳臺地區）。</li>
+                  <li>若雙方發生爭議，應先友好協商；協商不成的，任何一方均有權向 [公司所在地] 有管轄權的人民法院提起訴訟。</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+    {% endblock %}

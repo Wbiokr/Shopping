@@ -1,0 +1,139 @@
+    {% extends './base.html' %}
+    {% block title %}
+        <title>會員制度法律條款</title>
+    {% endblock %}
+
+    {% block body %}
+   <style>
+        /* 容器樣式 */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* 條款列表樣式 */
+        .terms-list {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .terms-item {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .terms-item:last-child {
+            border-bottom: none;
+        }
+
+        .terms-item h3 {
+            color: #0056b3;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .terms-item p {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .terms-item h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .terms-item {
+                padding: 1.2rem 1.5rem;
+            }
+        }
+
+        /* 強調樣式 */
+        .important {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+    <main class="container">
+        <section class="terms-list">
+            <article class="terms-item">
+                <h3>1. 會員資格</h3>
+                <p>年滿18週歲的自然人或合法註冊的法人實體均可申請成為本平臺會員。申請時需提供真實有效的個人信息，包括但不限於姓名、聯繫方式、身份證號碼（法人需提供營業執照等資質文件）。</p>
+            </article>
+
+            <article class="terms-item">
+                <h3>2. 會員權利</h3>
+                <p>會員享有以下權利：</p>
+                <ul>
+                    <li>享受平臺專屬折扣和優惠活動</li>
+                    <li>參與會員積分兌換計劃，積分可抵現或兌換禮品</li>
+                    <li>優先獲得新產品試用資格</li>
+                    <li>專屬客服通道，享受快速響應服務</li>
+                </ul>
+            </article>
+
+            <article class="terms-item">
+                <h3>3. 會員義務</h3>
+                <p>會員需遵守以下義務：</p>
+                <ul>
+                    <li>遵守平臺各項規章制度及國家法律法規</li>
+                    <li>不得利用會員身份從事任何違法違規或損害平臺及其他會員權益的行為</li>
+                    <li>維護平臺良好秩序，不得發佈虛假信息、垃圾廣告或進行惡意評價</li>
+                    <li>妥善保管個人賬號及密碼，因個人保管不善導致的賬號安全問題由會員自行承擔</li>
+                </ul>
+            </article>
+
+            <!-- <article class="terms-item">
+                <h3>4. 會員費用及有效期</h3>
+                <p>會員分為不同等級，具體費用及有效期如下：</p>
+                <table width="100%">
+                    <tr>
+                        <th>會員等級</th>
+                        <th>年費</th>
+                        <th>有效期</th>
+                        <th>專屬權益</th>
+                    </tr>
+                    <tr>
+                        <td>白銀會員</td>
+                        <td>¥199/年</td>
+                        <td>自開通之日起12個月</td>
+                        <td>5%購物折扣+100積分/月</td>
+                    </tr>
+                    <tr>
+                        <td>黃金會員</td>
+                        <td>¥499/年</td>
+                        <td>自開通之日起12個月</td>
+                        <td>8%購物折扣+300積分/月+免費退換貨</td>
+                    </tr>
+                </table>
+            </article> -->
+
+            <article class="terms-item">
+                <h3>4. 會員權益變更</h3>
+                <p>平臺有權根據實際運營情況調整會員權益、費用標準或會員等級體系，但會提前30天通過平臺公告或短信形式通知會員。會員如不同意調整後的條款，可在調整生效前申請退會；若未申請退會，則視為同意新的會員制度。</p>
+            </article>
+
+            <article class="terms-item">
+                <h3>5. <span class="important">免責聲明</span></h3>
+                <p>因不可抗力、政府行政命令、黑客攻擊、系統故障等非平臺可控因素導致會員權益無法正常行使的，平臺不承擔賠償責任，但會盡力協助會員解決相關問題。</p>
+            </article>
+
+            <article class="terms-item">
+                <h3>6. 爭議解決</h3>
+                <p>如會員與平臺之間發生爭議，雙方應首先通過友好協商解決；協商不成的，任何一方均有權向平臺所在地有管轄權的人民法院提起訴訟。</p>
+            </article>
+        </section>
+    </main>
+    {% endblock %}

@@ -53,6 +53,8 @@ module.exports = app => {
     // 隱私信息
     app.get('/static/privacy', app.controller.shop.static.privacy);
     app.get('/static/about', app.controller.shop.static.aboutUs);
+    app.get('/static/law', app.controller.shop.static.law);
+    app.get('/static/service', app.controller.shop.static.vipService);
 
     //個人中心
     app.get('/shop/uc', isLoginUser,app.controller.shop.uc.index);

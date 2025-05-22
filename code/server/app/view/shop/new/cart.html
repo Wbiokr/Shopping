@@ -59,13 +59,13 @@
                                                 <span>{{goods.title}}</span>
                                             </div>    
                                         </td>
-                                        <td class="g-price">{{goods.price}}元</td>
+                                        <td class="g-price">NTD${{goods.price}}</td>
                                         <td>
                                             <button type='button' class="quantity-button" name='subtract' onclick='subtractQty("{{goods.goodsID}}")' value='-'>-</button>
                                             <input type='text' class="quantity-field" name='qty1' value="{{goods.num}}" onblur="updateQty('{{goods.goodsID}}','{{goods.price}}',this)" />
                                             <button type='button' class="quantity-button" name='add' onclick='plusQty("{{goods.goodsID}}")' value='+'>+</button>
                                         </td>
-                                        <td class="shop-red">{{goods.price*goods.num}}元</td>
+                                        <td class="shop-red">NTD${{goods.price*goods.num}}</td>
                                         <td>
                                             <button type="button" class="close"><span>&times;</span><span class="sr-only">Close</span></button>
                                         </td>
@@ -289,7 +289,7 @@
                                     <li class="total-price">
                                         <h4>Total:</h4>
                                         <div class="total-result-in">
-                                            <span id="cart-total-price">-- 元</span>
+                                            <span id="cart-total-price">NTD$--</span>
                                         </div>
                                     </li>
                                 </ul>
