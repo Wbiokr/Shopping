@@ -6,10 +6,10 @@
  * $(el).selectFilter(options);
  * 
  * options={
- *  callBack : function (res){}  // 返回选中的值 进行事件操作
+ *  callBack : function (res){}  // 返回選中的值 進行事件操作
  * }
  * 
- * 也可以放在表单直接获取  select标签的 值
+ * 也可以放在表單直接獲取  select標籤的 值
  * 
  **/
 
@@ -22,7 +22,7 @@
 	var that = this;
 	var html = '';
 	
-	// 读取select 标签的值
+	// 讀取select 標籤的值
 	html += '<ul class="filter-list">';
 	
 	$(selectList).each(function (idx, item){
@@ -46,14 +46,14 @@
 	$(that).append(html);
 	$(that).find('select').hide();
 	
-	//点击选择
+	//點擊選擇
 	$(that).on('click', '.filter-text', function (){
 		$(that).find('.filter-list').slideToggle(100);
 		$(that).find('.filter-list').toggleClass('filter-open');
 		$(that).find('.icon-filter-arrow').toggleClass('filter-show');
 	});
 	
-	//点击选择列表
+	//點擊選擇列表
 	$(that).find('.filter-list li').not('.filter-disabled').on('click', function (){
 		var val = $(this).data('value');
 		var valText =  $(this).find('a').html();
@@ -70,7 +70,7 @@
 		ops.callBack(val); //返回值
 	});
 	
-	//其他元素被点击则收起选择
+	//其他元素被點擊則收起選擇
 	$(document).on('mousedown', function(e){
 		closeSelect(that, e);
 	});

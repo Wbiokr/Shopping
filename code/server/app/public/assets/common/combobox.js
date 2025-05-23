@@ -8,40 +8,40 @@
     $.widget('ui.combobox', {
         options: {
             /**
-             * @cfg {String} placeholder 为空时的提示信息
+             * @cfg {String} placeholder 為空時的提示信息
              */
             placeholder: '-- Please Select --',
             /**
-             * @cfg {Boolean} editable 是否手动输入，默认为 true
+             * @cfg {Boolean} editable 是否手動輸入，默認為 true
              */
             editable: true,
             /**
-             * @cfg {String} [dataTextField='name'] 数据源显示字段
+             * @cfg {String} [dataTextField='name'] 數據源顯示字段
              */
             dataTextField: "name",
             /**
-             * @cfg {String} [dataValueField='value'] 数据源取值字段
+             * @cfg {String} [dataValueField='value'] 數據源取值字段
              */
             dataValueField: "value",
             /**
-             * @cfg {Array} [dataSource='name'] 数据源
+             * @cfg {Array} [dataSource='name'] 數據源
              */
             dataSource: [],
             /**
-             * @cfg {Number} [delay=500] 延迟搜索，避免过多无效搜索，单位毫秒ms，默认是500ms
+             * @cfg {Number} [delay=500] 延遲搜索，避免過多無效搜索，單位毫秒ms，默認是500ms
              */
             delay: 500,
             /**
-             * @cfg {Function} [change=null] 定义改变下拉框值事件函数，事件名称combobox:change
+             * @cfg {Function} [change=null] 定義改變下拉框值事件函數，事件名稱combobox:change
              */
              change: null
         },
         /**
-            jQueryUI Widget生命周期方法，生成HTML，事件绑定
+            jQueryUI Widget生命週期方法，生成HTML，事件綁定
         */
         _create: function() {
             console.log('--- create ---');
-            // 包装节点
+            // 包裝節點
             this.element.addClass('filter-title').attr('placeholder', this.options.placeholder);
             this.element.wrap(wrapHtml);
             this.element.after(iconHtml);
@@ -49,17 +49,17 @@
             this.$filterText = this.element.parent();
             this.$ul = this.element.parent().siblings('ul');
             this.$icon = this.element.siblings('span');
-            // 存放输入框搜索的定时器
+            // 存放輸入框搜索的定時器
             this.timeoutArr = [];
-            // 设置是否可编辑
+            // 設置是否可編輯
             this.setEditable(this.options.editable);
-            // 读取 dataSource，处理数据
+            // 讀取 dataSource，處理數據
             this._initDataSource();
-            // 绑定事件
+            // 綁定事件
             this._delegateEvent();
         },
         /**
-            jQueryUI Widget生命周期方法
+            jQueryUI Widget生命週期方法
         */
         _init: function() {
             console.log('--- init ---');
@@ -97,7 +97,7 @@
             return this;
         },
         _destroy: function() {
-            // 移除属性
+            // 移除屬性
             this.element.removeClass('input-combobox filter-title').removeAttr('data-value')
             .attr('readonly', false).val('');
             // 移除 dom
@@ -128,17 +128,17 @@
             this.timeoutArr.push(timeout);
         },
         _initDataSource: function() {
-            // dataSource没有数据，不处理
+            // dataSource沒有數據，不處理
             if (!this.options.dataSource || this.options.dataSource.length <= 0) {
                 this.options.dataSource = [];
                 return;
             }
-            // 过滤掉 dataSource中键值对与 dataTextField、dataValueField不符合的记录
+            // 過濾掉 dataSource中鍵值對與 dataTextField、dataValueField不符合的記錄
             this.options.dataSource = this.options.dataSource.filter(function(currentValue, index, arr) {
                 return currentValue[this.options.dataTextField] != null 
                     && currentValue[this.options.dataValueField] != null;
             }, this);
-            // 清空掉 item选项
+            // 清空掉 item選項
             this.$ul.empty();
             if (this.options.dataSource && this.options.dataSource.length) {
                 $.each(this.options.dataSource, function (i, item) {
@@ -147,9 +147,9 @@
             }
         },
         _appendToUl: function(item) {
-            // 处理dataTextField的值为非字符串的问题
+            // 處理dataTextField的值為非字符串的問題
             item[this.options.dataTextField] += "";
-            // 组建 item
+            // 組建 item
             var liHtml = 
                 `<li data-value="#{value}" class="#{class}"><a title="#{title}">#{text}</a></li>`;
             liHtml = $.fn.format(liHtml, {
@@ -161,12 +161,12 @@
             });
             this.$ul.append(liHtml);
             if (item.selected) {
-                // 设置 item选中
+                // 設置 item選中
                 this._select(item);
             }
         },
         _delegateEvent: function() {
-            // 展示/隐藏 组件内容
+            // 展示/隱藏 組件內容
             this.$filterText.on('click.combobox', 'input, span', function() {
                 if (!this.options.disabled) {
                     this.$ul.slideToggle(100);
@@ -176,7 +176,7 @@
             }.bind(this));
             $(this.document).on('mousedown.combobox', function(e) {
                 var target = e.target ? e.target : e.srcElement;
-                // 过滤某些元素，点击后不触发
+                // 過濾某些元素，點擊後不觸發
                 if (target.parentNode !== this.$filterText.get(0) && target !== this.$filterText.get(0)
                     && target.parentNode.parentNode !== this.$ul.get(0)) {
                     this.$ul.slideUp(100);
@@ -184,15 +184,15 @@
                     this.$icon.removeClass('filter-show');
                 }
             }.bind(this));
-            // 选择某一项内容，回显
+            // 選擇某一項內容，回顯
             $(this.$ul).on('click.combobox', 'li:not(.filter-disabled)', function(e) {
                 var currentTarget = e.currentTarget;
-                // 设置其选中样式
+                // 設置其選中樣式
                 this._select({
                     value: $(currentTarget).attr('data-value'),
                     name: currentTarget.firstChild.text
                 });
-                // 隐藏选项组
+                // 隱藏選項組
                 this.$ul.slideToggle(100);
                 this.$ul.toggleClass('filter-open');
                 this.$icon.toggleClass('filter-show');
@@ -200,16 +200,16 @@
             }.bind(this));
         },
         /**
-         * @method value 取值或者赋值
-         * @param  {String} [value] 设置值选中,为空则取控件值
-         * @return {String} 控件值,赋值操作则没有返回值
+         * @method value 取值或者賦值
+         * @param  {String} [value] 設置值選中,為空則取控件值
+         * @return {String} 控件值,賦值操作則沒有返回值
          */
         value: function(value) {
             if (arguments.length === 0) { // 取值操作
                 console.log('--- get value ---');
                 return this.$ul.find('li[class="filter-selected"]').attr('data-value');
             }
-            // 赋值操作
+            // 賦值操作
             console.log('--- set value ---');
             var selectedItem = null;
             for(var i = 0, len = this.options.dataSource.length; i < len; i++) {
@@ -226,7 +226,7 @@
                 var value = item[this.options.dataValueField],
                     text = item[this.options.dataTextField];
                 this.element.val(text);
-                // 判断选择的节点是否和上一个选择的节点相同
+                // 判斷選擇的節點是否和上一個選擇的節點相同
                 if (this.element.attr('data-value') !== value) {
                     this.$ul.find('li').removeClass('filter-selected').filter(function(index, element) {
                         return $(element).attr('data-value') === value;
@@ -245,14 +245,14 @@
             }
         },
         /**
-         * @method clear 清空选择内容
+         * @method clear 清空選擇內容
          */
         clear: function() {
             this._select(null);
         },
         /**
-         * @method getSelectedItem 获取被选中的项键值对
-         * @return 键值对
+         * @method getSelectedItem 獲取被選中的項鍵值對
+         * @return 鍵值對
          */
         getSelectedItem: function() {
             console.log('--- getSelectedItem ---');
@@ -262,16 +262,16 @@
             }
         },
         /**
-         * @method append 向 dataSource里追加数据，显示在页面上
-         * @param  {Array} [items] 追加的内容
+         * @method append 向 dataSource裡追加數據，顯示在頁面上
+         * @param  {Array} [items] 追加的內容
          * @return this
          */
         append: function(items) {
-            // 传入参数不是数组，直接返回控件对象 this
+            // 傳入參數不是數組，直接返回控件對象 this
             if (!(items instanceof Array)) {
                 return this;
             }
-            // 过滤掉键值对与 options参数不一致的内容
+            // 過濾掉鍵值對與 options參數不一致的內容
             items = items.filter(function(item, index) {
                 return item.hasOwnProperty(this.options.dataValueField) 
                     && item.hasOwnProperty(this.options.dataTextField);
@@ -279,7 +279,7 @@
             if (items.length === 0) {
                 return this;
             }
-            // 将追加的数据放入到 options里，并追加到 ul元素里面
+            // 將追加的數據放入到 options裡，並追加到 ul元素裡面
             Array.prototype.push.apply(this.options.dataSource, items);
             $.each(items, function(index, item) {
                 this._appendToUl(item);
@@ -287,16 +287,16 @@
             return this;
         },
         /**
-         * @method remove 从 dataSource中移除某些项
-         * @param  {Array} [items] 移除的内容
+         * @method remove 從 dataSource中移除某些項
+         * @param  {Array} [items] 移除的內容
          * @return this
          */
         remove: function(items) {
-            // 传入参数不是数组，直接返回控件对象 this
+            // 傳入參數不是數組，直接返回控件對象 this
             if (!(items instanceof Array)) {
                 return this;
             }
-            // 过滤掉键值对与 options参数不一致的内容
+            // 過濾掉鍵值對與 options參數不一致的內容
             items = items.filter(function(item, index) {
                 return item.hasOwnProperty(this.options.dataValueField) 
                     && item.hasOwnProperty(this.options.dataTextField);
@@ -304,13 +304,13 @@
             if (items.length === 0) {
                 return this;
             }
-            // 从 options里移除，并从 ul元素里面移除
+            // 從 options裡移除，並從 ul元素裡面移除
             $.each(items, function(index, item) {
                 var $target = this.$ul.find('li[data-value=' + item[this.options.dataValueField] + ']')
                 .find('a[title='+ item[this.options.dataTextField] +']').end().addClass('hide');
                 var pos = $target.prevAll().length;
                 this.options.dataSource.splice(pos, 1);
-                // 若移除的元素被选中，则需要清空选中
+                // 若移除的元素被選中，則需要清空選中
                 if ($target.hasClass('filter-selected')) {
                     this._select(null);
                 }
@@ -319,18 +319,18 @@
         }
     });
     /**
-        在 jQuery的原型链上新增一个格式化函数
+        在 jQuery的原型鏈上新增一個格式化函數
     */
     jQuery.fn.format = function(str) {
         var args = Array.prototype.slice.call(arguments, 1);
         var reg = /\#{([^{}]+)}/gm; 
         return str.replace(reg, function(match, name, index, str) {
-            // 判断括号匹配的内容是否是数字
+            // 判斷括號匹配的內容是否是數字
             var content = Number(name);
             if (content >= 0) {
                 return args[content];
             }
-            // 不是数字的话，应该就是对象
+            // 不是數字的話，應該就是對象
             var object = args[0];
             if (object && object !== void(0)) {
                 return object[name];
