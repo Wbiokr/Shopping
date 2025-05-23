@@ -2,12 +2,25 @@
 {% block title %}
 <title>{{page_title}}-購物車</title>
 <link rel="stylesheet" href="/public/assets/new/plugins/jquery-steps/css/custom-jquery.steps.css">
+<style>
+    .filter-list li {
 
+            display: block!important;
+            width: 100%;
+
+    }
+    input:focus-visible {
+
+        outline: none;
+    }
+</style>
 
 {% endblock %}
 {% block body %}
 
 <link rel="stylesheet" href="/public/assets/new/plugins/jquery-steps/css/custom-jquery.steps.css">
+<link rel="stylesheet" href="/public/assets/common/selectFilter.css">
+<script src="/public/assets/common/selectFilter.js"></script>
   
 
 
@@ -85,8 +98,54 @@
                     </div>
                     <section class="billing-info">
                         <div class="row">
-                            <div class="col-md-12 md-margin-bottom-40">
-                                <h2 class="title-type">訂單地址</h2>
+                            <div class="col-md-6 md-margin-bottom-40">
+                                <h2 class="title-type">账单信息</h2>
+                                <div class="billing-info-inputs checkbox-list">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input id="bill-name" type="text" placeholder="姓名" name="firstname" class="form-control required">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input id="bill-phone" type="tel" placeholder="電話" name="phone" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <input id="bill-address" type="text" placeholder="詳細地址" name="address2" class="form-control required">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input id="bill-city" type="text" placeholder="城市" name="city" class="form-control required">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input id="bill-zip" type="text" placeholder="郵編" name="zip" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <div class="row h-55 p-t-15">
+                                        <div class="col-sm-12">
+                                            <!-- <textarea id="bill-address" placeholder="地址" name="address" class="form-control required"></textarea> -->
+                                            <a id="syncbtn" class=" c-p">将账单信息同步至取货信息</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 md-margin-bottom-40">
+                                <h2 class="title-type f-b-c">
+                                    <span>
+                                        取货信息
+                                    </span>
+                                    <div class="filter-box">
+                                        <div class="filter-text f-s-c">
+                                            <span class="f-s-0 c-333 f-s-14">代存：</span>
+                                            <input class="filter-title f-1" type="text" readonly placeholder="pleace select" />
+                                            <i class="f-s-0 icon icon-filter-arrow"></i>
+                                        </div>
+                                        <select name="filter">
+                                            <option value="0">711（篤勝門市）</option>
+                                            <option value="1">711（竹城門市）</option>
+                                            <option value="2">全家（大東路店）</option>
+                                            <option value="3">全家（天山店）</option>
+                                            <option value="4">全家（民雄神農店）</option>
+                                        </select>
+                                    </div>
+                                </h2>
                                 <div class="billing-info-inputs checkbox-list">
                                     <div class="row">
                                         <div class="col-sm-6">
@@ -96,7 +155,6 @@
                                             <input id="addr-phone" type="tel" placeholder="電話" name="phone" class="form-control required">
                                         </div>
                                     </div>
-                                    <input id="addr-address" type="text" placeholder="詳細地址" name="address2" class="form-control required">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <input id="addr-city" type="text" placeholder="城市" name="city" class="form-control required">
@@ -105,6 +163,8 @@
                                             <input id="addr-zip" type="text" placeholder="郵編" name="zip" class="form-control required">
                                         </div>
                                     </div>
+                                    <input id="addr-address" type="text" placeholder="詳細地址" name="address2" class="form-control required">
+                                    <input id="addr-desc" type="text" placeholder="取货备注" name="address3" class="form-control required">
                                 </div>
                             </div>
                         </div>       
@@ -316,6 +376,54 @@
         StepWizard.initStepWizard();
         // StyleSwitcher.initStyleSwitcher();      
         calcTotal()
+
+    //     var address = $('.addr-combobox').combobox({
+    //       placeholder: '请选择代存地址',
+    //       editable: false,
+    //       dataSource: [{
+    //           name: '711（篤勝門市）', value: '0', addr: '基隆市七堵區大德路103號(07-222-2222)', zip: '200', city: '基隆'
+    //       }, {
+    //           name: '711（竹城門市）', value: '1', addr: '新竹市北區西門里中山路100號', zip: '300', city: '新竹'
+    //       }, {
+    //           name: '全家（大東路店）', value: '2', addr: '台北市士林區大東路63號1樓(0228834125)', zip: '100', city: '台北'
+    //       }, {
+    //           name: '全家（天山店）', value: '3', addr: '台北市士林區天母東路69巷11之9號1樓(0228769215)', zip: '100100', city: '台北'
+    //       }, {
+    //           name: '全家（民雄神農店）', value: '4',addr: '嘉義縣民雄鄉三興村公園路370號壹樓', zip: '600', city: '嘉義'
+    //       }],
+    //       change: function(e, selectedItem) {
+    //           console.log('--- change event ---');
+    //           console.log(selectedItem, e);
+    //       }
+    //   });
+    var markets = [{
+        name: '711（篤勝門市）', value: '0', addr: '基隆市七堵區大德路103號', phone: '0228834125', zip: '200', city: '基隆'
+    }, {
+        name: '711（竹城門市）', value: '1', addr: '新竹市北區西門里中山路100號', phone: '0228834124', zip: '300', city: '新竹'
+    }, {
+        name: '全家（大東路店）', value: '2', addr: '台北市士林區大東路63號1樓', phone: '0228839125', zip: '100', city: '台北'
+    }, {
+        name: '全家（天山店）', value: '3', addr: '台北市士林區天母東路69巷11之9號1樓', phone: '0228769215', zip: '100100', city: '台北'
+    }, {
+        name: '全家（民雄神農店）', value: '4',addr: '嘉義縣民雄鄉三興村公園路370號壹樓', phone: '0228707202', zip: '600', city: '嘉義'
+    }]
+    $('.filter-box').selectFilter({
+        callBack : function (val){
+            //返回选择的值
+            var selectMarkert = markets[val]
+            $('#addr-address').val(selectMarkert.addr)
+            $('#addr-phone').val(selectMarkert.phone)
+            $('#addr-zip').val(selectMarkert.zip)
+            $('#addr-city').val(selectMarkert.city)
+        }
+    });
+    $('#syncbtn').on('click', function () {
+        $('#addr-address').val($('#bill-address').val())
+        $('#addr-phone').val($('#bill-phone').val())
+        $('#addr-zip').val($('#bill-zip').val())
+        $('#addr-city').val($('#bill-city').val())
+        $('#addr-name').val($('#bill-name').val())
+    })
 });
 
 function updateQty(goodsID, price, target) {

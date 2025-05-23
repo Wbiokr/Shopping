@@ -1,1 +1,20 @@
 /* Add here all your css styles (customizations) */
+input::placeholder {
+    color: #ccc!important;
+}
+/* input {
+  color: #333;
+} */
+
+ input:-moz-placeholder,
+textarea:-moz-placeholder { 
+    color: #ccc;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder { 
+    color: #ccc;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder { 
+    color: #ccc ;
+} 

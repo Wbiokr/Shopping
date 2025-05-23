@@ -1,0 +1,169 @@
+.content-box {
+  margin: -7px -10px;
+  background: #fff;
+  padding: 18px 25px;
+}
+
+/*去掉input默认样式*/
+.filter-box input {
+  background: none;    
+  outline: none;    
+  border: 0px; 
+}
+
+/**
+ * selectFilter  --v1.0
+ * 
+ **/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+.filter-disabled {
+  -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.filter-box {
+    position: relative;
+}
+
+.filter-box select {
+  display: none;
+}
+
+.filter-text {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  padding: 0 20px 0 10px;
+  background: #fff;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.filter-text input {
+  font-size: 14px;
+}
+
+.filter-text .filter-title {
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  border: 0;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0;
+  cursor: pointer;
+}
+
+.filter-text[disabled="disabled"], .ui-combobox-disabled, span[disabled="disabled"]:hover {
+  cursor: not-allowed!important;
+  background-color: #fff;
+}
+
+.hide {
+    display: none;
+}
+
+.filter-list {
+  display: none;
+  width: 100%;
+  background-color: #fff;
+  font-size: 14px;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  z-index: 99;
+  border: 1px solid #e6e6e6;
+  max-height: 180px;
+  overflow: auto;
+}
+
+.filter-list li.filter-null a {
+  color: #d2d2d2;
+}
+
+.filter-list li a {
+  display: block;
+  padding: 0 10px;
+  line-height: 36px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.filter-list li:hover {
+  background-color: #f2f2f2;
+}
+
+.filter-list li.filter-selected {
+  background-color: #5FB878;
+}
+
+.filter-list li.filter-selected a{
+  display: block;
+  color: #fff;
+}
+
+.filter-list li.filter-disabled {
+  background-color: #fff;
+}
+
+.filter-list li.filter-disabled a{
+  display: block;
+  color: #d2d2d2;
+}
+
+.filter-list li.filter-disabled:hover a {
+  cursor: not-allowed!important;
+  background-color: #fff;
+}
+
+.icon {
+  position: absolute;
+}
+
+.icon-filter-arrow {
+  width: 9px;
+  height: 6px;
+  background-repeat: no-repeat;
+    background-image: url(url(images/icon_arrow_down.png));
+    background-image: image-set(url(images/icon_arrow_down.png) 1x,url(images/icon_arrow_down_x2.png) 2x);
+    background-image: -webkit-image-set(url(images/icon_arrow_down.png) 1x,url(images/icon_arrow_down_x2.png) 2x);
+    background-size: 100%;
+    right: 5px;
+    top: 15px;
+    transition: all .2s;
+}
+
+.icon-filter-arrow.filter-show {
+  transform: rotate(-180deg);
+}
+
+
+/*滚动条样式*/
+*::-webkit-scrollbar {/*滚动条整体样式*/
+  width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+  height: 4px;
+}
+*::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.2);
+}
+*::-webkit-scrollbar-track {/*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  border-radius: 0;
+  background: rgba(0,0,0,0.1);
+}
