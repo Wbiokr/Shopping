@@ -6,6 +6,15 @@
   .product-ratings li.like-icon a.active {
     color: #0a6c5a
   }
+  .sort-list-btn .btn .caret {
+      margin-left: 10px;
+  }
+  .select-val {
+      /* padding: 0 10px; */
+      display: inline-block;
+      width: 70px;
+      text-align: left;
+  }
 </style>
 {% endblock %}
 
@@ -39,15 +48,28 @@
                     </div>
                     <div class="col-sm-8">
                         <ul class="list-inline clear-both">
-                            <li class="grid-list-icons">
+                            <!-- <li class="grid-list-icons">
                                 <a href="shop-ui-filter-list.html"><i class="fa fa-th-list"></i></a>
                                 <a href="shop-ui-filter-grid.html"><i class="fa fa-th"></i></a>
+                            </li> -->
+                            <li class="sort-list-btn class-key-container">
+                                <h3>分類 :</h3>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle f-b-c" data-toggle="dropdown">
+                                        <span class="select-val white-1">全部</span> <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <!-- <li><a href="#">全部</a></li> -->
+                                        <!-- <li><a href="#">收藏量</a></li> -->
+                                        <!-- <li><a href="#">New Arrived</a></li> -->
+                                    </ul>
+                                </div>
                             </li>
                             <li class="sort-list-btn sort-key-container">
                                 <h3>排序 :</h3>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                        <span class="select-val">綜合</span> <span class="caret"></span>
+                                <div class="btn-group group-main">
+                                    <button type="button" class="btn btn-default dropdown-toggle f-b-c" data-toggle="dropdown">
+                                        <span class="select-val white-1">綜合</span> <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="#">綜合</a></li>
@@ -58,12 +80,21 @@
                                         <!-- <li><a href="#">New Arrived</a></li> -->
                                     </ul>
                                 </div>
+                                <div class="btn-group group-type">
+                                    <button type="button" class="btn btn-default dropdown-toggle f-b-c" data-toggle="dropdown">
+                                        <span class="select-val white-1">升序</span> <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">升序</a></li>
+                                        <li><a href="#">降序</a></li>
+                                    </ul>
+                                </div>
                             </li>
                             <li class="sort-list-btn size-key-container">
                                 <h3>單頁條數 :</h3>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                        <span class="select-val">9</span> <span class="caret"></span>
+                                    <button type="button" class="btn btn-default dropdown-toggle f-b-c" data-toggle="dropdown">
+                                        <span class="select-val white-1">9</span> <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
                                         <!-- <li><a href="#">All</a></li> -->
@@ -192,15 +223,27 @@
         // App.initMouseWheel();
         StyleSwitcher.initStyleSwitcher();   
         
-        $('.sort-key-container .dropdown-menu').on('click', function(e) {
+        $('.sort-key-container .group-main .dropdown-menu').on('click', function(e) {
           const text = e.target.innerText
-          $('.sort-key-container .select-val').text(text)
+          $('.sort-key-container .group-main .select-val').text(text)
           onList(1)
+        })
+        $('.sort-key-container .group-type .dropdown-menu').on('click', function(e) {
+            const text = e.target.innerText
+            $('.sort-key-container .group-type .select-val').text(text)
+            onList(1)
         })
 
         $('.size-key-container .dropdown-menu').on('click', function(e) {
           const text = e.target.innerText
           $('.size-key-container .select-val').text(text)
+          onList(1)
+        })
+
+        $('.class-key-container .dropdown-menu').on('click', function(e) {
+          const text = e.target.innerText
+          $('.class-key-container .select-val').text(text)
+          $('.class-key-container .select-val').attr('title', text)
           onList(1)
         })
 
@@ -241,6 +284,15 @@
       })
     }
 
+    window.goodsClassCb = function(res) {
+        var html = '<li><a href="#">全部</a></li>'
+        res.forEach(function(item, index) {
+          html += '<li><a href="#">'+ item.name +'</a></li>'
+        })
+        console.log(res, html)
+        $('.class-key-container .dropdown-menu').html(html)
+    }
+
     function onList(page) {
       var keysMap = {
         '綜合': 'opAt',
@@ -249,10 +301,19 @@
         '銷量': 'numSale',
         // '銷量': 'stock',
       }
+      var typeMap = {
+        '降序': 'desc',
+        '升序': 'asc',
+      }
+      var goodsClassName = $('.class-key-container .select-val').text() || ''
+      var goodsInfo = !window.goodsClass ? null : window.goodsClass.find(function(o) { 
+        return o.name == goodsClassName })
       Ap.request.get('/shop/goodsQuery', {
         page: page,
         pageSize: parseInt($('.size-key-container .select-val').text()) || 9,
-        sortField: keysMap[$('.sort-key-container .select-val').text()] || '',
+        sortField: keysMap[$('.sort-key-container .group-main .select-val').text()] || '',
+        sortOrder: typeMap[$('.sort-key-container .group-type .select-val').text()] || '',
+        goodsClassID: goodsInfo ? goodsInfo.goodsClassID : '',
         keyword: '',
       }, function(res) { 
         // console.log(res);

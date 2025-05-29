@@ -58,6 +58,40 @@ export function goodsClass(params) {
   })
 }
 
+export function goodsClassPageList(params) {
+  return request({
+    url: '/shopGoodsClass/pageList',
+    method: 'get',
+    params: params
+  })
+}
+
+
+export function updateGoodsClass(params) {
+  return request({
+    url: '/shopGoodsClass/update',
+    method: 'post',
+    data: params
+  })
+}
+
+export function createGoodsClass(params) {
+  return request({
+    url: '/shopGoodsClass/create',
+    method: 'post',
+    data: params
+  })
+}
+
+export function delGoodsClass(data) {
+  return request({
+    url: '/shopGoodsClass/del',
+    method: 'get',
+    params: data
+  })
+}
+
+
 export function exportGoods(query) {
   return request({
     url: '/goodsExport',

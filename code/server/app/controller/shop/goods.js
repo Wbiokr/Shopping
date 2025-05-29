@@ -51,15 +51,16 @@ module.exports = app => {
                 page,
                 pageSize = 9,
                 sortField = 'opAt',
-                sortOrder = 'desc',
+                sortOrder = 'asc',
                 keyword,
+                goodsClassID,
                 // categoryId
             } = ctx.query || {};
 
             // 構建查詢條件
             const where = {goodsStatus:'U'};
             if (keyword) where.name = { [ctx.app.Sequelize.Op.like]: `%${keyword}%` };
-            // if (categoryId) where.categoryId = categoryId;
+            if (goodsClassID) where.goodsClassID = goodsClassID;
 // console.log(12121, sortField, sortOrder, where)
             // 執行查詢
             const result = await ctx.model.ShopGoods.findAndCountAll({
@@ -135,6 +136,15 @@ module.exports = app => {
             });
             data.shopHotGoods=shopRecommendGoods;
             await this.ctx.render('shop/red/search', data);
+        }
+        async goodsClass(ctx){
+            const where = {status:'0'}
+            const result = await ctx.model.ShopGoodsClass.findAndCountAll({
+                where,
+                offset: 0,
+                limit: 1000,
+            });
+            ctx.success('查詢成功', result.rows);
         }
         async myProduct(ctx){
             let data=await ctx.getUserInfo();

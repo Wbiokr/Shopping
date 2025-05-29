@@ -1,6 +1,7 @@
 window.collectGoods = [];
 window.cartCount=0;
 window.cartList=0;
+window.goodsClass=[];
 
 jQuery(document).ready(function() {
   getWishList()
@@ -8,7 +9,16 @@ jQuery(document).ready(function() {
     delCart($(this).data('id'))
   })
   cartInfo()
+  onAllCates()
 })
+
+function onAllCates() {
+    Ap.request.get("/shop/goodsClass",{},function (res) {
+        window.goodsClass=res.result;
+        console.log(23, window.goodsClass)
+        window.goodsClassCb && window.goodsClassCb(res.result) 
+    })
+}
 
 function checkout() {
     if(cartCount<=0)

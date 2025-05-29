@@ -127,15 +127,15 @@ export const constantRouterMap = [
           icon: 'shoppingCard',
         }
       },
-      // {
-      //   path: 'class/list',
-      //   component:() => import('@/views/goods/class'),
-      //   name: 'ProductClass',
-      //   meta: {
-      //     title: 'productClass',
-      //     icon: 'list',
-      //   }
-      // },
+      {
+        path: 'class/list',
+        component:() => import('@/views/goods/class'),
+        name: 'ProductClass',
+        meta: {
+          title: 'productClass',
+          icon: 'list',
+        }
+      },
       // {
       //   path: 'class/create',
       //   component:() => import('@/views/goods/createClass'),

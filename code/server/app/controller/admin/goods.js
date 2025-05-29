@@ -7,10 +7,10 @@ const moment=require('moment')
 module.exports = app => {
     return class GoodsController extends app.Controller {
         async create(ctx){
-            const {goodsID,name, title,goodsType,imgurl,price,priceMarket,stock,note,goodsStatus,sortNo,opBy,goodsImages,recommendFlag}= ctx.request.body;
+            const {goodsID,name, title,goodsType,imgurl,price,priceMarket,stock,note,goodsStatus,sortNo,opBy,goodsImages,recommendFlag,goodsClassID}= ctx.request.body;
             let opAt=moment();
-            console.log('body', ctx.request.body)
             let goods;
+        
             if(goodsID){
                 goods=await ctx.model.ShopGoods.findById(goodsID);
                 if(!goods){
@@ -18,7 +18,7 @@ module.exports = app => {
                     return;
                 }else{
                     goods.update({
-                        name, title,goodsType,imgurl,price,priceMarket,stock,note,goodsStatus,sortNo,opBy,opAt,recommendFlag
+                        name, title,goodsType,imgurl,price,priceMarket,stock,note,goodsStatus,sortNo,opBy,opAt,recommendFlag,goodsClassID
                     });
                     await ctx.model.query("DELETE FROM `shop_goodsImages` where goodsID = :goodsID", { replacements: { goodsID },type: ctx.model.QueryTypes.DELETE});
                     for(let index in goodsImages){
@@ -29,7 +29,7 @@ module.exports = app => {
                 }
             }else{
                 goods=await ctx.model.ShopGoods.create({
-                    name, title,goodsType,imgurl,price,priceMarket,stock,note,goodsStatus,sortNo,opBy,opAt,recommendFlag
+                    name, title,goodsType,imgurl,price,priceMarket,stock,note,goodsStatus,sortNo,opBy,opAt,recommendFlag,goodsClassID
                 });
                 for(let index in goodsImages){
                     await ctx.model.ShopGoodsImages.create({
@@ -122,6 +122,7 @@ module.exports = app => {
                     { header: '商品編號', key: 'goodsID', width: 10 },
                     { header: '發佈時間', key: 'createTime', width: 20 },
                     { header: '標題', key: 'title', width: 10 },
+                    { header: '分類', key: 'goodsClassId', width: 10 },
                     { header: '單價', key: 'price', width: 30 },
                     { header: '銷售量', key: 'numSale', width: 20 },
                     { header: '是否推薦', key: 'recommendFlag', width: 20 },

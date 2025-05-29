@@ -36,6 +36,7 @@ module.exports = app => {
     app.post('/shop/reset', app.controller.shop.reset.password);
     //商品
     app.get('/shop/goods', app.controller.shop.goods.index);
+    app.get('/shop/goodsClass', app.controller.shop.goods.goodsClass);
     app.get('/shop/goodsQuery', app.controller.shop.goods.query);
     app.get('/shop/goodsPrice', app.controller.shop.goods.price);
     app.get('/shop/goods/:id', app.controller.shop.goods.show);
@@ -103,7 +104,6 @@ module.exports = app => {
     app.post('/admin/goods/recommend', isLoginUser ,app.controller.admin.goods.recommend);
     // app.post('/admin/goods/csv', isLoginUser ,app.controller.admin.order.export);
     app.get('/admin/goodsExport', isLoginUser, app.controller.admin.goods.export);
-    app.get('/admin/shopGoodsClass/list', app.controller.admin.shopGoodsClass.list);
     app.get('/admin/order/list', isLoginUser ,app.controller.admin.order.list);
     app.post('/admin/order/status', isLoginUser ,app.controller.admin.order.status);
     app.get('/admin/order/export', isLoginUser, app.controller.admin.order.export);
@@ -112,6 +112,11 @@ module.exports = app => {
     app.get('/admin/customExport', isLoginUser ,app.controller.admin.user.export);
     app.get('/admin/report', isLoginUser ,app.controller.admin.report.data);
     app.get('/admin/report/detail', isLoginUser ,app.controller.admin.report.detail);
+    app.get('/admin/shopGoodsClass/pageList', app.controller.admin.shopGoodsClass.pageList);
+    app.get('/admin/shopGoodsClass/list', app.controller.admin.shopGoodsClass.list);
+    app.post('/admin/shopGoodsClass/create', app.controller.admin.shopGoodsClass.create);
+    app.post('/admin/shopGoodsClass/update', app.controller.admin.shopGoodsClass.update);
+    app.get('/admin/shopGoodsClass/del', app.controller.admin.shopGoodsClass.del);
 
 
     app.resources('/admin/region',isLoginUser ,app.controller.admin.region);
