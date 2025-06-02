@@ -1,9 +1,15 @@
 // server.js
-const egg = require('egg');
+try {
+  const egg = require('egg');
+  console.log('Egg.js 模块加载成功:', egg); // 添加日志
+} catch (error) {
+  console.error('Egg.js 模块加载失败:', error);
+  throw error;
+}
 
 const app = egg.startCluster({
   baseDir: __dirname,
-  port: process.env.PORT || 7001, // Vercel 会动态分配端口
+  port: process.env.PORT || 7001,
 });
 
 module.exports = app;
