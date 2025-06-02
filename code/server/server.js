@@ -19,4 +19,15 @@ const app = egg.startCluster({
 
 console.log('Egg.js app started successfully');
 
+// 添加全局错误捕获
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+process.on('uncaughtException', err => {
+  console.error('Uncaught Exception:', err);
+  process.exit(1);
+});
+
+
 module.exports = app;
