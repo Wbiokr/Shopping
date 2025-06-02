@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "egg-bin dev",
-    "start": "egg-scripts start --port=7100 --daemon --title=WBIOKR --ignore-stderr",
+    "start": "node server.js",
     "stop": "egg-scripts stop --title=WBIOKR",
     "lang": "node lang.js",
     "migrate:new": "egg-sequelize migration:create",
